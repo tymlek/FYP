@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+    316	      0	   1024	   1340	    53c	Arrays.out

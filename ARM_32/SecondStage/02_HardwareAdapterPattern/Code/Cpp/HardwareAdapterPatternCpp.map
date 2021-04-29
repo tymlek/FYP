@@ -1,0 +1,331 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                21/Apr/2018  09:54:13
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Exe\HardwareAdapterPatternCpp.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List\HardwareAdapterPatternCpp.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD99A.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\AcmeO2Adapter.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\AcmeO2SensorProxy.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\main.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\UltimateO2Adapter.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\UltimateO2SensorProxy.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Exe\HardwareAdapterPatternCpp.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List\HardwareAdapterPatternCpp.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor        = *
+__CPP_Exceptions = Disabled
+__CPP_Language   = C++14
+__Heap_Handler   = DLMalloc
+__SystemLibrary  = DLib
+__dlib_version   = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The advanced heap was selected because the application calls memory
+allocation functions outside of system library functions, and there
+are calls to deallocation functions in the application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                       0x40
+  .intvec            ro code  0x00000000    0x40  vector_table_M.o [6]
+                            - 0x00000040    0x40
+
+"P1":                                     0x1a68
+  .text              ro code  0x00000040  0x14d4  dlmalloc.o [3]
+  .text              ro code  0x00001514     0x6  abort.o [3]
+  .text              ro code  0x0000151a     0x2  vector_table_M.o [6]
+  .text              ro code  0x0000151c    0x2c  xgetmemchunk.o [3]
+  .text              ro code  0x00001548    0x14  exit.o [7]
+  .text              ro code  0x0000155c    0x7c  iarttio.o [7]
+  .text              ro code  0x000015d8    0x3c  XShttio.o [3]
+  .text              ro code  0x00001614   0x142  xprintftiny.o [3]
+  .rodata            const    0x00001756     0x1  unwind_debug.o [7]
+  .text              ro code  0x00001758    0x36  strlen.o [6]
+  .text              ro code  0x00001790    0x74  main.o [1]
+  .text              ro code  0x00001804     0x6  main.o [1]
+  .text              ro code  0x0000180c    0x1c  main.o [1]
+  .text              ro code  0x00001828    0x24  newop_0.o [4]
+  .text              ro code  0x0000184c    0x22  AcmeO2Adapter.o [1]
+  .text              ro code  0x00001870    0x28  printf.o [3]
+  .text              ro code  0x00001898     0xa  delop_0.o [4]
+  .text              ro code  0x000018a2     0xc  main.o [1]
+  .text              ro code  0x000018ae     0x4  nomemory.o [4]
+  .text              ro code  0x000018b2     0xc  AcmeO2SensorProxy.o [1]
+  .text              ro code  0x000018be     0x4  heaptramp0.o [3]
+  .text              ro code  0x000018c2     0x2  main.o [1]
+  .text              ro code  0x000018c4    0x40  zero_init3.o [6]
+  .text              ro code  0x00001904    0x2c  copy_init3.o [6]
+  .text              ro code  0x00001930    0x28  data_init.o [6]
+  .text              ro code  0x00001958    0x22  iarwrite.o [7]
+  .iar.init_table    const    0x0000197c    0x24  - Linker created -
+  .text              ro code  0x000019a0    0x20  putchar.o [3]
+  .text              ro code  0x000019c0    0x10  write.o [7]
+  .text              ro code  0x000019d0    0x1e  dwrite.o [7]
+  .text              ro code  0x000019ee    0x20  iarwstd.o [7]
+  .text              ro code  0x00001a10    0x1e  cmain.o [6]
+  .text              ro code  0x00001a2e     0x4  low_level_init.o [3]
+  .text              ro code  0x00001a32     0x4  exit.o [3]
+  .text              ro code  0x00001a38     0xa  cexit.o [6]
+  .rodata            const    0x00001a44    0x18  main.o [1]
+  .text              ro code  0x00001a5c    0x16  xprout.o [3]
+  .rodata            const    0x00001a74    0x10  AcmeO2Adapter.o [1]
+  .rodata            const    0x00001a84    0x10  main.o [1]
+  .text              ro code  0x00001a94     0xc  cstartup_M.o [6]
+  Initializer bytes  const    0x00001aa0     0x8  <for P2-1>
+  .rodata            const    0x00001aa8     0x0  zero_init3.o [6]
+  .rodata            const    0x00001aa8     0x0  copy_init3.o [6]
+                            - 0x00001aa8  0x1a68
+
+"P2", part 1 of 3:                           0x8
+  P2-1                        0x20000000     0x8  <Init block>
+    .data            inited   0x20000000     0x8  XShttio.o [3]
+                            - 0x20000008     0x8
+
+"P2", part 2 of 3:                         0x1fc
+  .bss               zero     0x20000008   0x1d8  dlmalloc.o [3]
+  .bss               zero     0x200001e0    0x18  dlmalloc.o [3]
+  .bss               zero     0x200001f8     0x4  new.o [4]
+  .bss               zero     0x200001fc     0x4  xgetmemchunk.o [3]
+  .bss               zero     0x20000200     0x1  XShttio.o [3]
+                            - 0x20000201   0x1f9
+
+"P2", part 3 of 3:                         0xc00
+  CSTACK                      0x20000208   0x400  <Block>
+    CSTACK           uninit   0x20000208   0x400  <Block tail>
+  HEAP                        0x20000608   0x800  <Block>
+    HEAP             uninit   0x20000608   0x800  <Block tail>
+                            - 0x20000e08   0xc00
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x1f9:
+          0x20000008  0x1f9
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x8:
+          0x00001aa0    0x8
+    1 destination range, total size 0x8:
+          0x20000000    0x8
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module               ro code  ro data  rw data
+    ------               -------  -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj: [1]
+    AcmeO2Adapter.o           34       16
+    AcmeO2SensorProxy.o       12
+    main.o                   164       40
+    ----------------------------------------------
+    Total:                   210       56
+
+command line: [2]
+    ----------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    XShttio.o                 60        8        9
+    abort.o                    6
+    dlmalloc.o             5 332               496
+    exit.o                     4
+    heaptramp0.o               4
+    low_level_init.o           4
+    printf.o                  40
+    putchar.o                 32
+    xgetmemchunk.o            44                 4
+    xprintftiny.o            322
+    xprout.o                  22
+    ----------------------------------------------
+    Total:                 5 870        8      509
+
+dlpp7M_tl_nc.a: [4]
+    delop_0.o                 10
+    new.o                                        4
+    newop_0.o                 36
+    nomemory.o                 4
+    ----------------------------------------------
+    Total:                    50                 4
+
+m7M_tl.a: [5]
+    ----------------------------------------------
+    Total:
+
+rt7M_tl.a: [6]
+    cexit.o                   10
+    cmain.o                   30
+    copy_init3.o              44
+    cstartup_M.o              12
+    data_init.o               40
+    strlen.o                  54
+    vector_table_M.o          66
+    zero_init3.o              64
+    ----------------------------------------------
+    Total:                   320
+
+shb_l.a: [7]
+    dwrite.o                  30
+    exit.o                    20
+    iarttio.o                124
+    iarwrite.o                34
+    iarwstd.o                 32
+    unwind_debug.o                      1
+    write.o                   16
+    ----------------------------------------------
+    Total:                   256        1
+
+    Gaps                      11        6
+    Linker created                     36    3 072
+--------------------------------------------------
+    Grand Total:           6 717      107    3 585
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x0000197c          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x000019a0          --   Gb  - Linker created -
+?main                   0x00001a11         Code  Gb  cmain.o [6]
+AcmeO2Adapter::AcmeO2Adapter(AcmeO2SensorProxy *)
+                        0x0000180d   0x1c  Code  Gb  main.o [1]
+AcmeO2Adapter::gimmeO2Conc()
+                        0x0000184d    0xc  Code  Gb  AcmeO2Adapter.o [1]
+AcmeO2Adapter::gimmeO2Flow()
+                        0x00001859   0x16  Code  Gb  AcmeO2Adapter.o [1]
+AcmeO2SensorProxy::AcmeO2SensorProxy()
+                        0x00001805    0x6  Code  Gb  main.o [1]
+AcmeO2SensorProxy::getO2Conc()
+                        0x000018b3    0x6  Code  Gb  AcmeO2SensorProxy.o [1]
+AcmeO2SensorProxy::getO2Flow()
+                        0x000018b9    0x6  Code  Gb  AcmeO2SensorProxy.o [1]
+CSTACK$$Base            0x20000208          --   Gb  - Linker created -
+CSTACK$$Limit           0x20000608          --   Gb  - Linker created -
+HEAP$$Base              0x20000608          --   Gb  - Linker created -
+HEAP$$Limit             0x20000e08          --   Gb  - Linker created -
+IO2Sensor::IO2Sensor()  0x000018c3    0x2  Code  Gb  main.o [1]
+IO2Sensor::IO2Sensor() [subobject]
+                        0x000018a3    0xc  Code  Gb  main.o [1]
+Region$$Table$$Base     0x0000197c          --   Gb  - Linker created -
+Region$$Table$$Limit    0x000019a0          --   Gb  - Linker created -
+Virtual function table for AcmeO2Adapter
+                        0x00001a74   0x10  Data  Gb  AcmeO2Adapter.o [1]
+_PrintfTiny             0x00001631  0x126  Code  Gb  xprintftiny.o [3]
+_Prout                  0x00001a5d   0x16  Code  Gb  xprout.o [3]
+__cmain                 0x00001a11         Code  Gb  cmain.o [6]
+__data_GetMemChunk      0x0000151d   0x2c  Code  Gb  xgetmemchunk.o [3]
+__data_GetMemChunk::start
+                        0x200001fc    0x4  Data  Lc  xgetmemchunk.o [3]
+__dwrite                0x000019d1   0x1e  Code  Gb  dwrite.o [7]
+__exit                  0x00001549   0x14  Code  Gb  exit.o [7]
+__iar_close_ttio        0x0000155d   0x2c  Code  Gb  iarttio.o [7]
+__iar_copy_init3        0x00001905   0x2c  Code  Gb  copy_init3.o [6]
+__iar_data_init3        0x00001931   0x28  Code  Gb  data_init.o [6]
+__iar_debug_exceptions  0x00001756    0x1  Data  Gb  unwind_debug.o [7]
+__iar_dlfree            0x0000101b  0x4f6  Code  Gb  dlmalloc.o [3]
+__iar_dlmalloc          0x00000d65  0x2b6  Code  Gb  dlmalloc.o [3]
+__iar_get_ttio          0x00001589   0x4c  Code  Gb  iarttio.o [7]
+__iar_lookup_ttioh      0x00001607    0x4  Code  Gb  XShttio.o [3]
+__iar_program_start     0x00001a95         Code  Gb  cstartup_M.o [6]
+__iar_sh_stdout         0x000019ef   0x20  Code  Gb  iarwstd.o [7]
+__iar_sh_write          0x00001959   0x22  Code  Gb  iarwrite.o [7]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__iar_ttio_guard_lock   0x000015d9   0x1e  Code  Gb  XShttio.o [3]
+__iar_ttio_guard_unlock
+                        0x000015f7   0x10  Code  Gb  XShttio.o [3]
+__iar_ttio_handles      0x20000000    0x8  Data  Lc  XShttio.o [3]
+__iar_zero_init3        0x000018c5   0x40  Code  Gb  zero_init3.o [6]
+__low_level_init        0x00001a2f    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000         Data  Gb  vector_table_M.o [6]
+__write                 0x000019c1   0x10  Code  Gb  write.o [7]
+_call_main              0x00001a1d         Code  Gb  cmain.o [6]
+_exit                   0x00001a39         Code  Gb  cexit.o [6]
+_gm_                    0x20000008  0x1d8  Data  Lc  dlmalloc.o [3]
+_main                   0x00001a2b         Code  Gb  cmain.o [6]
+abort                   0x00001515    0x6  Code  Gb  abort.o [3]
+add_segment             0x00000405  0x1f2  Code  Lc  dlmalloc.o [3]
+exit                    0x00001a33    0x4  Code  Gb  exit.o [3]
+free                    0x000018bf    0x4  Code  Gb  heaptramp0.o [3]
+init_mparams            0x0000005f   0x32  Code  Lc  dlmalloc.o [3]
+init_top                0x00000091   0x32  Code  Lc  dlmalloc.o [3]
+main                    0x00001791   0x74  Code  Gb  main.o [1]
+mparams                 0x200001e0   0x18  Data  Lc  dlmalloc.o [3]
+operator delete (void *)
+                        0x00001899    0xa  Code  Gb  delop_0.o [4]
+operator new (unsigned int)
+                        0x00001829   0x24  Code  Gb  newop_0.o [4]
+out                     0x00001615   0x1c  Code  Lc  xprintftiny.o [3]
+prepend_alloc           0x000000c3  0x342  Code  Lc  dlmalloc.o [3]
+printf                  0x00001871   0x28  Code  Gb  printf.o [3]
+putchar                 0x000019a1   0x20  Code  Gb  putchar.o [3]
+segment_holding         0x00000041   0x1e  Code  Lc  dlmalloc.o [3]
+std::_NomemoryNothrow()
+                        0x000018af    0x4  Code  Gb  nomemory.o [4]
+std::__iar_New_hand     0x200001f8    0x4  Data  Gb  new.o [4]
+strlen                  0x00001759         Code  Gb  strlen.o [6]
+sys_alloc               0x000005fd  0x164  Code  Lc  dlmalloc.o [3]
+sys_trim                0x00000761   0x66  Code  Lc  dlmalloc.o [3]
+tmalloc_large           0x000007d5  0x384  Code  Lc  dlmalloc.o [3]
+tmalloc_small           0x00000b59  0x1fe  Code  Lc  dlmalloc.o [3]
+ttio_guard              0x20000200    0x1  Data  Lc  XShttio.o [3]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = dlpp7M_tl_nc.a
+[5] = m7M_tl.a
+[6] = rt7M_tl.a
+[7] = shb_l.a
+
+  6 717 bytes of readonly  code memory
+    107 bytes of readonly  data memory
+  3 585 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

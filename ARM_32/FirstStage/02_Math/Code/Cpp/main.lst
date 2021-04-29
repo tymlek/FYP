@@ -1,0 +1,106 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  16:00:00
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW5D76.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Math\Code\CPP\main.cpp
+      1          /* C++ implementation */
+      2          
+      3          constexpr double PI = 3.141592654;
+      4          
+
+   \                                 In section .text, align 4, keep-with-next
+      5          int main() {
+   \                     main: (+1)
+   \   00000000   0xE92D 0x4FF8      PUSH     {R3-R11,LR}
+      6          	double circ = 0;
+                 	       ^
+Warning[Pe550]: variable "circ" was set but never used
+   \   00000004   0x2400             MOVS     R4,#+0
+   \   00000006   0x2500             MOVS     R5,#+0
+      7          	double area = 0;
+                 	       ^
+Warning[Pe550]: variable "area" was set but never used
+   \   00000008   0xF05F 0x0800      MOVS     R8,#+0
+   \   0000000C   0xF05F 0x0900      MOVS     R9,#+0
+      8          	double radius = 2;
+   \   00000010   0xF05F 0x0A00      MOVS     R10,#+0
+   \   00000014   0xF05F 0x4B80      MOVS     R11,#+1073741824
+      9          	
+     10          	circ = 2 * PI * radius;
+   \   00000018   0x4809             LDR.N    R0,??main_0      ;; 0x54524550
+   \   0000001A   0x490A             LDR.N    R1,??main_0+0x4  ;; 0x401921fb
+   \   0000001C   0x4652             MOV      R2,R10
+   \   0000001E   0x465B             MOV      R3,R11
+   \   00000020   0x.... 0x....      BL       __aeabi_dmul
+   \   00000024   0x0006             MOVS     R6,R0
+   \   00000026   0x000F             MOVS     R7,R1
+     11          	area = PI * radius * radius;
+   \   00000028   0x4805             LDR.N    R0,??main_0      ;; 0x54524550
+   \   0000002A   0x4907             LDR.N    R1,??main_0+0x8  ;; 0x400921fb
+   \   0000002C   0x4652             MOV      R2,R10
+   \   0000002E   0x465B             MOV      R3,R11
+   \   00000030   0x.... 0x....      BL       __aeabi_dmul
+   \   00000034   0x4652             MOV      R2,R10
+   \   00000036   0x465B             MOV      R3,R11
+   \   00000038   0x.... 0x....      BL       __aeabi_dmul
+     12          	
+     13          	while (1) {
+   \                     ??main_1: (+1)
+   \   0000003C   0xE7FE             B.N      ??main_1
+   \   0000003E   0xBF00             Nop      
+   \                     ??main_0:
+   \   00000040   0x54524550         DC32     0x54524550
+   \   00000044   0x401921FB         DC32     0x401921fb
+   \   00000048   0x400921FB         DC32     0x400921fb
+     14          		
+     15          	}
+     16          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      40   main
+        40   -> __aeabi_dmul
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      76  main
+
+ 
+ 76 bytes in section .text
+ 
+ 76 bytes of CODE memory
+
+Errors: none
+Warnings: 2

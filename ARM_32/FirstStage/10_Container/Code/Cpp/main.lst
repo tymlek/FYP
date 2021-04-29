@@ -1,0 +1,190 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       19/Apr/2018  09:36:45
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW8879.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Container\Code\Cpp\main.cpp
+      1          /* C++ implementation */
+      2          
+      3          #include <stdio.h>
+      4          #include <stdlib.h>
+      5          
+      6          class int_container {
+      7          	public:
+
+   \                                 In section .text, align 2
+      8          	int_container (const int* data_in, unsigned len_in) {
+   \                     _ZN13int_containerC1EPKij: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+   \   00000006   0x0016             MOVS     R6,R2
+      9                    data = new int[len_in];
+   \   00000008   0x00B0             LSLS     R0,R6,#+2
+   \   0000000A   0x.... 0x....      BL       _Znaj
+   \   0000000E   0x6020             STR      R0,[R4, #+0]
+     10          		len = (data == 0) ? 0 : len_in;
+   \   00000010   0x6820             LDR      R0,[R4, #+0]
+   \   00000012   0x2800             CMP      R0,#+0
+   \   00000014   0xD101             BNE.N    ??int_container_0
+   \   00000016   0x2000             MOVS     R0,#+0
+   \   00000018   0xE000             B.N      ??int_container_1
+   \                     ??int_container_0: (+1)
+   \   0000001A   0x0030             MOVS     R0,R6
+   \                     ??int_container_1: (+1)
+   \   0000001C   0x6060             STR      R0,[R4, #+4]
+     11          		
+     12          		for (unsigned n = 0; n < len; ++n) {
+   \   0000001E   0x2000             MOVS     R0,#+0
+   \                     ??int_container_2: (+1)
+   \   00000020   0x6861             LDR      R1,[R4, #+4]
+   \   00000022   0x4288             CMP      R0,R1
+   \   00000024   0xD206             BCS.N    ??int_container_3
+     13          			data[n] = data_in[n];
+   \   00000026   0xF855 0x1020      LDR      R1,[R5, R0, LSL #+2]
+   \   0000002A   0x6822             LDR      R2,[R4, #+0]
+   \   0000002C   0xF842 0x1020      STR      R1,[R2, R0, LSL #+2]
+     14          		}
+   \   00000030   0x1C40             ADDS     R0,R0,#+1
+   \   00000032   0xE7F5             B.N      ??int_container_2
+     15          	}
+   \                     ??int_container_3: (+1)
+   \   00000034   0x0020             MOVS     R0,R4
+   \   00000036   0xBD70             POP      {R4-R6,PC}       ;; return
+     16          	
+     17          	~int_container() {
+     18          		delete [] data;
+     19          	}
+     20          	
+
+   \                                 In section .text, align 2
+     21          	int operator[] (int index) const {
+     22          		return ((index >= 0 && ((unsigned)index) < len) ? data[index] : 0);
+   \                     _ZNK13int_containerixEi: (+1)
+   \   00000000   0x2900             CMP      R1,#+0
+   \   00000002   0xD406             BMI.N    `??operator[]_0`
+   \   00000004   0x6842             LDR      R2,[R0, #+4]
+   \   00000006   0x4291             CMP      R1,R2
+   \   00000008   0xD203             BCS.N    `??operator[]_0`
+   \   0000000A   0x6800             LDR      R0,[R0, #+0]
+   \   0000000C   0xF850 0x0021      LDR      R0,[R0, R1, LSL #+2]
+   \   00000010   0xE000             B.N      `??operator[]_1`
+   \                     `??operator[]_0`: (+1)
+   \   00000012   0x2000             MOVS     R0,#+0
+   \                     `??operator[]_1`: (+1)
+   \   00000014   0x4770             BX       LR               ;; return
+     23          	}
+     24          	
+     25          	private:
+     26          	int* data;
+     27          	unsigned len;
+     28          };
+     29          
+
+   \                                 In section .text, align 4, keep-with-next
+     30          int main(void)
+     31          {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+   \   00000002   0xB086             SUB      SP,SP,#+24
+     32          	int my_data[4] = {0,1,2,3};
+   \   00000004   0xA802             ADD      R0,SP,#+8
+   \   00000006   0x4909             LDR.N    R1,??main_0+0x4
+   \   00000008   0x2210             MOVS     R2,#+16
+   \   0000000A   0x.... 0x....      BL       __aeabi_memcpy4
+     33          	int_container container(my_data,4);
+   \   0000000E   0x2204             MOVS     R2,#+4
+   \   00000010   0xA902             ADD      R1,SP,#+8
+   \   00000012   0x4668             MOV      R0,SP
+   \   00000014   0x.... 0x....      BL       _ZN13int_containerC1EPKij
+     34          	
+     35          	printf("%d", container[2]);
+   \   00000018   0x2102             MOVS     R1,#+2
+   \   0000001A   0x.... 0x....      BL       _ZNK13int_containerixEi
+   \   0000001E   0x0001             MOVS     R1,R0
+   \   00000020   0xA001             ADR.N    R0,??main_0      ;; 0x25, 0x64, 0x00, 0x00
+   \   00000022   0x.... 0x....      BL       printf
+     36          	
+     37          	while (1)
+   \                     ??main_1: (+1)
+   \   00000026   0xE7FE             B.N      ??main_1
+   \                     ??main_0:
+   \   00000028   0x25 0x64          DC8      0x25, 0x64, 0x00, 0x00
+   \              0x00 0x00    
+   \   0000002C   0x........         DC32     ?_0
+     38          	{
+     39          		
+     40          	}
+     41          }
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x00000000         DC32 0, 1, 2, 3
+   \              0x00000001   
+   \              0x00000002   
+   \              0x00000003   
+
+   \                                 In section .rodata, align 4
+   \   00000000   0x25 0x64          DC8 "%d"
+   \              0x00         
+   \   00000003   0x00               DC8 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   int_container::int_container(int const *, unsigned int)
+        16   -> operator new[](unsigned int)
+       0   int_container::operator[](int) const
+      32   main
+        32   -> __aeabi_memcpy4
+        32   -> int_container::int_container(int const *, unsigned int)
+        32   -> int_container::operator[](int) const
+        32   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      16  ?_0
+       4  ?_1
+      56  int_container::int_container(int const *, unsigned int)
+      22  int_container::operator[](int) const
+      48  main
+
+ 
+  20 bytes in section .rodata
+ 126 bytes in section .text
+ 
+ 48 bytes of CODE  memory (+ 78 bytes shared)
+ 20 bytes of CONST memory
+
+Errors: none
+Warnings: none

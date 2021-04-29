@@ -1,0 +1,213 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:50:34
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\HistogramDisplay.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW2105.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\HistogramDisplay.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List\HistogramDisplay.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj\HistogramDisplay.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\HistogramDisplay.cpp
+      1          #include <stdlib.h>
+      2          #include "HistogramDisplay.h"
+
+  			delete this->itsTMDQueue;
+  			       ^
+"C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\HistogramDisplay.h",16  Warning[Pe414]: 
+          delete of pointer to incomplete class
+      3          #include "TMDQueue.h"
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp TimeMarkedData::TimeMarkedData()
+   \                     _ZN14TimeMarkedDataC1Ev: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6041             STR      R1,[R0, #+4]
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6001             STR      R1,[R0, #+0]
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x6081             STR      R1,[R0, #+8]
+   \   0000000C   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp int TimeMarkedData::getTimeInterval()
+   \                     _ZN14TimeMarkedData15getTimeIntervalEv: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp int TimeMarkedData::getDataValue()
+   \                     _ZN14TimeMarkedData12getDataValueEv: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+      5          void HistogramDisplay::getValue() {
+   \                     _ZN16HistogramDisplay8getValueEv: (+1)
+   \   00000000   0xB5F8             PUSH     {R3-R7,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      6          	TimeMarkedData* tmd = new TimeMarkedData();
+   \   00000004   0x200C             MOVS     R0,#+12
+   \   00000006   0x.... 0x....      BL       _Znwj
+   \   0000000A   0x2800             CMP      R0,#+0
+   \   0000000C   0xD003             BEQ.N    ??getValue_0
+   \   0000000E   0x.... 0x....      BL       _ZN14TimeMarkedDataC1Ev
+   \   00000012   0x0005             MOVS     R5,R0
+   \   00000014   0xE000             B.N      ??getValue_1
+   \                     ??getValue_0: (+1)
+   \   00000016   0x2500             MOVS     R5,#+0
+      7          
+      8          	tmd = this->itsTMDQueue->remove(this->index);
+   \                     ??getValue_1: (+1)
+   \   00000018   0x6821             LDR      R1,[R4, #+0]
+   \   0000001A   0x6860             LDR      R0,[R4, #+4]
+   \   0000001C   0x.... 0x....      BL       _ZN8TMDQueue6removeEi
+   \   00000020   0x0006             MOVS     R6,R0
+      9          
+     10          	printf("Histogram index: %d Time Interval: %d Data Value: %d\n"
+     11          		, this->index, tmd->getTimeInterval(), tmd->getDataValue());
+   \   00000022   0x0030             MOVS     R0,R6
+   \   00000024   0x.... 0x....      BL       _ZN14TimeMarkedData12getDataValueEv
+   \   00000028   0x0007             MOVS     R7,R0
+   \   0000002A   0x0030             MOVS     R0,R6
+   \   0000002C   0x.... 0x....      BL       _ZN14TimeMarkedData15getTimeIntervalEv
+   \   00000030   0x0002             MOVS     R2,R0
+   \   00000032   0x003B             MOVS     R3,R7
+   \   00000034   0x6821             LDR      R1,[R4, #+0]
+   \   00000036   0x....             LDR.N    R0,??DataTable0
+   \   00000038   0x.... 0x....      BL       printf
+     12          
+     13          	this->index = this->itsTMDQueue->getNextIndex(this->index);
+   \   0000003C   0x6821             LDR      R1,[R4, #+0]
+   \   0000003E   0x6860             LDR      R0,[R4, #+4]
+   \   00000040   0x.... 0x....      BL       _ZN8TMDQueue12getNextIndexEi
+   \   00000044   0x6020             STR      R0,[R4, #+0]
+     14          }
+   \   00000046   0xBDF1             POP      {R0,R4-R7,PC}    ;; return
+     15          
+
+   \                                 In section .text, align 2, keep-with-next
+     16          void HistogramDisplay::updateHistogram() {
+     17          
+     18          }
+   \                     _ZN16HistogramDisplay15updateHistogramEv: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     19          
+
+   \                                 In section .text, align 2, keep-with-next
+     20          TMDQueue* HistogramDisplay::getItsTMDQueue() {
+     21          	return this->itsTMDQueue;
+   \                     _ZN16HistogramDisplay14getItsTMDQueueEv: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+     22          }
+     23          
+
+   \                                 In section .text, align 2, keep-with-next
+     24          void HistogramDisplay::setItsTMDQueue(TMDQueue* p_TMDQueue) {
+     25          	this->itsTMDQueue = p_TMDQueue;
+   \                     _ZN16HistogramDisplay14setItsTMDQueueEP8TMDQueue: (+1)
+   \   00000000   0x6041             STR      R1,[R0, #+4]
+     26          }
+   \   00000002   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   0x........         DC32     ?_0
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x48 0x69          DC8 48H, 69H, 73H, 74H, 6FH, 67H, 72H, 61H
+   \              0x73 0x74    
+   \              0x6F 0x67    
+   \              0x72 0x61    
+   \   00000008   0x6D 0x20          DC8 6DH, 20H, 69H, 6EH, 64H, 65H, 78H, 3AH
+   \              0x69 0x6E    
+   \              0x64 0x65    
+   \              0x78 0x3A    
+   \   00000010   0x20 0x25          DC8 20H, 25H, 64H, 20H, 54H, 69H, 6DH, 65H
+   \              0x64 0x20    
+   \              0x54 0x69    
+   \              0x6D 0x65    
+   \   00000018   0x20 0x49          DC8 20H, 49H, 6EH, 74H, 65H, 72H, 76H, 61H
+   \              0x6E 0x74    
+   \              0x65 0x72    
+   \              0x76 0x61    
+   \   00000020   0x6C 0x3A          DC8 6CH, 3AH, 20H, 25H, 64H, 20H, 44H, 61H
+   \              0x20 0x25    
+   \              0x64 0x20    
+   \              0x44 0x61    
+   \   00000028   0x74 0x61          DC8 74H, 61H, 20H, 56H, 61H, 6CH, 75H, 65H
+   \              0x20 0x56    
+   \              0x61 0x6C    
+   \              0x75 0x65    
+   \   00000030   0x3A 0x20          DC8 3AH, 20H, 25H, 64H, 0AH, 0
+   \              0x25 0x64    
+   \              0x0A 0x00    
+   \   00000036   0x00 0x00          DC8 0, 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   HistogramDisplay::getItsTMDQueue()
+      24   HistogramDisplay::getValue()
+        24   -> TMDQueue::getNextIndex(int)
+        24   -> TMDQueue::remove(int)
+        24   -> TimeMarkedData::TimeMarkedData()
+        24   -> TimeMarkedData::getDataValue()
+        24   -> TimeMarkedData::getTimeInterval()
+        24   -> operator new(unsigned int)
+        24   -> printf
+       0   HistogramDisplay::setItsTMDQueue(TMDQueue *)
+       0   HistogramDisplay::updateHistogram()
+       0   TimeMarkedData::TimeMarkedData()
+       0   TimeMarkedData::getDataValue()
+       0   TimeMarkedData::getTimeInterval()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable0
+      56  ?_0
+       4  HistogramDisplay::getItsTMDQueue()
+      72  HistogramDisplay::getValue()
+       4  HistogramDisplay::setItsTMDQueue(TMDQueue *)
+       2  HistogramDisplay::updateHistogram()
+      14  TimeMarkedData::TimeMarkedData()
+       4  TimeMarkedData::getDataValue()
+       4  TimeMarkedData::getTimeInterval()
+
+ 
+  56 bytes in section .rodata
+ 108 bytes in section .text
+ 
+ 86 bytes of CODE  memory (+ 22 bytes shared)
+ 56 bytes of CONST memory
+
+Errors: none
+Warnings: 1

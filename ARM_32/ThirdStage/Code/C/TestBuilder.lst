@@ -1,0 +1,224 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:41:31
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TestBuilder.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD3DD.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TestBuilder.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\TestBuilder.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\TestBuilder.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TestBuilder.c
+      1          #include <stdlib.h>
+      2          #include "TestBuilder.h"
+      3          
+      4          static void initRelations(TestBuilder* const me);
+      5          static void cleanUpRelations(TestBuilder* const me);
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void TestBuilder_Init(TestBuilder* const me) {
+   \                     TestBuilder_Init: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      8          	initRelations(me);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       initRelations
+      9          }
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+     10          
+
+   \                                 In section .text, align 2, keep-with-next
+     11          void TestBuilder_Cleanup(TestBuilder* const me) {
+   \                     TestBuilder_Cleanup: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     12          	cleanUpRelations(me);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       cleanUpRelations
+     13          }
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+     14          
+
+   \                                 In section .text, align 2, keep-with-next
+     15          struct ECG_Module* TestBuilder_getItsECG_Module(const TestBuilder* const me) {
+     16          	return (ECG_Module*)&(me->itsECG_Module);
+   \                     TestBuilder_getItsECG_Module: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     17          }
+     18          
+
+   \                                 In section .text, align 2, keep-with-next
+     19          struct HistogramDisplay* TestBuilder_getItsHistogram(const TestBuilder* const me) {
+     20          	return (HistogramDisplay*)&(me->itsHistogramDisplay);
+   \                     TestBuilder_getItsHistogram: (+1)
+   \   00000000   0x3010             ADDS     R0,R0,#+16
+   \   00000002   0x4770             BX       LR               ;; return
+     21          }
+     22          
+
+   \                                 In section .text, align 2, keep-with-next
+     23          struct TMDQueue* TestBuilder_getItsTMDQueue(const TestBuilder* const me) {
+     24          	return (TMDQueue*)&(me->itsTMEQueue);
+   \                     TestBuilder_getItsTMDQueue: (+1)
+   \   00000000   0x3018             ADDS     R0,R0,#+24
+   \   00000002   0x4770             BX       LR               ;; return
+     25          }
+     26          
+
+   \                                 In section .text, align 2, keep-with-next
+     27          TestBuilder* TestBuilder_Create() {
+   \                     TestBuilder_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     28          	TestBuilder* me = (TestBuilder*)malloc(sizeof(TestBuilder));
+   \   00000002   0x2070             MOVS     R0,#+112
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+     29          
+     30          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??TestBuilder_Create_0
+     31          		TestBuilder_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       TestBuilder_Init
+     32          	}
+     33          
+     34          	return me;
+   \                     ??TestBuilder_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     35          }
+
+   \                                 In section .text, align 2, keep-with-next
+     36          void TestBuilder_Destroy(TestBuilder* const me) {
+   \                     TestBuilder_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     37          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??TestBuilder_Destroy_0
+     38          		TestBuilder_Cleanup(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       TestBuilder_Cleanup
+     39          	}
+     40          
+     41          	free(me);
+   \                     ??TestBuilder_Destroy_0: (+1)
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       free
+     42          }
+   \   00000014   0xBD10             POP      {R4,PC}          ;; return
+     43          
+
+   \                                 In section .text, align 2, keep-with-next
+     44          static void initRelations(TestBuilder* const me) {
+   \                     initRelations: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     45          	ECG_Module_Init(&(me->itsECG_Module));
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       ECG_Module_Init
+     46          	HistogramDisplay_Init(&(me->itsHistogramDisplay));
+   \   0000000A   0xF114 0x0010      ADDS     R0,R4,#+16
+   \   0000000E   0x.... 0x....      BL       HistogramDisplay_Init
+     47          	TMDQueue_Init(&(me->itsTMEQueue));
+   \   00000012   0xF114 0x0018      ADDS     R0,R4,#+24
+   \   00000016   0x.... 0x....      BL       TMDQueue_Init
+     48          
+     49          	ECG_Module_setItsTMDQueue(&(me->itsECG_Module), &(me->itsTMEQueue));
+   \   0000001A   0xF114 0x0118      ADDS     R1,R4,#+24
+   \   0000001E   0x0020             MOVS     R0,R4
+   \   00000020   0x.... 0x....      BL       ECG_Module_setItsTMDQueue
+     50          	HistogramDisplay_setItsTMDQueue(&(me->itsHistogramDisplay), &(me->itsTMEQueue));
+   \   00000024   0xF114 0x0118      ADDS     R1,R4,#+24
+   \   00000028   0xF114 0x0010      ADDS     R0,R4,#+16
+   \   0000002C   0x.... 0x....      BL       HistogramDisplay_setItsTMDQueue
+     51          }
+   \   00000030   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     52          static void cleanUpRelations(TestBuilder* const me) {
+   \                     cleanUpRelations: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     53          	TMDQueue_Cleanup(&(me->itsTMEQueue));
+   \   00000004   0xF114 0x0018      ADDS     R0,R4,#+24
+   \   00000008   0x.... 0x....      BL       TMDQueue_Cleanup
+     54          	HistogramDisplay_Cleanup(&(me->itsHistogramDisplay));
+   \   0000000C   0xF114 0x0010      ADDS     R0,R4,#+16
+   \   00000010   0x.... 0x....      BL       HistogramDisplay_Cleanup
+     55          	ECG_Module_Cleanup(&(me->itsECG_Module));
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0x.... 0x....      BL       ECG_Module_Cleanup
+     56          }
+   \   0000001A   0xBD10             POP      {R4,PC}          ;; return
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   TestBuilder_Cleanup
+         8   -> cleanUpRelations
+       8   TestBuilder_Create
+         8   -> TestBuilder_Init
+         8   -> malloc
+       8   TestBuilder_Destroy
+         8   -> TestBuilder_Cleanup
+         8   -> free
+       8   TestBuilder_Init
+         8   -> initRelations
+       0   TestBuilder_getItsECG_Module
+       0   TestBuilder_getItsHistogram
+       0   TestBuilder_getItsTMDQueue
+       8   cleanUpRelations
+         8   -> ECG_Module_Cleanup
+         8   -> HistogramDisplay_Cleanup
+         8   -> TMDQueue_Cleanup
+       8   initRelations
+         8   -> ECG_Module_Init
+         8   -> ECG_Module_setItsTMDQueue
+         8   -> HistogramDisplay_Init
+         8   -> HistogramDisplay_setItsTMDQueue
+         8   -> TMDQueue_Init
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      12  TestBuilder_Cleanup
+      24  TestBuilder_Create
+      22  TestBuilder_Destroy
+      12  TestBuilder_Init
+       2  TestBuilder_getItsECG_Module
+       4  TestBuilder_getItsHistogram
+       4  TestBuilder_getItsTMDQueue
+      28  cleanUpRelations
+      50  initRelations
+
+ 
+ 158 bytes in section .text
+ 
+ 158 bytes of CODE memory
+
+Errors: none
+Warnings: none

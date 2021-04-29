@@ -1,0 +1,4 @@
+avr-objdump -S main.o > objectdmp.txt
+avr-objdump -d main.o > objectdmp2.txt
+C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe -h -S Add.elf > objectdmp.txt
+C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe -S Add.elf > objectdmp.txt

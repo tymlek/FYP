@@ -1,0 +1,152 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:33:35
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\AcmeO2SensorProxy.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWF48B.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\AcmeO2SensorProxy.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List\AcmeO2SensorProxy.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\Obj\AcmeO2SensorProxy.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\AcmeO2SensorProxy.c
+      1          #include <stdlib.h>
+      2          #include "AcmeO2SensorProxy.h"
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          AcmeO2SensorProxy* AcmeO2SensorProxy_Create(void) {
+   \                     AcmeO2SensorProxy_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+      5          	AcmeO2SensorProxy* me = (AcmeO2SensorProxy*)malloc(sizeof(AcmeO2SensorProxy));
+   \   00000002   0x200C             MOVS     R0,#+12
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+      6          
+      7          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??AcmeO2SensorProxy_Create_0
+      8          		AcmeO2SensorProxy_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       AcmeO2SensorProxy_Init
+      9          	}
+     10          
+     11          	return me;
+   \                     ??AcmeO2SensorProxy_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     12          }
+     13          
+
+   \                                 In section .text, align 2, keep-with-next
+     14          void AcmeO2SensorProxy_Destroy(AcmeO2SensorProxy* const me) {
+   \                     AcmeO2SensorProxy_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     15          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??AcmeO2SensorProxy_Destroy_0
+     16          		free(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       free
+     17          		//IO2Sensor_Cleanup(me);
+     18          	}
+     19          }
+   \                     ??AcmeO2SensorProxy_Destroy_0: (+1)
+   \   0000000E   0xBD10             POP      {R4,PC}          ;; return
+     20          
+
+   \                                 In section .text, align 2, keep-with-next
+     21          void AcmeO2SensorProxy_Init(AcmeO2SensorProxy* const me) {
+     22          	me->getO2Conc = AcmeO2SensorProxy_getO2Conc;
+   \                     AcmeO2SensorProxy_Init: (+1)
+   \   00000000   0x.... 0x....      ADR.W    R1,AcmeO2SensorProxy_getO2Conc
+   \   00000004   0x6041             STR      R1,[R0, #+4]
+     23          	me->getO2Flow = AcmeO2SensorProxy_getO2Flow;
+   \   00000006   0x.... 0x....      ADR.W    R1,AcmeO2SensorProxy_getO2Flow
+   \   0000000A   0x6081             STR      R1,[R0, #+8]
+     24          }
+   \   0000000C   0x4770             BX       LR               ;; return
+     25          
+
+   \                                 In section .text, align 2, keep-with-next
+     26          void AcmeO2SensorProxy_configure(AcmeO2SensorProxy* const me, unsigned int* location) {
+     27          
+     28          	me->sensorAddr = location;
+   \                     AcmeO2SensorProxy_configure: (+1)
+   \   00000000   0x6001             STR      R1,[R0, #+0]
+     29          }
+   \   00000002   0x4770             BX       LR               ;; return
+     30          
+
+   \                                 In section .text, align 4, keep-with-next
+     31          unsigned int AcmeO2SensorProxy_getO2Conc(AcmeO2SensorProxy* const me) {
+   \                     AcmeO2SensorProxy_getO2Conc: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     32          	return 20;
+   \   00000002   0x2014             MOVS     R0,#+20
+   \   00000004   0x4770             BX       LR               ;; return
+     33          }
+     34          
+
+   \                                 In section .text, align 4, keep-with-next
+     35          unsigned long AcmeO2SensorProxy_getO2Flow(AcmeO2SensorProxy* const me) {
+   \                     AcmeO2SensorProxy_getO2Flow: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     36          	return 50;
+   \   00000002   0x2032             MOVS     R0,#+50
+   \   00000004   0x4770             BX       LR               ;; return
+     37          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   AcmeO2SensorProxy_Create
+         8   -> AcmeO2SensorProxy_Init
+         8   -> malloc
+       8   AcmeO2SensorProxy_Destroy
+         8   -> free
+       0   AcmeO2SensorProxy_Init
+       0   AcmeO2SensorProxy_configure
+       0   AcmeO2SensorProxy_getO2Conc
+       0   AcmeO2SensorProxy_getO2Flow
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      24  AcmeO2SensorProxy_Create
+      16  AcmeO2SensorProxy_Destroy
+      14  AcmeO2SensorProxy_Init
+       4  AcmeO2SensorProxy_configure
+       6  AcmeO2SensorProxy_getO2Conc
+       6  AcmeO2SensorProxy_getO2Flow
+
+ 
+ 70 bytes in section .text
+ 
+ 70 bytes of CODE memory
+
+Errors: none
+Warnings: none

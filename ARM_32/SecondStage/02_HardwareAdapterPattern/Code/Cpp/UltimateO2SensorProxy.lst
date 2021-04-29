@@ -1,0 +1,88 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:51:20
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\UltimateO2SensorProxy.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW3792.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\UltimateO2SensorProxy.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List\UltimateO2SensorProxy.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\UltimateO2SensorProxy.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\UltimateO2SensorProxy.cpp
+      1          #include "UltimateO2SensorProxy.h"
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          double UltimateO2SensorProxy::accessO2Conc() {
+   \                     _ZN21UltimateO2SensorProxy12accessO2ConcEv: (+1)
+   \   00000000   0x0002             MOVS     R2,R0
+      4          	return 3.14;
+   \   00000002   0x....             LDR.N    R0,??DataTable0  ;; 0x51eb851f
+   \   00000004   0x....             LDR.N    R1,??DataTable0_1  ;; 0x40091eb8
+   \   00000006   0x4770             BX       LR               ;; return
+      5          }
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          double UltimateO2SensorProxy::accessGasFlow() {
+   \                     _ZN21UltimateO2SensorProxy13accessGasFlowEv: (+1)
+   \   00000000   0x0002             MOVS     R2,R0
+      8          	return 2;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0xF05F 0x4180      MOVS     R1,#+1073741824
+   \   00000008   0x4770             BX       LR               ;; return
+      9          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   0x51EB851F         DC32     0x51eb851f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0_1:
+   \   00000000   0x40091EB8         DC32     0x40091eb8
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   UltimateO2SensorProxy::accessGasFlow()
+       0   UltimateO2SensorProxy::accessO2Conc()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable0
+       4  ??DataTable0_1
+      10  UltimateO2SensorProxy::accessGasFlow()
+       8  UltimateO2SensorProxy::accessO2Conc()
+
+ 
+ 26 bytes in section .text
+ 
+ 26 bytes of CODE memory
+
+Errors: none
+Warnings: none

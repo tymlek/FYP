@@ -1,0 +1,577 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/arm-linux-gnueabihf/libc_nonshared.a(elf-init.oS)
+                              /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o (__libc_csu_init)
+
+Discarded input sections
+
+ .note.GNU-stack
+                0x00000000        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ .gnu_debuglink
+                0x00000000        0xc /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ .note.GNU-stack
+                0x00000000        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+ .gnu_debuglink
+                0x00000000        0xc /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+ .note.GNU-stack
+                0x00000000        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+ .group         0x00000000       0x10 main.o
+ .group         0x00000000       0x10 main.o
+ .group         0x00000000       0x10 main.o
+ .group         0x00000000       0x10 main.o
+ .group         0x00000000       0x10 main.o
+ .group         0x00000000       0x10 main.o
+ .note.GNU-stack
+                0x00000000        0x0 main.o
+ .note.GNU-stack
+                0x00000000        0x0 /usr/lib/arm-linux-gnueabihf/libc_nonshared.a(elf-init.oS)
+ .note.GNU-stack
+                0x00000000        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+ .note.GNU-stack
+                0x00000000        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+ .gnu_debuglink
+                0x00000000        0xc /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+LOAD /usr/lib/libmysqlcppconn.so
+LOAD /usr/lib/libwiringPi.so
+LOAD /usr/lib/arm-linux-gnueabihf/libmysqlclient.so
+LOAD main.o
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libstdc++.so
+LOAD /usr/lib/arm-linux-gnueabihf/libm.so
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc_s.so.1
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc.a
+LOAD /usr/lib/arm-linux-gnueabihf/libc.so
+START GROUP
+LOAD /lib/arm-linux-gnueabihf/libc.so.6
+LOAD /usr/lib/arm-linux-gnueabihf/libc_nonshared.a
+LOAD /lib/arm-linux-gnueabihf/ld-linux-armhf.so.3
+END GROUP
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc_s.so
+START GROUP
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc_s.so.1
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc.a
+END GROUP
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/libgcc.a
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+LOAD /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+                0x00010000                PROVIDE (__executable_start, 0x10000)
+                0x00010134                . = (0x10000 + SIZEOF_HEADERS)
+
+.interp         0x00010134       0x19
+ *(.interp)
+ .interp        0x00010134       0x19 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.note.ABI-tag   0x00010150       0x20
+ .note.ABI-tag  0x00010150       0x20 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.note.gnu.build-id
+                0x00010170       0x24
+ *(.note.gnu.build-id)
+ .note.gnu.build-id
+                0x00010170       0x24 linker stubs
+
+.hash
+ *(.hash)
+
+.gnu.hash       0x00010194      0x1b4
+ *(.gnu.hash)
+ .gnu.hash      0x00010194      0x1b4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.dynsym         0x00010348      0x3b0
+ *(.dynsym)
+ .dynsym        0x00010348      0x3b0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.dynstr         0x000106f8      0x4a4
+ *(.dynstr)
+ .dynstr        0x000106f8      0x4a4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.gnu.version    0x00010b9c       0x76
+ *(.gnu.version)
+ .gnu.version   0x00010b9c       0x76 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.gnu.version_d  0x00010c14        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00010c14        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.gnu.version_r  0x00010c14       0xa0
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00010c14       0xa0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.rel.dyn        0x00010cb4       0x28
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x00010cb4       0x10 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ .rel.bss       0x00010cc4       0x18 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00010cdc                PROVIDE (__rel_iplt_start, .)
+ *(.rel.iplt)
+ .rel.iplt      0x00010cdc        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00010cdc                PROVIDE (__rel_iplt_end, .)
+
+.rela.dyn       0x00010cdc        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                0x00010cdc                PROVIDE (__rela_iplt_start, .)
+ *(.rela.iplt)
+                0x00010cdc                PROVIDE (__rela_iplt_end, .)
+
+.rel.plt        0x00010cdc      0x120
+ *(.rel.plt)
+ .rel.plt       0x00010cdc      0x120 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.rela.plt
+ *(.rela.plt)
+
+.init           0x00010dfc        0xc
+ *(SORT(.init))
+ .init          0x00010dfc        0x8 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+                0x00010dfc                _init
+ .init          0x00010e04        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+
+.plt            0x00010e08      0x1c4
+ *(.plt)
+ .plt           0x00010e08      0x1c4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00010e1c                operator new(unsigned int)@@GLIBCXX_3.4
+                0x00010e28                round@@GLIBC_2.4
+                0x00010e34                __aeabi_atexit@@CXXABI_ARM_1.3.3
+                0x00010e40                __cxa_begin_catch@@CXXABI_1.3
+                0x00010e4c                std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)@@GLIBCXX_3.4
+                0x00010e58                __cxa_allocate_exception@@CXXABI_1.3
+                0x00010e64                exit@@GLIBC_2.4
+                0x00010e70                atoi@@GLIBC_2.4
+                0x00010e7c                std::runtime_error::runtime_error(std::string const&)@@GLIBCXX_3.4
+                0x00010e88                __cxa_free_exception@@CXXABI_1.3
+                0x00010e94                abort@@GLIBC_2.4
+                0x00010ea0                operator delete(void*)@@GLIBCXX_3.4
+                0x00010eac                std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)@@GLIBCXX_3.4
+                0x00010eb8                std::runtime_error::~runtime_error()@@GLIBCXX_3.4
+                0x00010ec4                __pthread_key_create@@GLIBC_2.4
+                0x00010ed0                std::ostream::operator<<(std::ostream& (*)(std::ostream&))@@GLIBCXX_3.4
+                0x00010edc                std::allocator<char>::~allocator()@@GLIBCXX_3.4
+                0x00010ee8                __cxa_end_cleanup@@CXXABI_1.3
+                0x00010ef4                std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&)@@GLIBCXX_3.4
+                0x00010f00                get_driver_instance
+                0x00010f0c                std::basic_ostream<char, std::char_traits<char> >& std::operator<< <char, std::char_traits<char>, std::allocator<char> >(std::basic_ostream<char, std::char_traits<char> >&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)@@GLIBCXX_3.4
+                0x00010f18                sleep@@GLIBC_2.4
+                0x00010f24                wiringPiSPISetup
+                0x00010f30                std::ios_base::Init::Init()@@GLIBCXX_3.4
+                0x00010f3c                usleep@@GLIBC_2.4
+                0x00010f48                std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string()@@GLIBCXX_3.4
+                0x00010f54                wiringPiSPIDataRW
+                0x00010f60                atof@@GLIBC_2.4
+                0x00010f6c                __cxa_end_catch@@CXXABI_1.3
+                0x00010f78                __gxx_personality_v0@@CXXABI_1.3
+                0x00010f84                __cxa_throw@@CXXABI_1.3
+                0x00010f90                std::ostream::operator<<(int)@@GLIBCXX_3.4
+                0x00010f9c                std::allocator<char>::allocator()@@GLIBCXX_3.4
+                0x00010fa8                __libc_start_main@@GLIBC_2.4
+                0x00010fc0                std::ios_base::Init::~Init()@@GLIBCXX_3.4
+
+.iplt           0x00010fcc        0x0
+ *(.iplt)
+ .iplt          0x00010fcc        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+
+.text           0x00010fd0      0xda4
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00010fd0       0x3c /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00010fd0                _start
+ .text          0x0001100c       0x24 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+ .text          0x00011030       0xc8 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+ .text          0x000110f8      0x970 main.o
+                0x000110f8                getReading(MCP3008*, int, double)
+                0x0001122c                writeToDB(sql::Connection*, int)
+                0x00011300                readFromDB(sql::Connection*)
+                0x00011648                main
+ .text._ZN3sql9SQLStringD2Ev
+                0x00011a68       0x2c main.o
+                0x00011a68                sql::SQLString::~SQLString()
+                0x00011a68                sql::SQLString::~SQLString()
+ .text._ZN3sql9SQLStringC2EPKc
+                0x00011a94       0x68 main.o
+                0x00011a94                sql::SQLString::SQLString(char const*)
+                0x00011a94                sql::SQLString::SQLString(char const*)
+ .text._ZNK3sql9SQLString11asStdStringEv
+                0x00011afc       0x24 main.o
+                0x00011afc                sql::SQLString::asStdString() const
+ .text._ZStlsRSoRKN3sql9SQLStringE
+                0x00011b20       0x3c main.o
+                0x00011b20                std::operator<<(std::ostream&, sql::SQLString const&)
+ .text._ZN7MCP3008C2Ev
+                0x00011b5c      0x110 main.o
+                0x00011b5c                MCP3008::MCP3008()
+                0x00011b5c                MCP3008::MCP3008()
+ .text._ZN7MCP300810analogReadEi
+                0x00011c6c       0xa0 main.o
+                0x00011c6c                MCP3008::analogRead(int)
+ .text          0x00011d0c       0x68 /usr/lib/arm-linux-gnueabihf/libc_nonshared.a(elf-init.oS)
+                0x00011d0c                __libc_csu_init
+                0x00011d70                __libc_csu_fini
+ .text          0x00011d74        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+ .text          0x00011d74        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00011d74        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00011d74        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00011d74        0x0 linker stubs
+ *(.v4_bx)
+ .v4_bx         0x00011d74        0x0 linker stubs
+
+.fini           0x00011d74        0x8
+ *(SORT(.fini))
+ .fini          0x00011d74        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+                0x00011d74                _fini
+ .fini          0x00011d78        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+                0x00011d7c                PROVIDE (__etext, .)
+                0x00011d7c                PROVIDE (_etext, .)
+                0x00011d7c                PROVIDE (etext, .)
+
+.rodata         0x00011d7c      0x130
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.cst4   0x00011d7c        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00011d7c                _IO_stdin_used
+ .rodata        0x00011d80      0x12c main.o
+
+.rodata1
+ *(.rodata1)
+
+.ARM.extab      0x00011eac      0x12c
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ .ARM.extab     0x00011eac        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ .ARM.extab.text._ZN3sql9SQLStringD2Ev
+                0x00011eac        0x0 main.o
+ .ARM.extab.text._ZN3sql9SQLStringC2EPKc
+                0x00011eac       0x18 main.o
+ .ARM.extab.text._ZNK3sql9SQLString11asStdStringEv
+                0x00011ec4        0x0 main.o
+ .ARM.extab.text._ZStlsRSoRKN3sql9SQLStringE
+                0x00011ec4        0xc main.o
+ .ARM.extab.text._ZN7MCP3008C2Ev
+                0x00011ed0       0x28 main.o
+ .ARM.extab.text._ZN7MCP300810analogReadEi
+                0x00011ef8        0xc main.o
+ .ARM.extab     0x00011f04       0xd4 main.o
+                0x00011fd8                PROVIDE (__exidx_start, .)
+
+.ARM.exidx      0x00011fd8       0x60
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx     0x00011fd8        0x8 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ .ARM.exidx.text._ZN3sql9SQLStringD2Ev
+                0x00012008        0x0 main.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx.text._ZN3sql9SQLStringC2EPKc
+                0x00012008        0x8 main.o
+ .ARM.exidx.text._ZNK3sql9SQLString11asStdStringEv
+                0x00012010        0x8 main.o
+ .ARM.exidx.text._ZStlsRSoRKN3sql9SQLStringE
+                0x00012018        0x8 main.o
+ .ARM.exidx.text._ZN7MCP3008C2Ev
+                0x00012020        0x8 main.o
+ .ARM.exidx.text._ZN7MCP300810analogReadEi
+                0x00012028       0x10 main.o
+                                  0x8 (size before relaxing)
+ .ARM.exidx     0x00011fe0       0x28 main.o
+                                 0x30 (size before relaxing)
+                0x00012038                PROVIDE (__exidx_end, .)
+
+.eh_frame_hdr   0x00012038        0x0
+ *(.eh_frame_hdr)
+ .eh_frame_hdr  0x00012038        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+
+.eh_frame       0x00012038        0x4
+ *(.eh_frame)
+ .eh_frame      0x00012038        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+                0x0001203c                . = (ALIGN (0x10000) - ((0x10000 - .) & 0xffff))
+                0x0002203c                . = DATA_SEGMENT_ALIGN (0x10000, 0x1000)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges .exception_ranges*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x0002203c        0x0
+                0x0002203c                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x0002203c                PROVIDE (__preinit_array_end, .)
+
+.init_array     0x0002203c        0x8
+                0x0002203c                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*) SORT(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x0002203c        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+ .init_array    0x00022040        0x4 main.o
+                0x00022044                PROVIDE (__init_array_end, .)
+
+.fini_array     0x00022044        0x4
+                0x00022044                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*) SORT(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x00022044        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+                0x00022048                PROVIDE (__fini_array_end, .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr            0x00022048        0x4
+ *(.jcr)
+ .jcr           0x00022048        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+ .jcr           0x00022048        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic        0x0002204c      0x118
+ *(.dynamic)
+ .dynamic       0x0002204c      0x118 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x0002204c                _DYNAMIC
+                0x00022164                . = DATA_SEGMENT_RELRO_END (., 0x0)
+
+.got            0x00022164       0xa4
+ *(.got.plt)
+ .got.plt       0x00022164       0x9c /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00022164                _GLOBAL_OFFSET_TABLE_
+ *(.igot.plt)
+ .igot.plt      0x00022200        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ *(.got)
+ .got           0x00022200        0x8 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ *(.igot)
+
+.data           0x00022208        0x8
+                0x00022208                PROVIDE (__data_start, .)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00022208        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00022208                data_start
+                0x00022208                __data_start
+ .data          0x0002220c        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+ .data          0x0002220c        0x4 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+                0x0002220c                __dso_handle
+ .data          0x00022210        0x0 main.o
+ .data          0x00022210        0x0 /usr/lib/arm-linux-gnueabihf/libc_nonshared.a(elf-init.oS)
+ .data          0x00022210        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+ .data          0x00022210        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+
+.tm_clone_table
+                0x00022210        0x0
+ .tm_clone_table
+                0x00022210        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+ .tm_clone_table
+                0x00022210        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+
+.data1
+ *(.data1)
+                0x00022210                _edata = .
+                0x00022210                PROVIDE (edata, .)
+                0x00022210                . = .
+                0x00022210                __bss_start = .
+                0x00022210                __bss_start__ = .
+
+.bss            0x00022210      0x12c
+ *(.dynbss)
+ .dynbss        0x00022210      0x124 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+                0x00022210                std::cout@@GLIBCXX_3.4
+                0x0002229c                std::cerr@@GLIBCXX_3.4
+                0x00022328                typeinfo for std::runtime_error@@GLIBCXX_3.4
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00022334        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ .bss           0x00022334        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+ .bss           0x00022334        0x1 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+ *fill*         0x00022335        0x3 
+ .bss           0x00022338        0x4 main.o
+ .bss           0x0002233c        0x0 /usr/lib/arm-linux-gnueabihf/libc_nonshared.a(elf-init.oS)
+ .bss           0x0002233c        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+ .bss           0x0002233c        0x0 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+ *(COMMON)
+                0x0002233c                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0002233c                _bss_end__ = .
+                0x0002233c                __bss_end__ = .
+                0x0002233c                . = ALIGN (0x4)
+                0x0002233c                . = SEGMENT_START ("ldata-segment", .)
+                0x0002233c                . = ALIGN (0x4)
+                0x0002233c                __end__ = .
+                0x0002233c                _end = .
+                0x0002233c                PROVIDE (end, .)
+                0x0002233c                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x44
+ *(.comment)
+ .comment       0x00000000       0x26 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+                                 0x27 (size before relaxing)
+ .comment       0x00000026       0x27 main.o
+ .comment       0x00000026       0x1e /usr/lib/arm-linux-gnueabihf/libc_nonshared.a(elf-init.oS)
+                                 0x1f (size before relaxing)
+ .comment       0x00000044       0x27 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x31 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crt1.o
+ .ARM.attributes
+                0x00000031       0x23 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crti.o
+ .ARM.attributes
+                0x00000054       0x31 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtbegin.o
+ .ARM.attributes
+                0x00000085       0x31 main.o
+ .ARM.attributes
+                0x000000b6       0x33 /usr/lib/arm-linux-gnueabihf/libc_nonshared.a(elf-init.oS)
+ .ARM.attributes
+                0x000000e9       0x31 /usr/lib/gcc/arm-linux-gnueabihf/4.9/crtend.o
+ .ARM.attributes
+                0x0000011a       0x23 /usr/lib/gcc/arm-linux-gnueabihf/4.9/../../../arm-linux-gnueabihf/crtn.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(out elf32-littlearm)

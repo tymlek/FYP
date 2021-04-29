@@ -1,0 +1,162 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                18/Apr/2018  15:36:11
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\Exe\Inheritance.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\List\Inheritance.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW8F7F.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\Obj\main.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\Exe\Inheritance.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\List\Inheritance.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+
+No sections matched the following patterns:
+
+  rw  in "P2"
+
+
+  Section   Kind        Address   Size  Object
+  -------   ----        -------   ----  ------
+"A0":                             0x40
+  .intvec   ro code  0x00000000   0x40  vector_table_M.o [4]
+                   - 0x00000040   0x40
+
+"P1":                             0x88
+  .text     ro code  0x00000040   0x34  main.o [1]
+  .text     ro code  0x00000074   0x1e  cmain.o [4]
+  .text     ro code  0x00000092    0x4  low_level_init.o [3]
+  .text     ro code  0x00000096    0x4  exit.o [3]
+  .text     ro code  0x0000009a    0x2  vector_table_M.o [4]
+  .text     ro code  0x0000009c    0xa  cexit.o [4]
+  .text     ro code  0x000000a8   0x14  exit.o [5]
+  .text     ro code  0x000000bc    0xc  cstartup_M.o [4]
+                   - 0x000000c8   0x88
+
+"P2":                            0x400
+  CSTACK             0x20000000  0x400  <Block>
+    CSTACK  uninit   0x20000000  0x400  <Block tail>
+                   - 0x20000400  0x400
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  rw data
+    ------            -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\Obj: [1]
+    main.o                 52
+    ----------------------------------
+    Total:                 52
+
+command line: [2]
+    ----------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                  4
+    low_level_init.o        4
+    ----------------------------------
+    Total:                  8
+
+rt7M_tl.a: [4]
+    cexit.o                10
+    cmain.o                30
+    cstartup_M.o           12
+    vector_table_M.o       66
+    ----------------------------------
+    Total:                118
+
+shb_l.a: [5]
+    exit.o                 20
+    ----------------------------------
+    Total:                 20
+
+    Gaps                    2
+    Linker created               1 024
+--------------------------------------
+    Grand Total:          200    1 024
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address  Size  Type      Object
+-----                      -------  ----  ----      ------
+?main                   0x00000075        Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000000         --   Gb  - Linker created -
+CSTACK$$Limit           0x20000400         --   Gb  - Linker created -
+ChildConstructor        0x0000004b  0x10  Code  Gb  main.o [1]
+ParConstructor          0x00000041   0x6  Code  Gb  main.o [1]
+Region$$Table$$Base     0x00000000         --   Gb  - Linker created -
+Region$$Table$$Limit    0x00000000         --   Gb  - Linker created -
+__cmain                 0x00000075        Code  Gb  cmain.o [4]
+__exit                  0x000000a9  0x14  Code  Gb  exit.o [5]
+__iar_program_start     0x000000bd        Code  Gb  cstartup_M.o [4]
+__iar_systems$$module {Abs}
+                        0x00000001        Data  Gb  command line/config [2]
+__low_level_init        0x00000093   0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000        Data  Gb  vector_table_M.o [4]
+_call_main              0x00000081        Code  Gb  cmain.o [4]
+_exit                   0x0000009d        Code  Gb  cexit.o [4]
+_main                   0x0000008f        Code  Gb  cmain.o [4]
+exit                    0x00000097   0x4  Code  Gb  exit.o [3]
+func_Child              0x0000005b   0x4  Code  Gb  main.o [1]
+func_Par                0x00000047   0x4  Code  Gb  main.o [1]
+main                    0x0000005f  0x16  Code  Gb  main.o [1]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+    200 bytes of readonly  code memory
+  1 024 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

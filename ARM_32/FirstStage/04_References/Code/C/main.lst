@@ -1,0 +1,134 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  17:50:23
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW70D9.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\main.c
+      1          /* C approximation */
+      2          
+      3          #include <stdio.h>
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+      5          void accum(int* const acc_ptr, int number) {
+      6          	*acc_ptr += number;
+   \                     accum: (+1)
+   \   00000000   0x6802             LDR      R2,[R0, #+0]
+   \   00000002   0x188A             ADDS     R2,R1,R2
+   \   00000004   0x6002             STR      R2,[R0, #+0]
+      7          }
+   \   00000006   0x4770             BX       LR               ;; return
+      8          
+
+   \                                 In section .text, align 2, keep-with-next
+      9          int main() {
+   \                     main: (+1)
+   \   00000000   0xB51C             PUSH     {R2-R4,LR}
+     10          	int accumulator = 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x9000             STR      R0,[SP, #+0]
+     11          	int number = 5;
+   \   00000006   0x2405             MOVS     R4,#+5
+     12          
+     13          	printf("Before: %d\n",accumulator);
+   \   00000008   0x9900             LDR      R1,[SP, #+0]
+   \   0000000A   0x....             LDR.N    R0,??DataTable1
+   \   0000000C   0x.... 0x....      BL       printf
+     14          	accum(&accumulator,number);
+   \   00000010   0x0021             MOVS     R1,R4
+   \   00000012   0x4668             MOV      R0,SP
+   \   00000014   0x.... 0x....      BL       accum
+     15          	printf("After: %d\n",accumulator);
+   \   00000018   0x9900             LDR      R1,[SP, #+0]
+   \   0000001A   0x....             LDR.N    R0,??DataTable1_1
+   \   0000001C   0x.... 0x....      BL       printf
+     16          	
+     17          	while (1) {
+   \                     ??main_0: (+1)
+   \   00000020   0xE7FE             B.N      ??main_0
+     18          		
+     19          	}
+     20          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x........         DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x........         DC32     ?_1
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x42 0x65          DC8 "Before: %d\012"
+   \              0x66 0x6F    
+   \              0x72 0x65    
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x0A 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_1:
+   \   00000000   0x41 0x66          DC8 "After: %d\012"
+   \              0x74 0x65    
+   \              0x72 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x0A    
+   \              0x00         
+   \   0000000B   0x00               DC8 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   accum
+      16   main
+        16   -> accum
+        16   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+      12  ?_0
+      12  ?_1
+       8  accum
+      34  main
+
+ 
+ 24 bytes in section .rodata
+ 50 bytes in section .text
+ 
+ 50 bytes of CODE  memory
+ 24 bytes of CONST memory
+
+Errors: none
+Warnings: none

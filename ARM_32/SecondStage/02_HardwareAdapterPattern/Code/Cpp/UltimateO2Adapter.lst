@@ -1,0 +1,122 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:54:13
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\UltimateO2Adapter.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD92B.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\UltimateO2Adapter.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List\UltimateO2Adapter.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\UltimateO2Adapter.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\UltimateO2Adapter.cpp
+      1          #include <stdlib.h>
+      2          #include "UltimateO2Adapter.h"
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          int UltimateO2Adapter::gimmeO2Conc() {
+   \                     _ZN17UltimateO2Adapter11gimmeO2ConcEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      5          	return (int)(this->itsUltimateO2SensorProxy->accessO2Conc()) * 100;
+   \   00000004   0x6860             LDR      R0,[R4, #+4]
+   \   00000006   0x.... 0x....      BL       _ZN21UltimateO2SensorProxy12accessO2ConcEv
+   \   0000000A   0x.... 0x....      BL       __aeabi_d2iz
+   \   0000000E   0x2164             MOVS     R1,#+100
+   \   00000010   0x4348             MULS     R0,R1,R0
+   \   00000012   0xBD10             POP      {R4,PC}          ;; return
+      6          }
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          int UltimateO2Adapter::gimmeO2Flow() {
+   \                     _ZN17UltimateO2Adapter11gimmeO2FlowEv: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0006             MOVS     R6,R0
+      9          	double totalFlow;
+     10          
+     11          	// Convert from liters/hr to cc/min
+     12          	totalFlow = (this->itsUltimateO2SensorProxy->accessGasFlow()) * 1000.0 / 60.0;
+   \   00000004   0x6870             LDR      R0,[R6, #+4]
+   \   00000006   0x.... 0x....      BL       _ZN21UltimateO2SensorProxy13accessGasFlowEv
+   \   0000000A   0x2200             MOVS     R2,#+0
+   \   0000000C   0x....             LDR.N    R3,??DataTable1  ;; 0x408f4000
+   \   0000000E   0x.... 0x....      BL       __aeabi_dmul
+   \   00000012   0x2200             MOVS     R2,#+0
+   \   00000014   0x....             LDR.N    R3,??DataTable1_1  ;; 0x404e0000
+   \   00000016   0x.... 0x....      BL       __aeabi_ddiv
+   \   0000001A   0x0004             MOVS     R4,R0
+   \   0000001C   0x000D             MOVS     R5,R1
+     13          	return (int)(totalFlow * this->itsUltimateO2SensorProxy->accessO2Conc());
+   \   0000001E   0x6870             LDR      R0,[R6, #+4]
+   \   00000020   0x.... 0x....      BL       _ZN21UltimateO2SensorProxy12accessO2ConcEv
+   \   00000024   0x0022             MOVS     R2,R4
+   \   00000026   0x002B             MOVS     R3,R5
+   \   00000028   0x.... 0x....      BL       __aeabi_dmul
+   \   0000002C   0x.... 0x....      BL       __aeabi_d2iz
+   \   00000030   0xBD70             POP      {R4-R6,PC}       ;; return
+     14          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x408F4000         DC32     0x408f4000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x404E0000         DC32     0x404e0000
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   UltimateO2Adapter::gimmeO2Conc()
+         8   -> UltimateO2SensorProxy::accessO2Conc()
+         8   -> __aeabi_d2iz
+      16   UltimateO2Adapter::gimmeO2Flow()
+        16   -> UltimateO2SensorProxy::accessGasFlow()
+        16   -> UltimateO2SensorProxy::accessO2Conc()
+        16   -> __aeabi_d2iz
+        16   -> __aeabi_ddiv
+        16   -> __aeabi_dmul
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+      20  UltimateO2Adapter::gimmeO2Conc()
+      50  UltimateO2Adapter::gimmeO2Flow()
+      68  -- Other
+
+ 
+ 68 bytes in section .rodata
+ 78 bytes in section .text
+ 
+ 78 bytes of CODE  memory
+  0 bytes of CONST memory (+ 68 bytes shared)
+
+Errors: none
+Warnings: none

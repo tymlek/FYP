@@ -1,0 +1,145 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:33:24
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TimeMarkedData.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW692F.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TimeMarkedData.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\TimeMarkedData.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\TimeMarkedData.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TimeMarkedData.c
+      1          #include <stdlib.h>
+      2          #include "TimeMarkedData.h"
+      3          
+      4          /* Constructor and Destructor */
+
+   \                                 In section .text, align 2, keep-with-next
+      5          void TimeMarkedData_Init(TimeMarkedData* const me) {
+      6          	me->dataValue = 0;
+   \                     TimeMarkedData_Init: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6041             STR      R1,[R0, #+4]
+      7          	me->timeInterval = 0;
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6001             STR      R1,[R0, #+0]
+      8          	me->itsTMDQueue = NULL;
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x6081             STR      R1,[R0, #+8]
+      9          }
+   \   0000000C   0x4770             BX       LR               ;; return
+     10          
+
+   \                                 In section .text, align 2, keep-with-next
+     11          void TimeMarkedData_Cleanup(TimeMarkedData* const me) {
+     12          
+     13          }
+   \                     TimeMarkedData_Cleanup: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     14          
+     15          /* Operations */
+
+   \                                 In section .text, align 2, keep-with-next
+     16          void TimeMarkedData_setItsTMDQueue(TimeMarkedData* const me, struct TMDQueue* p_TMDQueue) {
+     17          	me->itsTMDQueue = p_TMDQueue;
+   \                     TimeMarkedData_setItsTMDQueue: (+1)
+   \   00000000   0x6081             STR      R1,[R0, #+8]
+     18          }
+   \   00000002   0x4770             BX       LR               ;; return
+     19          
+
+   \                                 In section .text, align 2, keep-with-next
+     20          TimeMarkedData* TimeMarkedData_Create() {
+   \                     TimeMarkedData_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     21          	TimeMarkedData* me = (TimeMarkedData*)malloc(sizeof(TimeMarkedData));
+   \   00000002   0x200C             MOVS     R0,#+12
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+     22          
+     23          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??TimeMarkedData_Create_0
+     24          		TimeMarkedData_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       TimeMarkedData_Init
+     25          	}
+     26          
+     27          	return me;
+   \                     ??TimeMarkedData_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     28          }
+     29          
+
+   \                                 In section .text, align 2, keep-with-next
+     30          void TimeMarkedData_Destroy(TimeMarkedData* const me) {
+   \                     TimeMarkedData_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     31          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??TimeMarkedData_Destroy_0
+     32          		TimeMarkedData_Cleanup(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       TimeMarkedData_Cleanup
+     33          	}
+     34          
+     35          	free(me);
+   \                     ??TimeMarkedData_Destroy_0: (+1)
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       free
+     36          }
+   \   00000014   0xBD10             POP      {R4,PC}          ;; return
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   TimeMarkedData_Cleanup
+       8   TimeMarkedData_Create
+         8   -> TimeMarkedData_Init
+         8   -> malloc
+       8   TimeMarkedData_Destroy
+         8   -> TimeMarkedData_Cleanup
+         8   -> free
+       0   TimeMarkedData_Init
+       0   TimeMarkedData_setItsTMDQueue
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  TimeMarkedData_Cleanup
+      24  TimeMarkedData_Create
+      22  TimeMarkedData_Destroy
+      14  TimeMarkedData_Init
+       4  TimeMarkedData_setItsTMDQueue
+
+ 
+ 66 bytes in section .text
+ 
+ 66 bytes of CODE memory
+
+Errors: none
+Warnings: none

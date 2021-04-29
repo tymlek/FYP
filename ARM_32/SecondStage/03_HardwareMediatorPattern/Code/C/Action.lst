@@ -1,0 +1,92 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  15:49:22
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Action.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWFF54.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Action.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List\Action.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj\Action.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Action.c
+      1          #include "Action.h"
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          Action* Action_Create(void) {
+   \                     Action_Create: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+      4          	Action* me = (Action*)malloc(sizeof(Action));
+   \   00000002   0x2020             MOVS     R0,#+32
+   \   00000004   0x.... 0x....      BL       malloc
+      5          
+      6          	if (me != NULL) {
+      7          		//Action_Init(me);
+      8          	}
+      9          
+     10          	return me;
+   \   00000008   0xBD02             POP      {R1,PC}          ;; return
+     11          }
+     12          
+
+   \                                 In section .text, align 2, keep-with-next
+     13          void Action_Delete(Action* const me) {
+   \                     Action_Delete: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     14          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??Action_Delete_0
+     15          		free(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       free
+     16          		//Action_Cleanup(me);
+     17          	}
+     18          }
+   \                     ??Action_Delete_0: (+1)
+   \   0000000E   0xBD10             POP      {R4,PC}          ;; return
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   Action_Create
+         8   -> malloc
+       8   Action_Delete
+         8   -> free
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      10  Action_Create
+      16  Action_Delete
+
+ 
+ 26 bytes in section .text
+ 
+ 26 bytes of CODE memory
+
+Errors: none
+Warnings: none

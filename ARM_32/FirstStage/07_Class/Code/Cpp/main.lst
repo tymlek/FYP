@@ -1,0 +1,130 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       19/Apr/2018  09:34:41
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWA113.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Class\Code\Cpp\main.cpp
+      1          /* C++ implementation */
+      2          
+      3          #include <stdio.h>
+      4          
+      5          class A {
+      6          	public:
+
+   \                                 In section .text, align 2
+      7          	void setX(int num) {
+      8          		this->x = num;
+   \                     _ZN1A4setXEi: (+1)
+   \   00000000   0x6001             STR      R1,[R0, #+0]
+      9          	}
+   \   00000002   0x4770             BX       LR               ;; return
+     10          
+
+   \                                 In section .text, align 2
+     11          	int getX() {
+     12          		return this->x;
+   \                     _ZN1A4getXEv: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+     13          	}
+     14          	private:
+     15          	int x;
+     16          };
+     17          
+
+   \                                 In section .text, align 4, keep-with-next
+     18          int main() {
+   \                     main: (+1)
+   \   00000000   0xB51C             PUSH     {R2-R4,LR}
+     19          	A a;
+     20          	int number = 5;
+   \   00000002   0x2405             MOVS     R4,#+5
+     21          
+     22          	a.setX(number);
+   \   00000004   0x0021             MOVS     R1,R4
+   \   00000006   0x4668             MOV      R0,SP
+   \   00000008   0x.... 0x....      BL       _ZN1A4setXEi
+     23          
+     24          	printf("Property x: %d\n",a.getX());
+   \   0000000C   0x4668             MOV      R0,SP
+   \   0000000E   0x.... 0x....      BL       _ZN1A4getXEv
+   \   00000012   0x0001             MOVS     R1,R0
+   \   00000014   0x4801             LDR.N    R0,??main_0
+   \   00000016   0x.... 0x....      BL       printf
+     25          	
+     26          	while (1) {
+   \                     ??main_1: (+1)
+   \   0000001A   0xE7FE             B.N      ??main_1
+   \                     ??main_0:
+   \   0000001C   0x........         DC32     ?_0
+     27          		
+     28          	}
+     29          }
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x50 0x72          DC8 "Property x: %d\012"
+   \              0x6F 0x70    
+   \              0x65 0x72    
+   \              0x74 0x79    
+   \              0x20 0x78    
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x0A 0x00    
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   A::getX()
+       0   A::setX(int)
+      16   main
+        16   -> A::getX()
+        16   -> A::setX(int)
+        16   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      16  ?_0
+       4  A::getX()
+       4  A::setX(int)
+      32  main
+
+ 
+ 16 bytes in section .rodata
+ 40 bytes in section .text
+ 
+ 32 bytes of CODE  memory (+ 8 bytes shared)
+ 16 bytes of CONST memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,223 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:41:31
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\ECG_Module.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD3DB.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\ECG_Module.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\ECG_Module.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\ECG_Module.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\ECG_Module.c
+      1          #include <stdlib.h>
+      2          #include "ECG_Module.h"
+      3          #include "TMDQueue.h"
+      4          
+      5          static void cleanUpRelations(ECG_Module* const me);
+      6          
+      7          /* Constructor and Destructor */
+
+   \                                 In section .text, align 2, keep-with-next
+      8          void ECG_Module_Init(ECG_Module* const me) {
+      9          	me->dataNum = 0;
+   \                     ECG_Module_Init: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6001             STR      R1,[R0, #+0]
+     10          	me->itsTMDQueue = NULL;
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x60C1             STR      R1,[R0, #+12]
+     11          }
+   \   00000008   0x4770             BX       LR               ;; return
+     12          
+
+   \                                 In section .text, align 2, keep-with-next
+     13          void ECG_Module_Cleanup(ECG_Module* const me) {
+   \                     ECG_Module_Cleanup: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     14          	cleanUpRelations(me);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       cleanUpRelations
+     15          }
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+     16          
+     17          /* Operations */
+
+   \                                 In section .text, align 2, keep-with-next
+     18          void ECG_Module_acquireValue(ECG_Module* const me) {
+   \                     ECG_Module_acquireValue: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     19          	TimeMarkedData* tmd = TimeMarkedData_Create();
+   \   00000004   0x.... 0x....      BL       TimeMarkedData_Create
+   \   00000008   0x0005             MOVS     R5,R0
+     20          
+     21          	tmd->dataValue = rand();
+   \   0000000A   0x.... 0x....      BL       rand
+   \   0000000E   0x6068             STR      R0,[R5, #+4]
+     22          	tmd->timeInterval = ++me->dataNum;
+   \   00000010   0x6820             LDR      R0,[R4, #+0]
+   \   00000012   0x1C40             ADDS     R0,R0,#+1
+   \   00000014   0x6020             STR      R0,[R4, #+0]
+   \   00000016   0x6820             LDR      R0,[R4, #+0]
+   \   00000018   0x6028             STR      R0,[R5, #+0]
+     23          
+     24          	TMDQueue_insert(me->itsTMDQueue, tmd);
+   \   0000001A   0x0029             MOVS     R1,R5
+   \   0000001C   0x68E0             LDR      R0,[R4, #+12]
+   \   0000001E   0x.... 0x....      BL       TMDQueue_insert
+     25          }
+   \   00000022   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     26          
+
+   \                                 In section .text, align 2, keep-with-next
+     27          void ECG_Module_setLeadsPair(ECG_Module* const me, int l1, int l2) {
+     28          	me->lead1 = l1;
+   \                     ECG_Module_setLeadsPair: (+1)
+   \   00000000   0x6041             STR      R1,[R0, #+4]
+     29          	me->lead2 = l2;
+   \   00000002   0x6082             STR      R2,[R0, #+8]
+     30          }
+   \   00000004   0x4770             BX       LR               ;; return
+     31          
+
+   \                                 In section .text, align 2, keep-with-next
+     32          struct TMDQueue* ECG_Module_getItsTMDQueue(const ECG_Module* const me) {
+     33          	return (struct TMDQueue*)me->itsTMDQueue;
+   \                     ECG_Module_getItsTMDQueue: (+1)
+   \   00000000   0x68C0             LDR      R0,[R0, #+12]
+   \   00000002   0x4770             BX       LR               ;; return
+     34          }
+     35          
+
+   \                                 In section .text, align 2, keep-with-next
+     36          void ECG_Module_setItsTMDQueue(ECG_Module* const me, struct TMDQueue* p_TMDQueue) {
+     37          	me->itsTMDQueue = p_TMDQueue;
+   \                     ECG_Module_setItsTMDQueue: (+1)
+   \   00000000   0x60C1             STR      R1,[R0, #+12]
+     38          }
+   \   00000002   0x4770             BX       LR               ;; return
+     39          
+
+   \                                 In section .text, align 2, keep-with-next
+     40          ECG_Module* ECG_Module_Create() {
+   \                     ECG_Module_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     41          	ECG_Module* me = (ECG_Module*)malloc(sizeof(ECG_Module));
+   \   00000002   0x2010             MOVS     R0,#+16
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+     42          
+     43          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??ECG_Module_Create_0
+     44          		ECG_Module_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       ECG_Module_Init
+     45          	}
+     46          
+     47          	return me;
+   \                     ??ECG_Module_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     48          }
+     49          
+
+   \                                 In section .text, align 2, keep-with-next
+     50          void ECG_Module_Destroy(ECG_Module* const me) {
+   \                     ECG_Module_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     51          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??ECG_Module_Destroy_0
+     52          		ECG_Module_Cleanup(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       ECG_Module_Cleanup
+     53          	}
+     54          
+     55          	free(me);
+   \                     ??ECG_Module_Destroy_0: (+1)
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       free
+     56          }
+   \   00000014   0xBD10             POP      {R4,PC}          ;; return
+     57          
+
+   \                                 In section .text, align 2, keep-with-next
+     58          static void cleanUpRelations(ECG_Module* const me) {
+     59          	if (me->itsTMDQueue != NULL) {
+   \                     cleanUpRelations: (+1)
+   \   00000000   0x68C1             LDR      R1,[R0, #+12]
+   \   00000002   0x2900             CMP      R1,#+0
+     60          		me->itsTMDQueue;
+                 		^
+Warning[Pe174]: expression has no effect
+     61          	}
+     62          }
+   \                     ??cleanUpRelations_0: (+1)
+   \   00000004   0x4770             BX       LR               ;; return
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   ECG_Module_Cleanup
+         8   -> cleanUpRelations
+       8   ECG_Module_Create
+         8   -> ECG_Module_Init
+         8   -> malloc
+       8   ECG_Module_Destroy
+         8   -> ECG_Module_Cleanup
+         8   -> free
+       0   ECG_Module_Init
+      16   ECG_Module_acquireValue
+        16   -> TMDQueue_insert
+        16   -> TimeMarkedData_Create
+        16   -> rand
+       0   ECG_Module_getItsTMDQueue
+       0   ECG_Module_setItsTMDQueue
+       0   ECG_Module_setLeadsPair
+       0   cleanUpRelations
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      12  ECG_Module_Cleanup
+      24  ECG_Module_Create
+      22  ECG_Module_Destroy
+      10  ECG_Module_Init
+      36  ECG_Module_acquireValue
+       4  ECG_Module_getItsTMDQueue
+       4  ECG_Module_setItsTMDQueue
+       6  ECG_Module_setLeadsPair
+       6  cleanUpRelations
+
+ 
+ 124 bytes in section .text
+ 
+ 124 bytes of CODE memory
+
+Errors: none
+Warnings: 1

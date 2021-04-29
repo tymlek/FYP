@@ -1,0 +1,123 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  17:31:29
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW2129.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\Cpp\main.cpp
+      1          /* C++ implementation */
+      2          
+      3          namespace ns1 {
+
+   \                                 In section .text, align 2, keep-with-next
+      4          	void func_f() {
+      5          
+      6          	}
+   \                     _ZN3ns16func_fEv: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          	void func_g () {
+   \                     _ZN3ns16func_gEv: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+      9          		func_f();           // Calls ns1::func_f() implicitly
+   \   00000002   0x.... 0x....      BL       _ZN3ns16func_fEv
+     10          	}
+   \   00000006   0xBD01             POP      {R0,PC}          ;; return
+     11          }
+     12          
+     13          namespace ns2 {
+
+   \                                 In section .text, align 2, keep-with-next
+     14          	void func_f() {
+     15          
+     16          	}
+   \                     _ZN3ns26func_fEv: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     17          
+
+   \                                 In section .text, align 2, keep-with-next
+     18          	void func_g() {
+   \                     _ZN3ns26func_gEv: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     19          		func_f();           // Calls ns2::func_f() implicitly
+   \   00000002   0x.... 0x....      BL       _ZN3ns26func_fEv
+     20          	}
+   \   00000006   0xBD01             POP      {R0,PC}          ;; return
+     21          }
+     22          
+
+   \                                 In section .text, align 2, keep-with-next
+     23          int main() {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     24          	ns1::func_g();
+   \   00000002   0x.... 0x....      BL       _ZN3ns16func_gEv
+     25          	ns2::func_g();
+   \   00000006   0x.... 0x....      BL       _ZN3ns26func_gEv
+     26          	
+     27          	while (1) {
+   \                     ??main_0: (+1)
+   \   0000000A   0xE7FE             B.N      ??main_0
+     28          		
+     29          	}
+     30          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   main
+         8   -> ns1::func_g()
+         8   -> ns2::func_g()
+       0   ns1::func_f()
+       8   ns1::func_g()
+         8   -> ns1::func_f()
+       0   ns2::func_f()
+       8   ns2::func_g()
+         8   -> ns2::func_f()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      12  main
+       2  ns1::func_f()
+       8  ns1::func_g()
+       2  ns2::func_f()
+       8  ns2::func_g()
+
+ 
+ 32 bytes in section .text
+ 
+ 32 bytes of CODE memory
+
+Errors: none
+Warnings: none

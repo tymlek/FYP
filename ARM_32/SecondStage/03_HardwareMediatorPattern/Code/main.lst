@@ -1,0 +1,176 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  16:38:14
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWBCBC.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\main.cpp
+      1          #include "RobotArmManager.h"
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp RobotArmManager::RobotArmManager()
+   \                     _ZN15RobotArmManagerC1Ev: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6081             STR      R1,[R0, #+8]
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6001             STR      R1,[R0, #+0]
+   \   00000008   0x2100             MOVS     R1,#+0
+   \                     ??RobotArmManager_0: (+1)
+   \   0000000A   0x2964             CMP      R1,#+100
+   \   0000000C   0xDA05             BGE.N    ??RobotArmManager_1
+   \   0000000E   0x2200             MOVS     R2,#+0
+   \   00000010   0xEB00 0x0381      ADD      R3,R0,R1, LSL #+2
+   \   00000014   0x625A             STR      R2,[R3, #+36]
+   \   00000016   0x1C49             ADDS     R1,R1,#+1
+   \   00000018   0xE7F7             B.N      ??RobotArmManager_0
+   \                     ??RobotArmManager_1: (+1)
+   \   0000001A   0x2100             MOVS     R1,#+0
+   \                     ??RobotArmManager_2: (+1)
+   \   0000001C   0x2904             CMP      R1,#+4
+   \   0000001E   0xDA05             BGE.N    ??RobotArmManager_3
+   \   00000020   0x2200             MOVS     R2,#+0
+   \   00000022   0xEB00 0x0381      ADD      R3,R0,R1, LSL #+2
+   \   00000026   0x60DA             STR      R2,[R3, #+12]
+   \   00000028   0x1C49             ADDS     R1,R1,#+1
+   \   0000002A   0xE7F7             B.N      ??RobotArmManager_2
+   \                     ??RobotArmManager_3: (+1)
+   \   0000002C   0x2100             MOVS     R1,#+0
+   \                     ??RobotArmManager_4: (+1)
+   \   0000002E   0x2902             CMP      R1,#+2
+   \   00000030   0xDA05             BGE.N    ??RobotArmManager_5
+   \   00000032   0x2200             MOVS     R2,#+0
+   \   00000034   0xEB00 0x0381      ADD      R3,R0,R1, LSL #+2
+   \   00000038   0x61DA             STR      R2,[R3, #+28]
+   \   0000003A   0x1C49             ADDS     R1,R1,#+1
+   \   0000003C   0xE7F7             B.N      ??RobotArmManager_4
+   \                     ??RobotArmManager_5: (+1)
+   \   0000003E   0x4770             BX       LR               ;; return
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          int main(void) {
+   \                     main: (+1)
+   \   00000000   0xB500             PUSH     {LR}
+   \   00000002   0xF5AD 0x7D01      SUB      SP,SP,#+516
+      4          	RobotArmManager robotArm;
+   \   00000006   0xA813             ADD      R0,SP,#+76
+   \   00000008   0x.... 0x....      BL       _ZN15RobotArmManagerC1Ev
+      5          	RotatingArmJoint rotatingArmJoint1;
+      6          	RotatingArmJoint rotatingArmJoint2;
+      7          	RotatingArmJoint rotatingArmJoint3;
+      8          	RotatingArmJoint rotatingArmJoint4;
+      9          	SlidingArmJoint slidingArmJoint1;
+     10          	SlidingArmJoint slidingArmJoint2;
+     11          	GraspingManipulator graspingManipulator;
+     12          
+     13          	robotArm.addItsRotatingArmJoint(&rotatingArmJoint1);
+   \   0000000C   0xA909             ADD      R1,SP,#+36
+   \   0000000E   0x.... 0x....      BL       _ZN15RobotArmManager22addItsRotatingArmJointEP16RotatingArmJoint
+     14          	robotArm.addItsRotatingArmJoint(&rotatingArmJoint2);
+   \   00000012   0xA907             ADD      R1,SP,#+28
+   \   00000014   0xA813             ADD      R0,SP,#+76
+   \   00000016   0x.... 0x....      BL       _ZN15RobotArmManager22addItsRotatingArmJointEP16RotatingArmJoint
+     15          	robotArm.addItsRotatingArmJoint(&rotatingArmJoint3);
+   \   0000001A   0xA905             ADD      R1,SP,#+20
+   \   0000001C   0xA813             ADD      R0,SP,#+76
+   \   0000001E   0x.... 0x....      BL       _ZN15RobotArmManager22addItsRotatingArmJointEP16RotatingArmJoint
+     16          	robotArm.addItsRotatingArmJoint(&rotatingArmJoint4);
+   \   00000022   0xA903             ADD      R1,SP,#+12
+   \   00000024   0xA813             ADD      R0,SP,#+76
+   \   00000026   0x.... 0x....      BL       _ZN15RobotArmManager22addItsRotatingArmJointEP16RotatingArmJoint
+     17          
+     18          	robotArm.addItsSlidingArmJoint(&slidingArmJoint1);
+   \   0000002A   0xA90F             ADD      R1,SP,#+60
+   \   0000002C   0xA813             ADD      R0,SP,#+76
+   \   0000002E   0x.... 0x....      BL       _ZN15RobotArmManager21addItsSlidingArmJointEP15SlidingArmJoint
+     19          	robotArm.addItsSlidingArmJoint(&slidingArmJoint2);
+   \   00000032   0xA90B             ADD      R1,SP,#+44
+   \   00000034   0xA813             ADD      R0,SP,#+76
+   \   00000036   0x.... 0x....      BL       _ZN15RobotArmManager21addItsSlidingArmJointEP15SlidingArmJoint
+     20          
+     21          	robotArm.setItsGraspingManipulator(&graspingManipulator);
+   \   0000003A   0xA901             ADD      R1,SP,#+4
+   \   0000003C   0xA813             ADD      R0,SP,#+76
+   \   0000003E   0x.... 0x....      BL       _ZN15RobotArmManager25setItsGraspingManipulatorEP19GraspingManipulator
+     22          
+     23          	robotArm.computeTrajectory(1,2,3,4);
+   \   00000042   0x2004             MOVS     R0,#+4
+   \   00000044   0x9000             STR      R0,[SP, #+0]
+   \   00000046   0x2303             MOVS     R3,#+3
+   \   00000048   0x2202             MOVS     R2,#+2
+   \   0000004A   0x2101             MOVS     R1,#+1
+   \   0000004C   0xA813             ADD      R0,SP,#+76
+   \   0000004E   0x.... 0x....      BL       _ZN15RobotArmManager17computeTrajectoryEiiii
+     24          	robotArm.executeStep();
+   \   00000052   0xA813             ADD      R0,SP,#+76
+   \   00000054   0x.... 0x....      BL       _ZN15RobotArmManager11executeStepEv
+     25          	robotArm.graspAt(4,3,2,1);
+   \   00000058   0x2001             MOVS     R0,#+1
+   \   0000005A   0x9000             STR      R0,[SP, #+0]
+   \   0000005C   0x2302             MOVS     R3,#+2
+   \   0000005E   0x2203             MOVS     R2,#+3
+   \   00000060   0x2104             MOVS     R1,#+4
+   \   00000062   0xA813             ADD      R0,SP,#+76
+   \   00000064   0x.... 0x....      BL       _ZN15RobotArmManager7graspAtEiiii
+     26          
+     27          	while (1) {
+   \                     ??main_0: (+1)
+   \   00000068   0xE7FE             B.N      ??main_0
+     28          		
+     29          	}
+     30          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   RobotArmManager::RobotArmManager()
+     520   main
+       520   -> RobotArmManager::RobotArmManager()
+       520   -> RobotArmManager::addItsRotatingArmJoint(RotatingArmJoint *)
+       520   -> RobotArmManager::addItsSlidingArmJoint(SlidingArmJoint *)
+       520   -> RobotArmManager::computeTrajectory(int, int, int, int)
+       520   -> RobotArmManager::executeStep()
+       520   -> RobotArmManager::graspAt(int, int, int, int)
+       520   -> RobotArmManager::setItsGraspingManipulator(GraspingManipulator *)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      64  RobotArmManager::RobotArmManager()
+     106  main
+
+ 
+ 170 bytes in section .text
+ 
+ 106 bytes of CODE memory (+ 64 bytes shared)
+
+Errors: none
+Warnings: none

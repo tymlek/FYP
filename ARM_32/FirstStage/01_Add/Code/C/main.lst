@@ -1,0 +1,78 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       19/Apr/2018  09:28:11
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWADF4.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=VFPv4_sp --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Add\Code\C\main.c
+      1          /* C implementation */
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          int main() {
+      4          	int result = 0;
+                 	    ^
+Warning[Pe550]: variable "result" was set but never used
+   \                     main: (+1)
+   \   00000000   0x2000             MOVS     R0,#+0
+      5          	int a = 2;
+   \   00000002   0x2202             MOVS     R2,#+2
+      6          	int b = 3;
+   \   00000004   0x2303             MOVS     R3,#+3
+      7          	
+      8          	result = a + b;
+   \   00000006   0x1899             ADDS     R1,R3,R2
+      9          	
+     10          	while (1) {
+   \                     ??main_0: (+1)
+   \   00000008   0xE7FE             B.N      ??main_0
+     11          		
+     12          	}
+     13          }
+     14          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   main
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      10  main
+
+ 
+ 10 bytes in section .text
+ 
+ 10 bytes of CODE memory
+
+Errors: none
+Warnings: 1

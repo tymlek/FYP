@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   3451	    316	      4	   3771	    ebb	out.exe

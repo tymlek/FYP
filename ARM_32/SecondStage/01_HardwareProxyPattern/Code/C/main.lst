@@ -1,0 +1,201 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:13:14
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW50DD.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\C\main.c
+      1          #include <stdlib.h>
+      2          #include <stdio.h>
+      3          #include "MotorProxy.h"
+      4          
+
+   \                                 In section .text, align 4, keep-with-next
+      5          int main(void) {
+   \                     main: (+1)
+   \   00000000   0xB51F             PUSH     {R0-R4,LR}
+      6          	MotorProxy motor;
+      7          	MotorProxy* myMotor = &motor;
+   \   00000002   0xAC01             ADD      R4,SP,#+4
+      8          	unsigned int hwAddr;
+      9          
+     10          	MotorProxy_configure(myMotor, 0, &hwAddr);
+   \   00000004   0x466A             MOV      R2,SP
+   \   00000006   0x2100             MOVS     R1,#+0
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       MotorProxy_configure
+     11          	MotorProxy_initialize(myMotor);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       MotorProxy_initialize
+     12          
+     13          	MotorProxy_writeMotorSpeed(myMotor, FORWARD, 10);
+   \   00000014   0x220A             MOVS     R2,#+10
+   \   00000016   0x2101             MOVS     R1,#+1
+   \   00000018   0x0020             MOVS     R0,R4
+   \   0000001A   0x.... 0x....      BL       MotorProxy_writeMotorSpeed
+     14          
+     15          	printf("Motor address: 0x%X\n", myMotor->motorAddr);
+   \   0000001E   0x6821             LDR      R1,[R4, #+0]
+   \   00000020   0x480F             LDR.N    R0,??main_0
+   \   00000022   0x.... 0x....      BL       printf
+     16          	printf("Motor direction: %d\n", MotorProxy_accessMotorDirection(myMotor));
+   \   00000026   0x0020             MOVS     R0,R4
+   \   00000028   0x.... 0x....      BL       MotorProxy_accessMotorDirection
+   \   0000002C   0x0001             MOVS     R1,R0
+   \   0000002E   0xB2C9             UXTB     R1,R1            ;; ZeroExt  R1,R1,#+24,#+24
+   \   00000030   0x480C             LDR.N    R0,??main_0+0x4
+   \   00000032   0x.... 0x....      BL       printf
+     17          	printf("Motor speed: %d\n", MotorProxy_accessMotorSpeed(myMotor));
+   \   00000036   0x0020             MOVS     R0,R4
+   \   00000038   0x.... 0x....      BL       MotorProxy_accessMotorSpeed
+   \   0000003C   0x0001             MOVS     R1,R0
+   \   0000003E   0x480A             LDR.N    R0,??main_0+0x8
+   \   00000040   0x.... 0x....      BL       printf
+     18          	printf("Motor error state: %d\n", MotorProxy_accessMotorState(myMotor));
+   \   00000044   0x0020             MOVS     R0,R4
+   \   00000046   0x.... 0x....      BL       MotorProxy_accessMotorState
+   \   0000004A   0x0001             MOVS     R1,R0
+   \   0000004C   0x4807             LDR.N    R0,??main_0+0xC
+   \   0000004E   0x.... 0x....      BL       printf
+     19          
+     20          	MotorProxy_disable(myMotor);
+   \   00000052   0x0020             MOVS     R0,R4
+   \   00000054   0x.... 0x....      BL       MotorProxy_disable
+     21          
+     22          	MotorProxy_enable(myMotor);
+   \   00000058   0x0020             MOVS     R0,R4
+   \   0000005A   0x.... 0x....      BL       MotorProxy_enable
+     23          
+     24          	while (1) {
+   \                     ??main_1: (+1)
+   \   0000005E   0xE7FE             B.N      ??main_1
+   \                     ??main_0:
+   \   00000060   0x........         DC32     ?_0
+   \   00000064   0x........         DC32     ?_1
+   \   00000068   0x........         DC32     ?_2
+   \   0000006C   0x........         DC32     ?_3
+     25          
+     26          	}
+     27          }
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x4D 0x6F          DC8 "Motor address: 0x%X\012"
+   \              0x74 0x6F    
+   \              0x72 0x20    
+   \              0x61 0x64    
+   \              0x64 0x72    
+   \              0x65 0x73    
+   \              0x73 0x3A    
+   \              0x20 0x30    
+   \              0x78 0x25    
+   \              0x58 0x0A    
+   \              0x00         
+   \   00000015   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_1:
+   \   00000000   0x4D 0x6F          DC8 "Motor direction: %d\012"
+   \              0x74 0x6F    
+   \              0x72 0x20    
+   \              0x64 0x69    
+   \              0x72 0x65    
+   \              0x63 0x74    
+   \              0x69 0x6F    
+   \              0x6E 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x0A    
+   \              0x00         
+   \   00000015   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_2:
+   \   00000000   0x4D 0x6F          DC8 "Motor speed: %d\012"
+   \              0x74 0x6F    
+   \              0x72 0x20    
+   \              0x73 0x70    
+   \              0x65 0x65    
+   \              0x64 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x0A    
+   \              0x00         
+   \   00000011   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   \                                 In section .rodata, align 4
+   \                     ?_3:
+   \   00000000   0x4D 0x6F          DC8 "Motor error state: %d\012"
+   \              0x74 0x6F    
+   \              0x72 0x20    
+   \              0x65 0x72    
+   \              0x72 0x6F    
+   \              0x72 0x20    
+   \              0x73 0x74    
+   \              0x61 0x74    
+   \              0x65 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x0A    
+   \              0x00         
+   \   00000017   0x00               DC8 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      24   main
+        24   -> MotorProxy_accessMotorDirection
+        24   -> MotorProxy_accessMotorSpeed
+        24   -> MotorProxy_accessMotorState
+        24   -> MotorProxy_configure
+        24   -> MotorProxy_disable
+        24   -> MotorProxy_enable
+        24   -> MotorProxy_initialize
+        24   -> MotorProxy_writeMotorSpeed
+        24   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      24  ?_0
+      24  ?_1
+      20  ?_2
+      24  ?_3
+     112  main
+
+ 
+  92 bytes in section .rodata
+ 112 bytes in section .text
+ 
+ 112 bytes of CODE  memory
+  92 bytes of CONST memory
+
+Errors: none
+Warnings: none

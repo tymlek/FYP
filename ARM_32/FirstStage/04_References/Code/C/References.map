@@ -1,0 +1,228 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                18/Apr/2018  17:50:24
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\Exe\References.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\List\References.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW7137.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\Obj\main.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\Exe\References.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\List\References.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind        Address   Size  Object
+  -------            ----        -------   ----  ------
+"A0":                                      0x40
+  .intvec            ro code  0x00000000   0x40  vector_table_M.o [4]
+                            - 0x00000040   0x40
+
+"P1":                                     0x41c
+  .text              ro code  0x00000040  0x142  xprintftiny.o [3]
+  .text              ro code  0x00000182    0x2  vector_table_M.o [4]
+  .text              ro code  0x00000184   0x36  strlen.o [4]
+  .text              ro code  0x000001bc   0x7c  iarttio.o [5]
+  .text              ro code  0x00000238   0x3c  XShttio.o [3]
+  .text              ro code  0x00000274   0x34  main.o [1]
+  .text              ro code  0x000002a8   0x28  printf.o [3]
+  .text              ro code  0x000002d0   0x2c  copy_init3.o [4]
+  .text              ro code  0x000002fc   0x28  data_init.o [4]
+  .text              ro code  0x00000324   0x22  iarwrite.o [5]
+  .iar.init_table    const    0x00000348   0x14  - Linker created -
+  .text              ro code  0x0000035c   0x20  putchar.o [3]
+  .text              ro code  0x0000037c   0x10  write.o [5]
+  .text              ro code  0x0000038c   0x1e  dwrite.o [5]
+  .text              ro code  0x000003aa   0x20  iarwstd.o [5]
+  .text              ro code  0x000003cc   0x1e  cmain.o [4]
+  .text              ro code  0x000003ea    0x4  low_level_init.o [3]
+  .text              ro code  0x000003ee    0x4  exit.o [3]
+  .text              ro code  0x000003f4    0xa  cexit.o [4]
+  .text              ro code  0x00000400   0x14  exit.o [5]
+  .text              ro code  0x00000414   0x16  xprout.o [3]
+  .rodata            const    0x0000042c    0xc  main.o [1]
+  .rodata            const    0x00000438    0xc  main.o [1]
+  .text              ro code  0x00000444    0xc  cstartup_M.o [4]
+  Initializer bytes  const    0x00000450    0xc  <for P2-1>
+  .rodata            const    0x0000045c    0x0  copy_init3.o [4]
+                            - 0x0000045c  0x41c
+
+"P2", part 1 of 2:                          0xc
+  P2-1                        0x20000000    0x9  <Init block>
+    .data            inited   0x20000000    0x8  XShttio.o [3]
+    .bss             inited   0x20000008    0x1  XShttio.o [3]
+                            - 0x20000009    0x9
+
+"P2", part 2 of 2:                        0x400
+  CSTACK                      0x20000010  0x400  <Block>
+    CSTACK           uninit   0x20000010  0x400  <Block tail>
+                            - 0x20000410  0x400
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Copy (__iar_copy_init3)
+    1 source range, total size 0xc (133% of destination):
+          0x00000450   0xc
+    1 destination range, total size 0x9:
+          0x20000000   0x9
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\Obj: [1]
+    main.o                 52       24
+    -------------------------------------------
+    Total:                 52       24
+
+command line: [2]
+    -------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    XShttio.o              60        9        9
+    exit.o                  4
+    low_level_init.o        4
+    printf.o               40
+    putchar.o              32
+    xprintftiny.o         322
+    xprout.o               22
+    -------------------------------------------
+    Total:                484        9        9
+
+rt7M_tl.a: [4]
+    cexit.o                10
+    cmain.o                30
+    copy_init3.o           44
+    cstartup_M.o           12
+    data_init.o            40
+    strlen.o               54
+    vector_table_M.o       66
+    -------------------------------------------
+    Total:                256
+
+shb_l.a: [5]
+    dwrite.o               30
+    exit.o                 20
+    iarttio.o             124
+    iarwrite.o             34
+    iarwstd.o              32
+    write.o                16
+    -------------------------------------------
+    Total:                256
+
+    Gaps                    8        4
+    Linker created                  23    1 024
+-----------------------------------------------
+    Grand Total:        1 056       60    1 033
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x00000348          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x0000035c          --   Gb  - Linker created -
+?main                   0x000003cd         Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000010          --   Gb  - Linker created -
+CSTACK$$Limit           0x20000410          --   Gb  - Linker created -
+Region$$Table$$Base     0x00000348          --   Gb  - Linker created -
+Region$$Table$$Limit    0x0000035c          --   Gb  - Linker created -
+_PrintfTiny             0x0000005d  0x126  Code  Gb  xprintftiny.o [3]
+_Prout                  0x00000415   0x16  Code  Gb  xprout.o [3]
+__cmain                 0x000003cd         Code  Gb  cmain.o [4]
+__dwrite                0x0000038d   0x1e  Code  Gb  dwrite.o [5]
+__exit                  0x00000401   0x14  Code  Gb  exit.o [5]
+__iar_close_ttio        0x000001bd   0x2c  Code  Gb  iarttio.o [5]
+__iar_copy_init3        0x000002d1   0x2c  Code  Gb  copy_init3.o [4]
+__iar_data_init3        0x000002fd   0x28  Code  Gb  data_init.o [4]
+__iar_get_ttio          0x000001e9   0x4c  Code  Gb  iarttio.o [5]
+__iar_lookup_ttioh      0x00000267    0x4  Code  Gb  XShttio.o [3]
+__iar_program_start     0x00000445         Code  Gb  cstartup_M.o [4]
+__iar_sh_stdout         0x000003ab   0x20  Code  Gb  iarwstd.o [5]
+__iar_sh_write          0x00000325   0x22  Code  Gb  iarwrite.o [5]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__iar_ttio_guard_lock   0x00000239   0x1e  Code  Gb  XShttio.o [3]
+__iar_ttio_guard_unlock
+                        0x00000257   0x10  Code  Gb  XShttio.o [3]
+__iar_ttio_handles      0x20000000    0x8  Data  Lc  XShttio.o [3]
+__low_level_init        0x000003eb    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000         Data  Gb  vector_table_M.o [4]
+__write                 0x0000037d   0x10  Code  Gb  write.o [5]
+_call_main              0x000003d9         Code  Gb  cmain.o [4]
+_exit                   0x000003f5         Code  Gb  cexit.o [4]
+_main                   0x000003e7         Code  Gb  cmain.o [4]
+accum                   0x00000275    0x8  Code  Gb  main.o [1]
+exit                    0x000003ef    0x4  Code  Gb  exit.o [3]
+main                    0x0000027d   0x22  Code  Gb  main.o [1]
+out                     0x00000041   0x1c  Code  Lc  xprintftiny.o [3]
+printf                  0x000002a9   0x28  Code  Gb  printf.o [3]
+putchar                 0x0000035d   0x20  Code  Gb  putchar.o [3]
+strlen                  0x00000185         Code  Gb  strlen.o [4]
+ttio_guard              0x20000008    0x1  Data  Lc  XShttio.o [3]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\References\Code\C\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  1 056 bytes of readonly  code memory
+     60 bytes of readonly  data memory
+  1 033 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,660 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                18/Apr/2018  13:47:48
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\Exe\ExceptionsCpp.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\List\ExceptionsCpp.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW5180.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\Obj\main.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\Exe\ExceptionsCpp.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\List\ExceptionsCpp.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor        = *
+__CPP_Exceptions = Used
+__CPP_Language   = C++14
+__Heap_Handler   = Basic
+__SystemLibrary  = DLib
+__dlib_version   = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                       0x40
+  .intvec            ro code  0x00000000    0x40  vector_table_M.o [5]
+                            - 0x00000040    0x40
+
+"P1":                                     0x202c
+  .text              ro code  0x00000040   0x67e  unwind_pr.o [5]
+  .rodata            const    0x000006be     0x2  typeinfo.o [4]
+  .text              ro code  0x000006c0   0x3dc  unwinder.o [5]
+  .text              ro code  0x00000a9c    0x80  arm_exceptions_cleanup_c.o [5]
+  .text              ro code  0x00000b1c   0x1e0  arm_exceptions_throw_c.o [5]
+  .text              ro code  0x00000cfc    0x94  iar_unwind_asm.o [5]
+  .text              ro code  0x00000d90    0x40  bsearch.o [3]
+  .text              ro code  0x00000dd0   0x140  heap0.o [3]
+  .text              ro code  0x00000f10    0x56  ABImemcpy_unaligned.o [5]
+  .rodata            const    0x00000f66     0x2  typeinfo.o [4]
+  .text              ro code  0x00000f68    0x54  unwind_debug.o [6]
+  .text              ro code  0x00000fbc     0x6  abort.o [3]
+  .text              ro code  0x00000fc2     0x4  heaptramp0.o [3]
+  .text              ro code  0x00000fc6     0x2  vector_table_M.o [5]
+  .text              ro code  0x00000fc8    0x70  arm_exceptions_globs_c.o [5]
+  .text              ro code  0x00001038    0x60  arm_exceptions_support_c.o [5]
+  .text              ro code  0x00001098    0x3c  arm_exceptions_foreign_c.o [5]
+  .text              ro code  0x000010d4    0x1e  arm_exceptions_terminate_c.o [5]
+  .text              ro code  0x000010f2    0x20  arm_exceptions_free_c.o [5]
+  .text              ro code  0x00001112    0x40  arm_exceptions_callterm_c.o [5]
+  .rodata            const    0x00001152     0x1  unwind_debug.o [6]
+  .text              ro code  0x00001154    0x44  typeinfo.o [4]
+  .text              ro code  0x00001198    0x12  rtti2.o [4]
+  .text              ro code  0x000011ac   0x2ac  rtti.o [4]
+  .text              ro code  0x00001458    0x2c  xgetmemchunk.o [3]
+  .text              ro code  0x00001484    0x14  exit.o [6]
+  .text              ro code  0x00001498     0x4  tp_nothreads.o [3]
+  .text              ro code  0x0000149c    0x4c  bad_alloc.o [4]
+  .text              ro code  0x000014e8    0x88  cppinit.o [3]
+  .text              ro code  0x00001570    0x60  arm_exceptions_alloc_c.o [5]
+  .text              ro code  0x000015d0    0x2a  arm_exceptions_mem_c.o [5]
+  .text              ro code  0x000015fa    0x50  arm_exceptions_begincatch_c.o [5]
+  .text              ro code  0x0000164a     0xa  delop_0.o [4]
+  .text              ro code  0x00001654     0x4  cxabad.o [4]
+  .text              ro code  0x00001658    0x7c  iarttio.o [6]
+  .text              ro code  0x000016d4    0x28  exception.o [4]
+  .text              ro code  0x000016fc    0x2c  iar_Raise.o [4]
+  .text              ro code  0x00001728    0x3c  XShttio.o [3]
+  .text              ro code  0x00001764    0x14  iar_Raise.o [4]
+  .text              ro code  0x00001778    0x14  iar_Raise.o [4]
+  .text              ro code  0x0000178c   0x142  xprintftiny.o [3]
+  .text              ro code  0x000018d0    0x36  strlen.o [5]
+  SHT$$ARM_EXIDX              0x00001908    0x70  <Block>
+    .ARM.exidx       const    0x00001908     0x8  arm_exceptions_throw_c.o [5]
+    .ARM.exidx       const    0x00001910     0x8  arm_exceptions_throw_c.o [5]
+    .ARM.exidx       const    0x00001918     0x8  rtti2.o [4]
+    .ARM.exidx       const    0x00001920     0x8  rtti.o [4]
+    .ARM.exidx       const    0x00001928     0x8  rtti.o [4]
+    .ARM.exidx       const    0x00001930     0x8  cppinit.o [3]
+    .ARM.exidx       const    0x00001938     0x8  cppinit.o [3]
+    .ARM.exidx       const    0x00001940     0x8  iar_Raise.o [4]
+    .ARM.exidx       const    0x00001948     0x8  arm_exceptions_endcatch_c.o [5]
+    .ARM.exidx       const    0x00001950     0x8  arm_exceptions_dec_refcount_c.o [5]
+    .ARM.exidx       const    0x00001958     0x8  main.o [1]
+    .ARM.exidx       const    0x00001960     0x8  main.o [1]
+    .ARM.exidx       const    0x00001968     0x8  arm_exceptions_rethrow_c.o [5]
+    .ARM.exidx       const    0x00001970     0x8  arm_exceptions_throw_c.o [5]
+  .text              ro code  0x00001978    0x6c  arm_exceptions_endcatch_c.o [5]
+  .text              ro code  0x000019e4    0x1e  arm_exceptions_dep_free_c.o [5]
+  .text              ro code  0x00001a02    0x22  arm_exceptions_dec_refcount_c.o [5]
+  .text              ro code  0x00001a24    0x50  main.o [1]
+  .text              ro code  0x00001a74    0x28  printf.o [3]
+  .text              ro code  0x00001a9c    0x40  zero_init3.o [5]
+  .text              ro code  0x00001adc    0x3e  arm_exceptions_rethrow_c.o [5]
+  .text              ro code  0x00001b1a    0x38  packbits_init_single.o [5]
+  .rodata            const    0x00001b54    0x30  typeinfo.o [4]
+  .rodata            const    0x00001b84    0x28  typeinfo.o [4]
+  .rodata            const    0x00001bac    0x28  typeinfo.o [4]
+  .rodata            const    0x00001bd4    0x28  typeinfo.o [4]
+  .text              ro code  0x00001bfc    0x28  data_init.o [5]
+  .rodata            const    0x00001c24    0x24  typeinfo.o [4]
+  .rodata            const    0x00001c48    0x24  typeinfo.o [4]
+  .rodata            const    0x00001c6c    0x24  typeinfo.o [4]
+  .text              ro code  0x00001c90    0x22  iarwrite.o [6]
+  .iar.init_table    const    0x00001cb4    0x20  - Linker created -
+  .ARM.extab         const    0x00001cd4    0x20  main.o [1]
+  .rodata            const    0x00001cf4    0x20  main.o [1]
+  .rodata            const    0x00001d14    0x20  main.o [1]
+  .text              ro code  0x00001d34    0x20  putchar.o [3]
+  .text              ro code  0x00001d54    0x10  write.o [6]
+  .text              ro code  0x00001d64    0x1e  dwrite.o [6]
+  .text              ro code  0x00001d82    0x20  iarwstd.o [6]
+  .text              ro code  0x00001da4    0x1e  cmain.o [5]
+  .text              ro code  0x00001dc2     0x4  low_level_init.o [3]
+  .text              ro code  0x00001dc6     0x4  exit.o [3]
+  .text              ro code  0x00001dcc     0xe  cexit.o [5]
+  .ARM.extab         const    0x00001ddc    0x1c  cppinit.o [3]
+  .exc.text          ro code  0x00001df8    0x1c  main.o [1]
+  .exc.text          ro code  0x00001e14    0x18  arm_exceptions_throw_c.o [5]
+  .text              ro code  0x00001e2c    0x16  xprout.o [3]
+  .ARM.extab         const    0x00001e44    0x14  arm_exceptions_throw_c.o [5]
+  .rodata            const    0x00001e58    0x14  main.o [1]
+  .rodata            const    0x00001e6c    0x14  bad_alloc.o [4]
+  .rodata            const    0x00001e80    0x14  exception.o [4]
+  .rodata            const    0x00001e94    0x14  iar_Raise.o [4]
+  .text              ro code  0x00001ea8    0x12  iar_Raise.o [4]
+  .ARM.extab         const    0x00001ebc    0x10  arm_exceptions_throw_c.o [5]
+  .ARM.extab         const    0x00001ecc    0x10  rtti.o [4]
+  .ARM.extab         const    0x00001edc    0x10  iar_Raise.o [4]
+  .rodata            const    0x00001eec    0x10  main.o [1]
+  .rodata            const    0x00001efc    0x10  typeinfo.o [4]
+  .rodata            const    0x00001f0c    0x10  typeinfo.o [4]
+  .rodata            const    0x00001f1c    0x10  typeinfo.o [4]
+  .rodata            const    0x00001f2c    0x10  typeinfo.o [4]
+  .rodata            const    0x00001f3c    0x10  typeinfo.o [4]
+  .rodata            const    0x00001f4c    0x10  bad_alloc.o [4]
+  .rodata            const    0x00001f5c    0x10  exception.o [4]
+  .rodata            const    0x00001f6c    0x10  iar_Raise.o [4]
+  .rodata            const    0x00001f7c     0xc  typeinfo.o [4]
+  .rodata            const    0x00001f88     0xc  typeinfo.o [4]
+  .rodata            const    0x00001f94     0xc  typeinfo.o [4]
+  .rodata            const    0x00001fa0     0xc  typeinfo.o [4]
+  .rodata            const    0x00001fac     0xc  typeinfo.o [4]
+  .rodata            const    0x00001fb8     0xc  typeinfo.o [4]
+  .rodata            const    0x00001fc4     0xc  typeinfo.o [4]
+  .rodata            const    0x00001fd0     0xc  bad_alloc.o [4]
+  .rodata            const    0x00001fdc     0xc  iar_Raise.o [4]
+  .rodata            const    0x00001fe8     0xc  iar_Raise.o [4]
+  .text              ro code  0x00001ff4     0xc  cstartup_M.o [5]
+  .text              ro code  0x00002000     0xc  iar_Raise.o [4]
+  .exc.text          ro code  0x0000200c     0xa  iar_Raise.o [4]
+  .rodata            const    0x00002018     0x8  typeinfo.o [4]
+  .rodata            const    0x00002020     0x8  typeinfo.o [4]
+  .rodata            const    0x00002028     0x8  typeinfo.o [4]
+  .rodata            const    0x00002030     0x8  typeinfo.o [4]
+  .rodata            const    0x00002038     0x8  iar_unwind_asm.o [5]
+  .rodata            const    0x00002040     0x8  exception.o [4]
+  .text              ro code  0x00002048     0x8  iar_Raise.o [4]
+  .exc.text          ro code  0x00002050     0x4  rtti.o [4]
+  .exc.text          ro code  0x00002054     0x4  cppinit.o [3]
+  .rodata            const    0x00002058     0x4  main.o [1]
+  .rodata            const    0x0000205c     0x4  typeinfo.o [4]
+  .text              ro code  0x00002060     0x0  cstart_call_dtors.o [5]
+  .rodata            const    0x00002060     0x0  zero_init3.o [5]
+  .rodata            const    0x00002060     0x0  packbits_init_single.o [5]
+  Initializer bytes  const    0x00002060     0x9  <for P2-1>
+                            - 0x00002069  0x2029
+
+"P2", part 1 of 3:                          0x28
+  P2-1                        0x20000000    0x28  <Init block>
+    .data            inited   0x20000000     0x8  XShttio.o [3]
+    .tdata           inited   0x20000008    0x20  arm_exceptions_globs_c.o [5]
+                            - 0x20000028    0x28
+
+"P2", part 2 of 3:                          0xac
+  .tbss              zero     0x20000028    0x90  arm_exceptions_globs_c.o [5]
+  .bss               zero     0x200000b8     0x8  heap0.o [3]
+  .bss               zero     0x200000c0     0x4  cppinit.o [3]
+  .bss               zero     0x200000c4     0x4  cppinit.o [3]
+  .bss               zero     0x200000c8     0x4  xgetmemchunk.o [3]
+  .bss               zero     0x200000cc     0x1  unwind_debug.o [6]
+  .bss               zero     0x200000cd     0x1  unwind_debug.o [6]
+  .bss               zero     0x200000ce     0x1  unwind_debug.o [6]
+  .bss               zero     0x200000cf     0x1  XShttio.o [3]
+  .tbss              zero     0x200000d0     0x1  arm_exceptions_globs_c.o [5]
+  .tbss              zero     0x200000d1     0x1  arm_exceptions_globs_c.o [5]
+                            - 0x200000d2    0xaa
+
+"P2", part 3 of 3:                         0xd8c
+  .iar.dynexit                0x200000d4   0x18c  <Block>
+    .iar.dynexit     uninit   0x200000d4     0xc  cppinit.o [3]
+    .iar.dynexit     uninit   0x200000e0   0x180  <Block tail>
+  CSTACK                      0x20000260   0x400  <Block>
+    CSTACK           uninit   0x20000260   0x400  <Block tail>
+  HEAP                        0x20000660   0x800  <Block>
+    HEAP             uninit   0x20000660   0x800  <Block tail>
+                            - 0x20000e60   0xd8c
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0xaa:
+          0x20000028  0xaa
+
+Copy/packbits (__iar_packbits_init_single3)
+    1 source range, total size 0x9 (22% of destination):
+          0x00002060   0x9
+    1 destination range, total size 0x28:
+          0x20000000  0x28
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                           ro code  ro data  rw data
+    ------                           -------  -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\Obj: [1]
+    main.o                               108      152
+    ----------------------------------------------------------
+    Total:                               108      152
+
+command line: [2]
+    ----------------------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    XShttio.o                             60        1        9
+    abort.o                                6
+    bsearch.o                             64
+    cppinit.o                            140       44       20
+    exit.o                                 4
+    heap0.o                              320                 8
+    heaptramp0.o                           4
+    low_level_init.o                       4
+    printf.o                              40
+    putchar.o                             32
+    tp_nothreads.o                         4
+    xgetmemchunk.o                        44                 4
+    xprintftiny.o                        322
+    xprout.o                              22
+    ----------------------------------------------------------
+    Total:                             1 066       45       41
+
+dlpp7M_tl_nc.a: [4]
+    bad_alloc.o                           76       48
+    cxabad.o                               4
+    delop_0.o                             10
+    exception.o                           40       44
+    iar_Raise.o                          132       84
+    rtti.o                               688       32
+    rtti2.o                               18        8
+    typeinfo.o                            68      480
+    ----------------------------------------------------------
+    Total:                             1 036      696
+
+rt7M_tl.a: [5]
+    ABImemcpy_unaligned.o                 86
+    arm_exceptions_alloc_c.o              96
+    arm_exceptions_begincatch_c.o         80
+    arm_exceptions_callterm_c.o           64
+    arm_exceptions_cleanup_c.o           128
+    arm_exceptions_dec_refcount_c.o       34        8
+    arm_exceptions_dep_free_c.o           30
+    arm_exceptions_endcatch_c.o          108        8
+    arm_exceptions_foreign_c.o            60
+    arm_exceptions_free_c.o               32
+    arm_exceptions_globs_c.o             112        8      178
+    arm_exceptions_mem_c.o                42
+    arm_exceptions_rethrow_c.o            62        8
+    arm_exceptions_support_c.o            96
+    arm_exceptions_terminate_c.o          30
+    arm_exceptions_throw_c.o             504       60
+    cexit.o                               14
+    cmain.o                               30
+    cstart_call_dtors.o
+    cstartup_M.o                          12
+    data_init.o                           40
+    iar_unwind_asm.o                     148        8
+    packbits_init_single.o                56
+    strlen.o                              54
+    unwind_pr.o                        1 662
+    unwinder.o                           988
+    vector_table_M.o                      66
+    zero_init3.o                          64
+    ----------------------------------------------------------
+    Total:                             4 698      100      178
+
+shb_l.a: [6]
+    dwrite.o                              30
+    exit.o                                20
+    iarttio.o                            124
+    iarwrite.o                            34
+    iarwstd.o                             32
+    unwind_debug.o                        84        1        3
+    write.o                               16
+    ----------------------------------------------------------
+    Total:                               340        1        3
+
+    Gaps                                   9       12
+    Linker created                                 32    3 456
+--------------------------------------------------------------
+    Grand Total:                       7 257    1 038    3 678
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.dynexit$$Base      0x200000d4          --   Gb  - Linker created -
+.iar.dynexit$$Limit     0x20000260          --   Gb  - Linker created -
+.iar.init_table$$Base   0x00001cb4          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00001cd4          --   Gb  - Linker created -
+?main                   0x00001da5         Code  Gb  cmain.o [5]
+Aldata                  0x200000b8    0x8  Data  Lc  heap0.o [3]
+CSTACK$$Base            0x20000260          --   Gb  - Linker created -
+CSTACK$$Limit           0x20000660          --   Gb  - Linker created -
+DtorRecArray            0x200000d4    0xc  Data  Lc  cppinit.o [3]
+EIT_comparator          0x0000080b   0x40  Code  Lc  unwinder.o [5]
+HEAP$$Base              0x20000660          --   Gb  - Linker created -
+HEAP$$Limit             0x20000e60          --   Gb  - Linker created -
+Region$$Table$$Base     0x00001cb4          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00001cd4          --   Gb  - Linker created -
+SHT$$ARM_EXIDX$$Base    0x00001908          --   Gb  - Linker created -
+SHT$$ARM_EXIDX$$Limit   0x00001978          --   Gb  - Linker created -
+Typeinfo for __cxxabiv1::__class_type_info
+                        0x00001f88    0xc  Data  Gb  typeinfo.o [4]
+Typeinfo for __cxxabiv1::__fundamental_type_info
+                        0x00001f7c    0xc  Data  Gb  typeinfo.o [4]
+Typeinfo for __cxxabiv1::__pbase_type_info
+                        0x00001fac    0xc  Data  Gb  typeinfo.o [4]
+Typeinfo for __cxxabiv1::__pointer_to_member_type_info
+                        0x00001fc4    0xc  Data  Gb  typeinfo.o [4]
+Typeinfo for __cxxabiv1::__pointer_type_info
+                        0x00001fb8    0xc  Data  Gb  typeinfo.o [4]
+Typeinfo for __cxxabiv1::__si_class_type_info
+                        0x00001f94    0xc  Data  Gb  typeinfo.o [4]
+Typeinfo for __cxxabiv1::__vmi_class_type_info
+                        0x00001fa0    0xc  Data  Gb  typeinfo.o [4]
+Typeinfo for char       0x00002020    0x8  Data  Gb  typeinfo.o [4]
+Typeinfo for char const *
+                        0x00001eec   0x10  Data  Gb  main.o [1]
+Typeinfo for std::bad_alloc
+                        0x00001fd0    0xc  Data  Gb  bad_alloc.o [4]
+Typeinfo for std::bad_typeid
+                        0x00001fe8    0xc  Data  Gb  iar_Raise.o [4]
+Typeinfo for std::exception
+                        0x00002040    0x8  Data  Gb  exception.o [4]
+Typeinfo for std::nullptr_t
+                        0x00002028    0x8  Data  Gb  typeinfo.o [4]
+Typeinfo for std::type_info
+                        0x00002030    0x8  Data  Gb  typeinfo.o [4]
+Typeinfo for void       0x00002018    0x8  Data  Gb  typeinfo.o [4]
+Typeinfo name for __cxxabiv1::__class_type_info
+                        0x00001c24   0x24  Data  Gb  typeinfo.o [4]
+Typeinfo name for __cxxabiv1::__fundamental_type_info
+                        0x00001b84   0x28  Data  Gb  typeinfo.o [4]
+Typeinfo name for __cxxabiv1::__pbase_type_info
+                        0x00001c48   0x24  Data  Gb  typeinfo.o [4]
+Typeinfo name for __cxxabiv1::__pointer_to_member_type_info
+                        0x00001b54   0x30  Data  Gb  typeinfo.o [4]
+Typeinfo name for __cxxabiv1::__pointer_type_info
+                        0x00001c6c   0x24  Data  Gb  typeinfo.o [4]
+Typeinfo name for __cxxabiv1::__si_class_type_info
+                        0x00001bac   0x28  Data  Gb  typeinfo.o [4]
+Typeinfo name for __cxxabiv1::__vmi_class_type_info
+                        0x00001bd4   0x28  Data  Gb  typeinfo.o [4]
+Typeinfo name for char  0x00000f66    0x2  Data  Gb  typeinfo.o [4]
+Typeinfo name for char const *
+                        0x00002058    0x4  Data  Gb  main.o [1]
+Typeinfo name for std::bad_alloc
+                        0x00001f4c   0x10  Data  Gb  bad_alloc.o [4]
+Typeinfo name for std::bad_typeid
+                        0x00001f6c   0x10  Data  Gb  iar_Raise.o [4]
+Typeinfo name for std::exception
+                        0x00001f5c   0x10  Data  Gb  exception.o [4]
+Typeinfo name for std::nullptr_t
+                        0x0000205c    0x4  Data  Gb  typeinfo.o [4]
+Typeinfo name for std::type_info
+                        0x00001f3c   0x10  Data  Gb  typeinfo.o [4]
+Typeinfo name for void  0x000006be    0x2  Data  Gb  typeinfo.o [4]
+Virtual function table for __cxxabiv1::__class_type_info
+                        0x00001f1c   0x10  Data  Gb  typeinfo.o [4]
+Virtual function table for __cxxabiv1::__fundamental_type_info
+                        0x00001efc   0x10  Data  Gb  typeinfo.o [4]
+Virtual function table for __cxxabiv1::__pointer_type_info
+                        0x00001f0c   0x10  Data  Gb  typeinfo.o [4]
+Virtual function table for __cxxabiv1::__si_class_type_info
+                        0x00001f2c   0x10  Data  Gb  typeinfo.o [4]
+Virtual function table for std::bad_alloc
+                        0x00001e6c   0x14  Data  Gb  bad_alloc.o [4]
+Virtual function table for std::bad_typeid
+                        0x00001e94   0x14  Data  Gb  iar_Raise.o [4]
+Virtual function table for std::exception
+                        0x00001e80   0x14  Data  Gb  exception.o [4]
+[local to arm_exceptions_globs_c_cpp]::__default_terminate_handler()
+                        0x00000fdd    0x4  Code  Lc  arm_exceptions_globs_c.o [5]
+[local to arm_exceptions_throw_c_cpp]::armcpp_exception_cleanup(_Unwind_Reason_Code, _Unwind_Control_Block *)
+                        0x00000b1d   0x32  Code  Lc  arm_exceptions_throw_c.o [5]
+[local to rtti_cpp]::derived_to_base_conversion_r(void *, void **, std::type_info const *, std::type_info const *, unsigned int, int *, int, std::type_info const **, a_result_virtuality *, int *)
+                        0x000011ad  0x238  Code  Lc  rtti.o [4]
+_PrintfTiny             0x000017a9  0x126  Code  Gb  xprintftiny.o [3]
+_Prout                  0x00001e2d   0x16  Code  Gb  xprout.o [3]
+_Unwind_Complete        0x00000a3f   0x50  Code  Gb  unwinder.o [5]
+_Unwind_DeleteException
+                        0x00000a8f    0xe  Code  Gb  unwinder.o [5]
+_Unwind_RaiseException  0x00000d4d         Code  Gb  iar_unwind_asm.o [5]
+_Unwind_Resume          0x00000d15         Code  Gb  iar_unwind_asm.o [5]
+_Unwind_VRS_Get         0x000006ed   0x2a  Code  Gb  unwinder.o [5]
+_Unwind_VRS_Pop         0x00000719   0xec  Code  Gb  unwinder.o [5]
+_Unwind_VRS_Set         0x000006c1   0x2a  Code  Gb  unwinder.o [5]
+__ARM_ETInfo            0x00002038         Data  Gb  iar_unwind_asm.o [5]
+__ARM_Unwind_RaiseException
+                        0x000008e9   0xe0  Code  Gb  unwinder.o [5]
+__ARM_Unwind_Resume     0x00000a07   0x38  Code  Gb  unwinder.o [5]
+__ARM_Unwind_VRS_VFPpreserve_high
+                        0x00000d05         Code  Gb  iar_unwind_asm.o [5]
+__ARM_Unwind_VRS_VFPpreserve_low
+                        0x00000cfd         Code  Gb  iar_unwind_asm.o [5]
+__ARM_Unwind_VRS_VFPrestore_high
+                        0x00000d11         Code  Gb  iar_unwind_asm.o [5]
+__ARM_Unwind_VRS_VFPrestore_low
+                        0x00000d09         Code  Gb  iar_unwind_asm.o [5]
+__ARM_Unwind_VRS_corerestore
+                        0x00000d31         Code  Gb  iar_unwind_asm.o [5]
+__ARM_cxa_end_cleanup   0x00000ad5   0x48  Code  Gb  arm_exceptions_cleanup_c.o [5]
+__ARM_exceptions_buffer_allocate
+                        0x000015d1   0x16  Code  Gb  arm_exceptions_mem_c.o [5]
+__ARM_exceptions_buffer_free
+                        0x000015e7   0x14  Code  Gb  arm_exceptions_mem_c.o [5]
+__ARM_unwind_cpp_prcommon
+                        0x00000081  0x634  Code  Gb  unwind_pr.o [5]
+__ARM_unwind_next_frame
+                        0x000009cf   0x38  Code  Gb  unwinder.o [5]
+__IAR_EH::call_terminate_handler(_Unwind_Control_Block *)
+                        0x00001113   0x2e  Code  Gb  arm_exceptions_callterm_c.o [5]
+__IAR_EH::classify_exception(UCB *)::dep_class
+                        0x0000108c    0xc  Data  Lc  arm_exceptions_support_c.o [5]
+__IAR_EH::classify_exception(UCB *)::prim_class
+                        0x00001080    0xc  Data  Lc  arm_exceptions_support_c.o [5]
+__IAR_EH::classify_exception(_Unwind_Control_Block *)
+                        0x00001051   0x30  Code  Gb  arm_exceptions_support_c.o [5]
+__IAR_EH::get_foreign_intermediary(__cxa_exception *, _Unwind_Control_Block *)
+                        0x00001099   0x3c  Code  Gb  arm_exceptions_foreign_c.o [5]
+__IAR_EH::same_exceptions_class(void const *, void const *)
+                        0x00001039   0x18  Code  Gb  arm_exceptions_support_c.o [5]
+__aeabi_unwind_cpp_pr0  0x00000041    0x4  Code  Gb  unwind_pr.o [5]
+__aeabi_unwind_cpp_pr1  0x00000045    0x4  Code  Gb  unwind_pr.o [5]
+__aeabi_unwind_cpp_pr2  0x00000049    0x4  Code  Gb  unwind_pr.o [5]
+__basic_free            0x00000e7d   0x16  Code  Gb  heap0.o [3]
+__basic_free_intern     0x00000e93   0x7a  Code  Lc  heap0.o [3]
+__basic_malloc          0x00000dd1   0x18  Code  Gb  heap0.o [3]
+__basic_malloc_intern   0x00000de9   0x94  Code  Lc  heap0.o [3]
+__call_dtors            0x0000151f    0xc  Code  Gb  cppinit.o [3]
+__call_dtors0           0x0000152b   0x36  Code  Gb  cppinit.o [3]
+__cexit_call_dtors      0x00001dcf         Code  Gb  cexit.o [5]
+__cmain                 0x00001da5         Code  Gb  cmain.o [5]
+__cstart_call_dtors     0x00002060         Data  Gb  cstart_call_dtors.o [5]
+__cxa_allocate_exception
+                        0x00001571   0x52  Code  Gb  arm_exceptions_alloc_c.o [5]
+__cxa_atexit            0x000014e9   0x36  Code  Gb  cppinit.o [3]
+__cxa_bad_typeid        0x00001655    0x4  Code  Gb  cxabad.o [4]
+__cxa_begin_catch       0x000015fb   0x50  Code  Gb  arm_exceptions_begincatch_c.o [5]
+__cxa_begin_cleanup     0x00000a9d   0x38  Code  Gb  arm_exceptions_cleanup_c.o [5]
+__cxa_call_terminate    0x00001141   0x12  Code  Gb  arm_exceptions_callterm_c.o [5]
+__cxa_decrement_exception_refcount
+                        0x00001a03   0x22  Code  Gb  arm_exceptions_dec_refcount_c.o [5]
+__cxa_end_catch         0x00001979   0x6c  Code  Gb  arm_exceptions_endcatch_c.o [5]
+__cxa_end_cleanup       0x00000d71         Code  Gb  iar_unwind_asm.o [5]
+__cxa_free_dependent_exception
+                        0x000019e5   0x1e  Code  Gb  arm_exceptions_dep_free_c.o [5]
+__cxa_free_exception    0x000010f3   0x20  Code  Gb  arm_exceptions_free_c.o [5]
+__cxa_get_globals       0x00000fe1   0x40  Code  Gb  arm_exceptions_globs_c.o [5]
+__cxa_get_globals::em_buf
+                        0x20000028   0x90  Tls   Lc  arm_exceptions_globs_c.o [5]
+__cxa_get_globals::globals
+                        0x20000008   0x20  Tls   Lc  arm_exceptions_globs_c.o [5]
+__cxa_get_globals::static guard for em_buf
+                        0x200000d0    0x1  Tls   Lc  arm_exceptions_globs_c.o [5]
+__cxa_get_globals::static guard for globals
+                        0x200000d1    0x1  Tls   Lc  arm_exceptions_globs_c.o [5]
+__cxa_rethrow           0x00001add   0x3e  Code  Gb  arm_exceptions_rethrow_c.o [5]
+__cxa_throw             0x00000b4f   0x3a  Code  Gb  arm_exceptions_throw_c.o [5]
+__cxa_type_match        0x00000b89  0x152  Code  Gb  arm_exceptions_throw_c.o [5]
+__cxxabiv1::__class_type_info::~__class_type_info()
+                        0x00001193    0x2  Code  Gb  typeinfo.o [4]
+__cxxabiv1::__class_type_info::~__class_type_info() [deleting]
+                        0x00001159    0x4  Code  Gb  typeinfo.o [4]
+__cxxabiv1::__fundamental_type_info::~__fundamental_type_info()
+                        0x00001191    0x2  Code  Gb  typeinfo.o [4]
+__cxxabiv1::__fundamental_type_info::~__fundamental_type_info() [deleting]
+                        0x00001155    0x4  Code  Gb  typeinfo.o [4]
+__cxxabiv1::__pointer_type_info::~__pointer_type_info()
+                        0x00001197    0x2  Code  Gb  typeinfo.o [4]
+__cxxabiv1::__pointer_type_info::~__pointer_type_info() [deleting]
+                        0x00001161    0x4  Code  Gb  typeinfo.o [4]
+__cxxabiv1::__si_class_type_info::~__si_class_type_info()
+                        0x00001195    0x2  Code  Gb  typeinfo.o [4]
+__cxxabiv1::__si_class_type_info::~__si_class_type_info() [deleting]
+                        0x0000115d    0x4  Code  Gb  typeinfo.o [4]
+__data_GetMemChunk      0x00001459   0x2c  Code  Gb  xgetmemchunk.o [3]
+__data_GetMemChunk::start
+                        0x200000c8    0x4  Data  Lc  xgetmemchunk.o [3]
+__derived_to_base_conversion
+                        0x000013e5   0x6c  Code  Gb  rtti.o [4]
+__dso_handle            0x200000c4    0x4  Data  Gb  cppinit.o [3]
+__dwrite                0x00001d65   0x1e  Code  Gb  dwrite.o [6]
+__exit                  0x00001485   0x14  Code  Gb  exit.o [6]
+__iar_Raise_bad_typeid  0x000016fd   0x22  Code  Gb  iar_Raise.o [4]
+__iar_close_ttio        0x00001659   0x2c  Code  Gb  iarttio.o [6]
+__iar_data_init3        0x00001bfd   0x28  Code  Gb  data_init.o [5]
+__iar_debug_catch       0x00000f7f   0x14  Code  Gb  unwind_debug.o [6]
+__iar_debug_exceptions  0x00001152    0x1  Data  Gb  unwind_debug.o [6]
+__iar_debug_no_handler  0x00000f93   0x14  Code  Gb  unwind_debug.o [6]
+__iar_debug_throw       0x00000f69   0x16  Code  Gb  unwind_debug.o [6]
+__iar_enable_debug_catch
+                        0x200000cd    0x1  Data  Gb  unwind_debug.o [6]
+__iar_enable_debug_no_handler
+                        0x200000ce    0x1  Data  Gb  unwind_debug.o [6]
+__iar_enable_debug_throw
+                        0x200000cc    0x1  Data  Gb  unwind_debug.o [6]
+__iar_get_ttio          0x00001685   0x4c  Code  Gb  iarttio.o [6]
+__iar_get_typeid        0x00001199   0x12  Code  Gb  rtti2.o [4]
+__iar_lookup_ttioh      0x00001757    0x4  Code  Gb  XShttio.o [3]
+__iar_nothread_read_tp  0x00001499    0x4  Code  Gb  tp_nothreads.o [3]
+__iar_packbits_init_single3
+                        0x00001b1b   0x38  Code  Gb  packbits_init_single.o [5]
+__iar_program_start     0x00001ff5         Code  Gb  cstartup_M.o [5]
+__iar_sh_stdout         0x00001d83   0x20  Code  Gb  iarwstd.o [6]
+__iar_sh_write          0x00001c91   0x22  Code  Gb  iarwrite.o [6]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__iar_ttio_guard_lock   0x00001729   0x1e  Code  Gb  XShttio.o [3]
+__iar_ttio_guard_unlock
+                        0x00001747   0x10  Code  Gb  XShttio.o [3]
+__iar_ttio_handles      0x20000000    0x8  Data  Lc  XShttio.o [3]
+__iar_unaligned_memcpy4
+                        0x00000f11         Code  Gb  ABImemcpy_unaligned.o [5]
+__iar_unaligned_memcpy8
+                        0x00000f11         Code  Gb  ABImemcpy_unaligned.o [5]
+__iar_zero_init3        0x00001a9d   0x40  Code  Gb  zero_init3.o [5]
+__low_level_init        0x00001dc3    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000         Data  Gb  vector_table_M.o [5]
+__write                 0x00001d55   0x10  Code  Gb  write.o [6]
+_call_main              0x00001db1         Code  Gb  cmain.o [5]
+_exit                   0x00001dcd         Code  Gb  cexit.o [5]
+_main                   0x00001dbf         Code  Gb  cmain.o [5]
+abort                   0x00000fbd    0x6  Code  Gb  abort.o [3]
+bsearch                 0x00000d91   0x40  Code  Gb  bsearch.o [3]
+exit                    0x00001dc7    0x4  Code  Gb  exit.o [3]
+factorial(int)          0x00001a25   0x2e  Code  Gb  main.o [1]
+find_and_expand_eit_entry
+                        0x0000084b   0x88  Code  Lc  unwinder.o [5]
+free                    0x00000fc3    0x4  Code  Gb  heaptramp0.o [3]
+main                    0x00001a53   0x14  Code  Gb  main.o [1]
+next_abi_dtor_rec       0x200000c0    0x4  Data  Lc  cppinit.o [3]
+next_unwind_byte        0x0000004d   0x32  Code  Lc  unwind_pr.o [5]
+operator delete (void *)
+                        0x0000164b    0xa  Code  Gb  delop_0.o [4]
+out                     0x0000178d   0x1c  Code  Lc  xprintftiny.o [3]
+printf                  0x00001a75   0x28  Code  Gb  printf.o [3]
+putchar                 0x00001d35   0x20  Code  Gb  putchar.o [3]
+std::bad_alloc::bad_alloc()
+                        0x000014c3    0x4  Code  Gb  bad_alloc.o [4]
+std::bad_alloc::what() const
+                        0x000014d5    0x4  Code  Gb  bad_alloc.o [4]
+std::bad_alloc::~bad_alloc()
+                        0x000014c7    0x2  Code  Gb  bad_alloc.o [4]
+std::bad_alloc::~bad_alloc() [deleting]
+                        0x000014b1   0x12  Code  Gb  bad_alloc.o [4]
+std::bad_typeid::bad_typeid()
+                        0x00001765   0x14  Code  Gb  iar_Raise.o [4]
+std::bad_typeid::bad_typeid(std::bad_typeid&&)
+                        0x00001779   0x14  Code  Gb  iar_Raise.o [4]
+std::bad_typeid::what() const
+                        0x00002049    0x8  Code  Gb  iar_Raise.o [4]
+std::bad_typeid::what() const::string
+                        0x00001fdc    0xc  Data  Gb  iar_Raise.o [4]
+std::bad_typeid::~bad_typeid()
+                        0x00002001    0xc  Code  Gb  iar_Raise.o [4]
+std::bad_typeid::~bad_typeid() [deleting]
+                        0x00001ea9   0x12  Code  Gb  iar_Raise.o [4]
+std::exception::exception() [subobject]
+                        0x000016d5    0x2  Code  Gb  exception.o [4]
+std::exception::exception(const std::exception&) [subobject]
+                        0x000016d7    0x2  Code  Gb  exception.o [4]
+std::exception::what() const
+                        0x000016f1    0x4  Code  Gb  exception.o [4]
+std::exception::~exception()
+                        0x000016eb    0x2  Code  Gb  exception.o [4]
+std::exception::~exception() [deleting]
+                        0x000016e5    0x4  Code  Gb  exception.o [4]
+std::exception::~exception() [subobject]
+                        0x000016e9    0x2  Code  Gb  exception.o [4]
+std::terminate()        0x000010d5   0x1e  Code  Gb  arm_exceptions_terminate_c.o [5]
+std::type_info::name() const
+                        0x0000118d    0x4  Code  Gb  typeinfo.o [4]
+std::type_info::operator !=(const std::type_info&) const
+                        0x00001179   0x14  Code  Gb  typeinfo.o [4]
+std::type_info::operator ==(const std::type_info&) const
+                        0x00001165   0x14  Code  Gb  typeinfo.o [4]
+strlen                  0x000018d1         Code  Gb  strlen.o [5]
+ttio_guard              0x200000cf    0x1  Data  Lc  XShttio.o [3]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = dlpp7M_tl_nc.a
+[5] = rt7M_tl.a
+[6] = shb_l.a
+
+  7 257 bytes of readonly  code memory
+  1 038 bytes of readonly  data memory
+  3 678 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

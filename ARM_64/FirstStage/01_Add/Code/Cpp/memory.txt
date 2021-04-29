@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   1056	    304	      4	   1364	    554	out

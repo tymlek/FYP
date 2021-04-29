@@ -1,0 +1,175 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:33:35
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\AcmeO2Adapter.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWF48A.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\AcmeO2Adapter.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List\AcmeO2Adapter.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\Obj\AcmeO2Adapter.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\AcmeO2Adapter.c
+      1          #include <stdlib.h>
+      2          #include "AcmeO2Adapter.h"
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          int AcmeO2Adapter_gimmeO2Conc(AcmeO2Adapter* const me) {
+   \                     AcmeO2Adapter_gimmeO2Conc: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      5          	return me->itsAcmeO2SensorProxy->getO2Conc(me->itsAcmeO2SensorProxy);
+   \   00000004   0x6820             LDR      R0,[R4, #+0]
+   \   00000006   0x6821             LDR      R1,[R4, #+0]
+   \   00000008   0x6849             LDR      R1,[R1, #+4]
+   \   0000000A   0x4788             BLX      R1
+   \   0000000C   0xBD10             POP      {R4,PC}          ;; return
+      6          }
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          int AcmeO2Adapter_gimmeO2Flow(AcmeO2Adapter* const me) {
+   \                     AcmeO2Adapter_gimmeO2Flow: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      9          	return (me->itsAcmeO2SensorProxy->getO2Flow(me->itsAcmeO2SensorProxy) * 60) / 100;
+   \   00000004   0x6820             LDR      R0,[R4, #+0]
+   \   00000006   0x6821             LDR      R1,[R4, #+0]
+   \   00000008   0x6889             LDR      R1,[R1, #+8]
+   \   0000000A   0x4788             BLX      R1
+   \   0000000C   0x213C             MOVS     R1,#+60
+   \   0000000E   0x4348             MULS     R0,R1,R0
+   \   00000010   0x2164             MOVS     R1,#+100
+   \   00000012   0xFBB0 0xF0F1      UDIV     R0,R0,R1
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     10          }
+     11          
+
+   \                                 In section .text, align 2, keep-with-next
+     12          void AcmeO2Adapter_configure(AcmeO2Adapter* const me, AcmeO2SensorProxy* acmeO2SensorProxy) {
+     13          	me->itsAcmeO2SensorProxy = acmeO2SensorProxy;
+   \                     AcmeO2Adapter_configure: (+1)
+   \   00000000   0x6001             STR      R1,[R0, #+0]
+     14          }
+   \   00000002   0x4770             BX       LR               ;; return
+     15          
+
+   \                                 In section .text, align 2, keep-with-next
+     16          AcmeO2Adapter* AcmeO2Adapter_Create(void) {
+   \                     AcmeO2Adapter_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     17          	AcmeO2Adapter* me = (AcmeO2Adapter*)malloc(sizeof(AcmeO2Adapter));
+   \   00000002   0x200C             MOVS     R0,#+12
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+     18          
+     19          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??AcmeO2Adapter_Create_0
+     20          		AcmeO2Adapter_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       AcmeO2Adapter_Init
+     21          	}
+     22          
+     23          	return me;
+   \                     ??AcmeO2Adapter_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     24          }
+     25          
+
+   \                                 In section .text, align 2, keep-with-next
+     26          void AcmeO2Adapter_Destroy(AcmeO2Adapter* const me) {
+   \                     AcmeO2Adapter_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     27          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??AcmeO2Adapter_Destroy_0
+     28          		free(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       free
+     29          		//IO2Sensor_Cleanup(me);
+     30          	}
+     31          }
+   \                     ??AcmeO2Adapter_Destroy_0: (+1)
+   \   0000000E   0xBD10             POP      {R4,PC}          ;; return
+     32          
+
+   \                                 In section .text, align 2, keep-with-next
+     33          void AcmeO2Adapter_Init(AcmeO2Adapter* const me) {
+     34          	me->gimmeO2Conc = AcmeO2Adapter_gimmeO2Conc;
+   \                     AcmeO2Adapter_Init: (+1)
+   \   00000000   0x....             LDR.N    R1,??DataTable1
+   \   00000002   0x6041             STR      R1,[R0, #+4]
+     35          	me->gimmeO2Flow = AcmeO2Adapter_gimmeO2Flow;
+   \   00000004   0x....             LDR.N    R1,??DataTable1_1
+   \   00000006   0x6081             STR      R1,[R0, #+8]
+     36          }
+   \   00000008   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x........         DC32     AcmeO2Adapter_gimmeO2Conc
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x........         DC32     AcmeO2Adapter_gimmeO2Flow
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   AcmeO2Adapter_Create
+         8   -> AcmeO2Adapter_Init
+         8   -> malloc
+       8   AcmeO2Adapter_Destroy
+         8   -> free
+       0   AcmeO2Adapter_Init
+       0   AcmeO2Adapter_configure
+       8   AcmeO2Adapter_gimmeO2Conc
+         8   -- Indirect call
+       8   AcmeO2Adapter_gimmeO2Flow
+         8   -- Indirect call
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+      24  AcmeO2Adapter_Create
+      16  AcmeO2Adapter_Destroy
+      10  AcmeO2Adapter_Init
+       4  AcmeO2Adapter_configure
+      14  AcmeO2Adapter_gimmeO2Conc
+      24  AcmeO2Adapter_gimmeO2Flow
+
+ 
+ 100 bytes in section .text
+ 
+ 100 bytes of CODE memory
+
+Errors: none
+Warnings: none

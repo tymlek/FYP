@@ -1,0 +1,46 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "make && make assembler && make objectdump && make mem_size && make benchmark",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "make",
+            "problemMatcher": "$gcc"
+        },
+
+        {
+            "label": "assembly",
+            "type": "shell",
+            "command": "make assembler",
+            "problemMatcher": "$gcc"
+        },
+
+        {
+            "label": "objdump",
+            "type": "shell",
+            "command": "make objectdump",
+            "problemMatcher": "$gcc"
+        },
+        
+        {
+            "label": "size",
+            "type": "shell",
+            "command": "make mem_size",
+            "problemMatcher": "$gcc"
+        }
+        
+    ]
+}

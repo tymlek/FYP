@@ -1,0 +1,654 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:23:11
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\MotorProxy.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW705E.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\MotorProxy.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\Debug\List\MotorProxy.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\Debug\Obj\MotorProxy.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\01_HardwareProxyPattern\Code\Cpp\MotorProxy.cpp
+      1          #include "MotorProxy.h"
+      2          
+      3          //-----------------------------------------------------------------------------
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+      5          DirectionType MotorProxy::getMotorDirection() {
+   \                     _ZN10MotorProxy17getMotorDirectionEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0xB08A             SUB      SP,SP,#+40
+   \   00000004   0x0004             MOVS     R4,R0
+      6          	MotorData mData;
+      7          
+      8          	if (motorAddr == nullptr) {
+   \   00000006   0x6820             LDR      R0,[R4, #+0]
+   \   00000008   0x2800             CMP      R0,#+0
+   \   0000000A   0xD101             BNE.N    ??getMotorDirection_0
+      9          		return NO_DIRECTION;
+   \   0000000C   0x2000             MOVS     R0,#+0
+   \   0000000E   0xE007             B.N      ??getMotorDirection_1
+     10          	}
+     11          
+     12          	mData = unmarshal(*this->motorAddr);
+   \                     ??getMotorDirection_0: (+1)
+   \   00000010   0x6820             LDR      R0,[R4, #+0]
+   \   00000012   0x6802             LDR      R2,[R0, #+0]
+   \   00000014   0x0021             MOVS     R1,R4
+   \   00000016   0x4668             MOV      R0,SP
+   \   00000018   0x.... 0x....      BL       _ZN10MotorProxy9unmarshalEj
+     13          
+     14          	return mData.direction;
+   \   0000001C   0xF89D 0x0001      LDRB     R0,[SP, #+1]
+   \                     ??getMotorDirection_1: (+1)
+   \   00000020   0xB00A             ADD      SP,SP,#+40
+   \   00000022   0xBD10             POP      {R4,PC}          ;; return
+     15          }
+     16          
+     17          //-----------------------------------------------------------------------------
+     18          
+
+   \                                 In section .text, align 2, keep-with-next
+     19          unsigned int MotorProxy::getMotorSpeed() {
+   \                     _ZN10MotorProxy13getMotorSpeedEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0xB08A             SUB      SP,SP,#+40
+   \   00000004   0x0004             MOVS     R4,R0
+     20          	MotorData mData;
+     21          
+     22          	if (this->motorAddr == nullptr) {
+   \   00000006   0x6820             LDR      R0,[R4, #+0]
+   \   00000008   0x2800             CMP      R0,#+0
+   \   0000000A   0xD101             BNE.N    ??getMotorSpeed_0
+     23          		return 0;
+   \   0000000C   0x2000             MOVS     R0,#+0
+   \   0000000E   0xE006             B.N      ??getMotorSpeed_1
+     24          	}
+     25          
+     26          	mData = unmarshal(*this->motorAddr);
+   \                     ??getMotorSpeed_0: (+1)
+   \   00000010   0x6820             LDR      R0,[R4, #+0]
+   \   00000012   0x6802             LDR      R2,[R0, #+0]
+   \   00000014   0x0021             MOVS     R1,R4
+   \   00000016   0x4668             MOV      R0,SP
+   \   00000018   0x.... 0x....      BL       _ZN10MotorProxy9unmarshalEj
+     27          
+     28          	return mData.speed;
+   \   0000001C   0x9801             LDR      R0,[SP, #+4]
+   \                     ??getMotorSpeed_1: (+1)
+   \   0000001E   0xB00A             ADD      SP,SP,#+40
+   \   00000020   0xBD10             POP      {R4,PC}          ;; return
+     29          }
+     30          
+     31          //-----------------------------------------------------------------------------
+     32          
+
+   \                                 In section .text, align 2, keep-with-next
+     33          unsigned int MotorProxy::getMotorState() {
+   \                     _ZN10MotorProxy13getMotorStateEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0xB08A             SUB      SP,SP,#+40
+   \   00000004   0x0004             MOVS     R4,R0
+     34          	MotorData mData;
+     35          
+     36          	if (this->motorAddr == nullptr) {
+   \   00000006   0x6820             LDR      R0,[R4, #+0]
+   \   00000008   0x2800             CMP      R0,#+0
+   \   0000000A   0xD101             BNE.N    ??getMotorState_0
+     37          		return 0;
+   \   0000000C   0x2000             MOVS     R0,#+0
+   \   0000000E   0xE006             B.N      ??getMotorState_1
+     38          	}
+     39          
+     40          	mData = unmarshal(*this->motorAddr);
+   \                     ??getMotorState_0: (+1)
+   \   00000010   0x6820             LDR      R0,[R4, #+0]
+   \   00000012   0x6802             LDR      R2,[R0, #+0]
+   \   00000014   0x0021             MOVS     R1,R4
+   \   00000016   0x4668             MOV      R0,SP
+   \   00000018   0x.... 0x....      BL       _ZN10MotorProxy9unmarshalEj
+     41          
+     42          	return mData.errorStatus;
+   \   0000001C   0x9802             LDR      R0,[SP, #+8]
+   \                     ??getMotorState_1: (+1)
+   \   0000001E   0xB00A             ADD      SP,SP,#+40
+   \   00000020   0xBD10             POP      {R4,PC}          ;; return
+     43          }
+     44          
+     45          //-----------------------------------------------------------------------------
+     46          
+
+   \                                 In section .text, align 2, keep-with-next
+     47          void MotorProxy::clearErrorStatus() {
+     48          	if (this->motorAddr == nullptr) {
+   \                     _ZN10MotorProxy16clearErrorStatusEv: (+1)
+   \   00000000   0x6801             LDR      R1,[R0, #+0]
+   \   00000002   0x2900             CMP      R1,#+0
+   \   00000004   0xD005             BEQ.N    ??clearErrorStatus_0
+     49          		return;
+     50          	}
+     51          
+     52          	*this->motorAddr &= 0xFF;
+   \                     ??clearErrorStatus_1: (+1)
+   \   00000006   0x6801             LDR      R1,[R0, #+0]
+   \   00000008   0x7809             LDRB     R1,[R1, #+0]
+   \   0000000A   0xF001 0x01FF      AND      R1,R1,#0xFF
+   \   0000000E   0x6802             LDR      R2,[R0, #+0]
+   \   00000010   0x6011             STR      R1,[R2, #+0]
+     53          }
+   \                     ??clearErrorStatus_0: (+1)
+   \   00000012   0x4770             BX       LR               ;; return
+     54          
+     55          //-----------------------------------------------------------------------------
+     56          
+
+   \                                 In section .text, align 2, keep-with-next
+     57          void MotorProxy::configure(unsigned int length, unsigned int* location) {
+     58          	this->rotaryArmLength = length;
+   \                     _ZN10MotorProxy9configureEjPj: (+1)
+   \   00000000   0x6041             STR      R1,[R0, #+4]
+     59          	this->motorAddr = location;
+   \   00000002   0x6002             STR      R2,[R0, #+0]
+     60          }
+   \   00000004   0x4770             BX       LR               ;; return
+     61          
+     62          //-----------------------------------------------------------------------------
+     63          
+
+   \                                 In section .text, align 2, keep-with-next
+     64          void MotorProxy::disable() {
+     65          	if (this->motorAddr == nullptr) {
+   \                     _ZN10MotorProxy7disableEv: (+1)
+   \   00000000   0x6801             LDR      R1,[R0, #+0]
+   \   00000002   0x2900             CMP      R1,#+0
+   \   00000004   0xD006             BEQ.N    ??disable_0
+     66          		return;
+     67          	}
+     68          
+     69          	*this->motorAddr &= 0xFFFE;
+   \                     ??disable_1: (+1)
+   \   00000006   0x6801             LDR      R1,[R0, #+0]
+   \   00000008   0x680A             LDR      R2,[R1, #+0]
+   \   0000000A   0xF64F 0x71FE      MOVW     R1,#+65534
+   \   0000000E   0x400A             ANDS     R2,R1,R2
+   \   00000010   0x6801             LDR      R1,[R0, #+0]
+   \   00000012   0x600A             STR      R2,[R1, #+0]
+     70          }
+   \                     ??disable_0: (+1)
+   \   00000014   0x4770             BX       LR               ;; return
+     71          
+     72          //-----------------------------------------------------------------------------
+     73          
+
+   \                                 In section .text, align 2, keep-with-next
+     74          void MotorProxy::enable() {
+     75          	if (this->motorAddr == nullptr) {
+   \                     _ZN10MotorProxy6enableEv: (+1)
+   \   00000000   0x6801             LDR      R1,[R0, #+0]
+   \   00000002   0x2900             CMP      R1,#+0
+   \   00000004   0xD005             BEQ.N    ??enable_0
+     76          		return;
+     77          	}
+     78          
+     79          	*this->motorAddr |= 1;
+   \                     ??enable_1: (+1)
+   \   00000006   0x6801             LDR      R1,[R0, #+0]
+   \   00000008   0x6809             LDR      R1,[R1, #+0]
+   \   0000000A   0xF051 0x0101      ORRS     R1,R1,#0x1
+   \   0000000E   0x6802             LDR      R2,[R0, #+0]
+   \   00000010   0x6011             STR      R1,[R2, #+0]
+     80          }
+   \                     ??enable_0: (+1)
+   \   00000012   0x4770             BX       LR               ;; return
+     81          
+     82          //-----------------------------------------------------------------------------
+     83          
+
+   \                                 In section .text, align 2, keep-with-next
+     84          void MotorProxy::initialize() {
+   \                     _ZN10MotorProxy10initializeEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0xB08A             SUB      SP,SP,#+40
+   \   00000004   0x0004             MOVS     R4,R0
+     85          	MotorData mData;
+     86          
+     87          	if (this->motorAddr == nullptr) {
+   \   00000006   0x6820             LDR      R0,[R4, #+0]
+   \   00000008   0x2800             CMP      R0,#+0
+   \   0000000A   0xD01D             BEQ.N    ??initialize_0
+     88          		return;
+     89          	}
+     90          
+     91          	mData.on_off = 1;
+   \                     ??initialize_1: (+1)
+   \   0000000C   0x2001             MOVS     R0,#+1
+   \   0000000E   0xF88D 0x0000      STRB     R0,[SP, #+0]
+     92          	mData.direction = NO_DIRECTION;
+   \   00000012   0x2000             MOVS     R0,#+0
+   \   00000014   0xF88D 0x0001      STRB     R0,[SP, #+1]
+     93          	mData.speed = 0;
+   \   00000018   0x2000             MOVS     R0,#+0
+   \   0000001A   0x9001             STR      R0,[SP, #+4]
+     94          	mData.errorStatus = 0;
+   \   0000001C   0x2000             MOVS     R0,#+0
+   \   0000001E   0x9002             STR      R0,[SP, #+8]
+     95          	mData.noPowerError = 0;
+   \   00000020   0x2000             MOVS     R0,#+0
+   \   00000022   0x9003             STR      R0,[SP, #+12]
+     96          	mData.noTorqueError = 0;
+   \   00000024   0x2000             MOVS     R0,#+0
+   \   00000026   0x9004             STR      R0,[SP, #+16]
+     97          	mData.BITError = 0;
+   \   00000028   0x2000             MOVS     R0,#+0
+   \   0000002A   0x9005             STR      R0,[SP, #+20]
+     98          	mData.overTemperatureError = 0;
+   \   0000002C   0x2000             MOVS     R0,#+0
+   \   0000002E   0x9006             STR      R0,[SP, #+24]
+     99          	mData.reservedError1 = 0;
+   \   00000030   0x2000             MOVS     R0,#+0
+   \   00000032   0x9007             STR      R0,[SP, #+28]
+    100          	mData.reservedError2 = 0;
+   \   00000034   0x2000             MOVS     R0,#+0
+   \   00000036   0x9008             STR      R0,[SP, #+32]
+    101          	mData.unknownError = 0;
+   \   00000038   0x2000             MOVS     R0,#+0
+   \   0000003A   0x9009             STR      R0,[SP, #+36]
+    102          
+    103          	*this->motorAddr = marshal(mData);
+   \   0000003C   0x4669             MOV      R1,SP
+   \   0000003E   0x0020             MOVS     R0,R4
+   \   00000040   0x.... 0x....      BL       _ZN10MotorProxy7marshalERK9MotorData
+   \   00000044   0x6821             LDR      R1,[R4, #+0]
+   \   00000046   0x6008             STR      R0,[R1, #+0]
+    104          }
+   \                     ??initialize_0: (+1)
+   \   00000048   0xB00A             ADD      SP,SP,#+40
+   \   0000004A   0xBD10             POP      {R4,PC}          ;; return
+    105          
+    106          //-----------------------------------------------------------------------------
+    107          
+
+   \                                 In section .text, align 2, keep-with-next
+    108          void MotorProxy::setMotorSpeed(const DirectionType direction, unsigned int speed) {
+   \                     _ZN10MotorProxy13setMotorSpeedE13DirectionTypej: (+1)
+   \   00000000   0xE92D 0x4F70      PUSH     {R4-R6,R8-R11,LR}
+   \   00000004   0xB08C             SUB      SP,SP,#+48
+   \   00000006   0x0004             MOVS     R4,R0
+   \   00000008   0x000D             MOVS     R5,R1
+   \   0000000A   0x0016             MOVS     R6,R2
+    109          	MotorData mData;
+    110          
+    111          	double dPi;
+                 	       ^
+Warning[Pe177]: variable "dPi" was declared but never referenced
+    112          	double dArmLength;
+    113          	double dSpeed;
+    114          	double dAdjSpeed;
+    115          
+    116          	if (this->motorAddr == nullptr) {
+   \   0000000C   0x6820             LDR      R0,[R4, #+0]
+   \   0000000E   0x2800             CMP      R0,#+0
+   \   00000010   0xD036             BEQ.N    ??setMotorSpeed_0
+    117          		return;
+    118          	}
+    119          
+    120          	mData = unmarshal(*this->motorAddr);
+   \                     ??setMotorSpeed_1: (+1)
+   \   00000012   0x6820             LDR      R0,[R4, #+0]
+   \   00000014   0x6802             LDR      R2,[R0, #+0]
+   \   00000016   0x0021             MOVS     R1,R4
+   \   00000018   0xA802             ADD      R0,SP,#+8
+   \   0000001A   0x.... 0x....      BL       _ZN10MotorProxy9unmarshalEj
+    121          	mData.direction = direction;
+   \   0000001E   0xF88D 0x5009      STRB     R5,[SP, #+9]
+    122          
+    123          	if (this->rotaryArmLength > 0) {
+   \   00000022   0x6860             LDR      R0,[R4, #+4]
+   \   00000024   0x2800             CMP      R0,#+0
+   \   00000026   0xD024             BEQ.N    ??setMotorSpeed_2
+    124          		dSpeed = speed;
+   \   00000028   0x0030             MOVS     R0,R6
+   \   0000002A   0x.... 0x....      BL       __aeabi_ui2d
+   \   0000002E   0x4680             MOV      R8,R0
+   \   00000030   0x4689             MOV      R9,R1
+    125          		dArmLength = this->rotaryArmLength;
+   \   00000032   0x6860             LDR      R0,[R4, #+4]
+   \   00000034   0x.... 0x....      BL       __aeabi_ui2d
+   \   00000038   0xE9CD 0x0100      STRD     R0,R1,[SP, #+0]
+    126          		dAdjSpeed = dSpeed / 2.0 / 3.14159 / dArmLength * 10.0;
+   \   0000003C   0x4640             MOV      R0,R8
+   \   0000003E   0x4649             MOV      R1,R9
+   \   00000040   0x2200             MOVS     R2,#+0
+   \   00000042   0xF05F 0x4380      MOVS     R3,#+1073741824
+   \   00000046   0x.... 0x....      BL       __aeabi_ddiv
+   \   0000004A   0x....             LDR.N    R2,??DataTable1  ;; 0xf01b866e
+   \   0000004C   0x....             LDR.N    R3,??DataTable1_1  ;; 0x400921f9
+   \   0000004E   0x.... 0x....      BL       __aeabi_ddiv
+   \   00000052   0xE9DD 0x2300      LDRD     R2,R3,[SP, #+0]
+   \   00000056   0x.... 0x....      BL       __aeabi_ddiv
+   \   0000005A   0x2200             MOVS     R2,#+0
+   \   0000005C   0x....             LDR.N    R3,??DataTable1_2  ;; 0x40240000
+   \   0000005E   0x.... 0x....      BL       __aeabi_dmul
+   \   00000062   0x4682             MOV      R10,R0
+   \   00000064   0x468B             MOV      R11,R1
+    127          		mData.speed = (int)dAdjSpeed;
+   \   00000066   0x4650             MOV      R0,R10
+   \   00000068   0x4659             MOV      R1,R11
+   \   0000006A   0x.... 0x....      BL       __aeabi_d2iz
+   \   0000006E   0x9003             STR      R0,[SP, #+12]
+   \   00000070   0xE000             B.N      ??setMotorSpeed_3
+    128          	}
+    129          	else {
+    130          		mData.speed = speed;
+   \                     ??setMotorSpeed_2: (+1)
+   \   00000072   0x9603             STR      R6,[SP, #+12]
+    131          	}
+    132          
+    133          	*this->motorAddr = marshal(mData);
+   \                     ??setMotorSpeed_3: (+1)
+   \   00000074   0xA902             ADD      R1,SP,#+8
+   \   00000076   0x0020             MOVS     R0,R4
+   \   00000078   0x.... 0x....      BL       _ZN10MotorProxy7marshalERK9MotorData
+   \   0000007C   0x6821             LDR      R1,[R4, #+0]
+   \   0000007E   0x6008             STR      R0,[R1, #+0]
+    134          }
+   \                     ??setMotorSpeed_0: (+1)
+   \   00000080   0xB00C             ADD      SP,SP,#+48
+   \   00000082   0xE8BD 0x8F70      POP      {R4-R6,R8-R11,PC}  ;; return
+    135          
+    136          //-----------------------------------------------------------------------------
+    137          
+
+   \                                 In section .text, align 2, keep-with-next
+    138          unsigned int MotorProxy::marshal(const MotorData& mData) {
+   \                     _ZN10MotorProxy7marshalERK9MotorData: (+1)
+   \   00000000   0x0003             MOVS     R3,R0
+    139          	unsigned int deviceCmd;
+    140          
+    141          	deviceCmd = 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+    142          	if (mData.on_off) {
+   \   00000004   0x780A             LDRB     R2,[R1, #+0]
+   \   00000006   0x2A00             CMP      R2,#+0
+   \   00000008   0xD001             BEQ.N    ??marshal_0
+    143          		deviceCmd |= 1;
+   \   0000000A   0xF050 0x0001      ORRS     R0,R0,#0x1
+    144          	}
+    145          
+    146          	if (mData.direction == FORWARD) {
+   \                     ??marshal_0: (+1)
+   \   0000000E   0x784A             LDRB     R2,[R1, #+1]
+   \   00000010   0x2A01             CMP      R2,#+1
+   \   00000012   0xD102             BNE.N    ??marshal_1
+    147          		deviceCmd |= (1 << 2);
+   \   00000014   0xF050 0x0004      ORRS     R0,R0,#0x4
+   \   00000018   0xE004             B.N      ??marshal_2
+    148          	}
+    149          	else if (mData.direction == REVERSE) {
+   \                     ??marshal_1: (+1)
+   \   0000001A   0x784A             LDRB     R2,[R1, #+1]
+   \   0000001C   0x2A02             CMP      R2,#+2
+   \   0000001E   0xD101             BNE.N    ??marshal_2
+    150          		deviceCmd |= (1 << 1);
+   \   00000020   0xF050 0x0002      ORRS     R0,R0,#0x2
+    151          	}
+    152          
+    153          	if (mData.speed < 32 && mData.speed >= 0) {
+                 	                                    ^
+Warning[Pe186]: pointless comparison of unsigned integer with zero
+   \                     ??marshal_2: (+1)
+   \   00000024   0x684A             LDR      R2,[R1, #+4]
+   \   00000026   0x2A20             CMP      R2,#+32
+   \   00000028   0xD202             BCS.N    ??marshal_3
+    154          		deviceCmd |= (mData.speed << 3);
+   \   0000002A   0x684A             LDR      R2,[R1, #+4]
+   \   0000002C   0xEA50 0x00C2      ORRS     R0,R0,R2, LSL #+3
+    155          	}
+    156          
+    157          	if (mData.errorStatus) {
+   \                     ??marshal_3: (+1)
+   \   00000030   0x688A             LDR      R2,[R1, #+8]
+   \   00000032   0x2A00             CMP      R2,#+0
+   \   00000034   0xD001             BEQ.N    ??marshal_4
+    158          		deviceCmd |= (1 << 8);
+   \   00000036   0xF450 0x7080      ORRS     R0,R0,#0x100
+    159          	}
+    160          
+    161          	if (mData.noPowerError) {
+   \                     ??marshal_4: (+1)
+   \   0000003A   0x68CA             LDR      R2,[R1, #+12]
+   \   0000003C   0x2A00             CMP      R2,#+0
+   \   0000003E   0xD001             BEQ.N    ??marshal_5
+    162          		deviceCmd |= (1 << 9);
+   \   00000040   0xF450 0x7000      ORRS     R0,R0,#0x200
+    163          	}
+    164          
+    165          	if (mData.noTorqueError) {
+   \                     ??marshal_5: (+1)
+   \   00000044   0x690A             LDR      R2,[R1, #+16]
+   \   00000046   0x2A00             CMP      R2,#+0
+   \   00000048   0xD001             BEQ.N    ??marshal_6
+    166          		deviceCmd |= (1 << 10);
+   \   0000004A   0xF450 0x6080      ORRS     R0,R0,#0x400
+    167          	}
+    168          
+    169          	if (mData.BITError) {
+   \                     ??marshal_6: (+1)
+   \   0000004E   0x694A             LDR      R2,[R1, #+20]
+   \   00000050   0x2A00             CMP      R2,#+0
+   \   00000052   0xD001             BEQ.N    ??marshal_7
+    170          		deviceCmd |= (1 << 11);
+   \   00000054   0xF450 0x6000      ORRS     R0,R0,#0x800
+    171          	}
+    172          
+    173          	if (mData.overTemperatureError) {
+   \                     ??marshal_7: (+1)
+   \   00000058   0x698A             LDR      R2,[R1, #+24]
+   \   0000005A   0x2A00             CMP      R2,#+0
+   \   0000005C   0xD001             BEQ.N    ??marshal_8
+    174          		deviceCmd |= (1 << 12);
+   \   0000005E   0xF450 0x5080      ORRS     R0,R0,#0x1000
+    175          	}
+    176          
+    177          	if (mData.reservedError1) {
+   \                     ??marshal_8: (+1)
+   \   00000062   0x69CA             LDR      R2,[R1, #+28]
+   \   00000064   0x2A00             CMP      R2,#+0
+   \   00000066   0xD001             BEQ.N    ??marshal_9
+    178          		deviceCmd |= (1 << 13);
+   \   00000068   0xF450 0x5000      ORRS     R0,R0,#0x2000
+    179          	}
+    180          
+    181          	if (mData.reservedError2) {
+   \                     ??marshal_9: (+1)
+   \   0000006C   0x6A0A             LDR      R2,[R1, #+32]
+   \   0000006E   0x2A00             CMP      R2,#+0
+   \   00000070   0xD001             BEQ.N    ??marshal_10
+    182          		deviceCmd |= (1 << 14);
+   \   00000072   0xF450 0x4080      ORRS     R0,R0,#0x4000
+    183          	}
+    184          
+    185          	if (mData.unknownError) {
+   \                     ??marshal_10: (+1)
+   \   00000076   0x6A4A             LDR      R2,[R1, #+36]
+   \   00000078   0x2A00             CMP      R2,#+0
+   \   0000007A   0xD001             BEQ.N    ??marshal_11
+    186          		deviceCmd |= (1 << 15);
+   \   0000007C   0xF450 0x4000      ORRS     R0,R0,#0x8000
+    187          	}
+    188          
+    189          	return deviceCmd;
+   \                     ??marshal_11: (+1)
+   \   00000080   0x4770             BX       LR               ;; return
+    190          }
+    191          
+    192          //-----------------------------------------------------------------------------
+    193          
+
+   \                                 In section .text, align 2, keep-with-next
+    194          MotorData MotorProxy::unmarshal(unsigned int encodedMData) {
+   \                     _ZN10MotorProxy9unmarshalEj: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0xB08A             SUB      SP,SP,#+40
+   \   00000004   0x000C             MOVS     R4,R1
+   \   00000006   0x0015             MOVS     R5,R2
+    195          	MotorData mData;
+    196          	int temp;
+    197          
+    198          	mData.on_off = encodedMData & 1;
+   \   00000008   0xF015 0x0101      ANDS     R1,R5,#0x1
+   \   0000000C   0xF88D 0x1000      STRB     R1,[SP, #+0]
+    199          	temp = (encodedMData & (3 << 1)) >> 1;
+   \   00000010   0xF3C5 0x0641      UBFX     R6,R5,#+1,#+2
+    200          
+    201          	if (temp == 1) {
+   \   00000014   0x2E01             CMP      R6,#+1
+   \   00000016   0xD103             BNE.N    ??unmarshal_0
+    202          		mData.direction = REVERSE;
+   \   00000018   0x2102             MOVS     R1,#+2
+   \   0000001A   0xF88D 0x1001      STRB     R1,[SP, #+1]
+   \   0000001E   0xE008             B.N      ??unmarshal_1
+    203          	}
+    204          	else if (temp == 2) {
+   \                     ??unmarshal_0: (+1)
+   \   00000020   0x2E02             CMP      R6,#+2
+   \   00000022   0xD103             BNE.N    ??unmarshal_2
+    205          		mData.direction = FORWARD;
+   \   00000024   0x2101             MOVS     R1,#+1
+   \   00000026   0xF88D 0x1001      STRB     R1,[SP, #+1]
+   \   0000002A   0xE002             B.N      ??unmarshal_1
+    206          	}
+    207          	else {
+    208          		mData.direction = NO_DIRECTION;
+   \                     ??unmarshal_2: (+1)
+   \   0000002C   0x2100             MOVS     R1,#+0
+   \   0000002E   0xF88D 0x1001      STRB     R1,[SP, #+1]
+    209          	}
+    210          
+    211          	mData.speed = (encodedMData & (31 << 3)) >> 3;
+   \                     ??unmarshal_1: (+1)
+   \   00000032   0xF3C5 0x01C4      UBFX     R1,R5,#+3,#+5
+   \   00000036   0x9101             STR      R1,[SP, #+4]
+    212          	mData.errorStatus = (encodedMData & (1 << 8));
+   \   00000038   0xF415 0x7180      ANDS     R1,R5,#0x100
+   \   0000003C   0x9102             STR      R1,[SP, #+8]
+    213          	mData.noPowerError = (encodedMData & (1 << 9));
+   \   0000003E   0xF415 0x7100      ANDS     R1,R5,#0x200
+   \   00000042   0x9103             STR      R1,[SP, #+12]
+    214          	mData.noTorqueError = (encodedMData & (1 << 10));
+   \   00000044   0xF415 0x6180      ANDS     R1,R5,#0x400
+   \   00000048   0x9104             STR      R1,[SP, #+16]
+    215          	mData.BITError = (encodedMData & (1 << 11));
+   \   0000004A   0xF415 0x6100      ANDS     R1,R5,#0x800
+   \   0000004E   0x9105             STR      R1,[SP, #+20]
+    216          	mData.overTemperatureError = (encodedMData & (1 << 12));
+   \   00000050   0xF415 0x5180      ANDS     R1,R5,#0x1000
+   \   00000054   0x9106             STR      R1,[SP, #+24]
+    217          	mData.reservedError1 = (encodedMData & (1 << 13));
+   \   00000056   0xF415 0x5100      ANDS     R1,R5,#0x2000
+   \   0000005A   0x9107             STR      R1,[SP, #+28]
+    218          	mData.reservedError2 = (encodedMData & (1 << 14));
+   \   0000005C   0xF415 0x4180      ANDS     R1,R5,#0x4000
+   \   00000060   0x9108             STR      R1,[SP, #+32]
+    219          	mData.unknownError = (encodedMData & (1 << 15));
+   \   00000062   0xF415 0x4100      ANDS     R1,R5,#0x8000
+   \   00000066   0x9109             STR      R1,[SP, #+36]
+    220          
+    221          	return mData;
+   \   00000068   0x4669             MOV      R1,SP
+   \   0000006A   0x2228             MOVS     R2,#+40
+   \   0000006C   0x.... 0x....      BL       __aeabi_memcpy4
+   \   00000070   0xB00A             ADD      SP,SP,#+40
+   \   00000072   0xBD70             POP      {R4-R6,PC}       ;; return
+    222          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0xF01B866E         DC32     0xf01b866e
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x400921F9         DC32     0x400921f9
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   0x40240000         DC32     0x40240000
+    223          
+    224          //-----------------------------------------------------------------------------
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   MotorProxy::clearErrorStatus()
+       0   MotorProxy::configure(unsigned int, unsigned int *)
+       0   MotorProxy::disable()
+       0   MotorProxy::enable()
+      48   MotorProxy::getMotorDirection()
+        48   -> MotorProxy::unmarshal(unsigned int)
+      48   MotorProxy::getMotorSpeed()
+        48   -> MotorProxy::unmarshal(unsigned int)
+      48   MotorProxy::getMotorState()
+        48   -> MotorProxy::unmarshal(unsigned int)
+      48   MotorProxy::initialize()
+        48   -> MotorProxy::marshal(MotorData const &)
+       0   MotorProxy::marshal(MotorData const &)
+      80   MotorProxy::setMotorSpeed(DirectionType, unsigned int)
+        80   -> MotorProxy::marshal(MotorData const &)
+        80   -> MotorProxy::unmarshal(unsigned int)
+        80   -> __aeabi_d2iz
+        80   -> __aeabi_ddiv
+        80   -> __aeabi_dmul
+        80   -> __aeabi_ui2d
+      56   MotorProxy::unmarshal(unsigned int)
+        56   -> __aeabi_memcpy4
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_2
+      20  MotorProxy::clearErrorStatus()
+       6  MotorProxy::configure(unsigned int, unsigned int *)
+      22  MotorProxy::disable()
+      20  MotorProxy::enable()
+      36  MotorProxy::getMotorDirection()
+      34  MotorProxy::getMotorSpeed()
+      34  MotorProxy::getMotorState()
+      76  MotorProxy::initialize()
+     130  MotorProxy::marshal(MotorData const &)
+     134  MotorProxy::setMotorSpeed(DirectionType, unsigned int)
+     116  MotorProxy::unmarshal(unsigned int)
+
+ 
+ 640 bytes in section .text
+ 
+ 640 bytes of CODE memory
+
+Errors: none
+Warnings: 2

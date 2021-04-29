@@ -1,0 +1,122 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  18:14:45
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWBFB7.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\Cpp\main.cpp
+      1          /* Simple template class in C++ */
+      2          
+      3          template<typename T>
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp A<int>::subobject A(int)
+   \                     _ZN1AIiEC2Ei: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      4          class A {
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN1AIiEC1Ei
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+      5          	public:
+      6          	A(T init);
+      7          	T f();
+      8          	private:
+      9          	T value;
+     10          };
+     11          
+     12          template<typename T>
+
+   \                                 In section .text, align 2
+     13          A<T>::A(T init) {
+     14          	value = init;
+   \   __code __interwork __softfp A<int>::A(int)
+   \                     _ZN1AIiEC1Ei: (+1)
+   \   00000000   0x6001             STR      R1,[R0, #+0]
+     15          }
+   \   00000002   0x4770             BX       LR               ;; return
+     16          
+     17          template<typename T>
+
+   \                                 In section .text, align 2
+     18          T A<T>::f() {
+     19          	return value;
+   \   __interwork __softfp int A<int>::f()
+   \                     _ZN1AIiE1fEv: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+     20          }
+     21          
+
+   \                                 In section .text, align 2, keep-with-next
+     22          int main() {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     23          	A<int> a(1);
+   \   00000002   0x2101             MOVS     R1,#+1
+   \   00000004   0x4668             MOV      R0,SP
+   \   00000006   0x.... 0x....      BL       _ZN1AIiEC1Ei
+     24          	a.f();
+   \   0000000A   0x.... 0x....      BL       _ZN1AIiE1fEv
+     25          	
+     26          	while (1) {
+   \                     ??main_0: (+1)
+   \   0000000E   0xE7FE             B.N      ??main_0
+     27          		
+     28          	}
+     29          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   A<int>::A(int)
+       0   A<int>::f()
+       8   A<int>::subobject A(int)
+         8   -> A<int>::A(int)
+       8   main
+         8   -> A<int>::A(int)
+         8   -> A<int>::f()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  A<int>::A(int)
+       4  A<int>::f()
+      12  A<int>::subobject A(int)
+      16  main
+
+ 
+ 36 bytes in section .text
+ 
+ 16 bytes of CODE memory (+ 20 bytes shared)
+
+Errors: none
+Warnings: none

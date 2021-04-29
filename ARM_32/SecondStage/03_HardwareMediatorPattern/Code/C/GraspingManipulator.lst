@@ -1,0 +1,112 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  15:49:22
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\GraspingManipulator.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWFF55.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\GraspingManipulator.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List\GraspingManipulator.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj\GraspingManipulator.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\GraspingManipulator.c
+      1          #include "GraspingManipulator.h"
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          int GraspingManipulator_open(GraspingManipulator* const me) {
+   \                     GraspingManipulator_open: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+      4          	return 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x4770             BX       LR               ;; return
+      5          }
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          int GraspingManipulator_close(GraspingManipulator* const me) {
+   \                     GraspingManipulator_close: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+      8          	return 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x4770             BX       LR               ;; return
+      9          }
+     10          
+
+   \                                 In section .text, align 2, keep-with-next
+     11          int GraspingManipulator_setMaxForce(GraspingManipulator* const me, int m) {
+   \                     GraspingManipulator_setMaxForce: (+1)
+   \   00000000   0x0002             MOVS     R2,R0
+     12          	me->maxForce = m;
+   \   00000002   0x6011             STR      R1,[R2, #+0]
+     13          
+     14          	if (me->maxForce == m) {
+   \   00000004   0x6810             LDR      R0,[R2, #+0]
+   \   00000006   0x4288             CMP      R0,R1
+   \   00000008   0xD101             BNE.N    ??GraspingManipulator_setMaxForce_0
+     15          		return 0;
+   \   0000000A   0x2000             MOVS     R0,#+0
+   \   0000000C   0xE001             B.N      ??GraspingManipulator_setMaxForce_1
+     16          	}
+     17          
+     18          	return -1;
+   \                     ??GraspingManipulator_setMaxForce_0: (+1)
+   \   0000000E   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??GraspingManipulator_setMaxForce_1: (+1)
+   \   00000012   0x4770             BX       LR               ;; return
+     19          }
+     20          
+
+   \                                 In section .text, align 2, keep-with-next
+     21          int GraspingManipulator_getClosure(const GraspingManipulator* const me) {
+     22          	return me->maxForce;
+   \                     GraspingManipulator_getClosure: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+     23          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   GraspingManipulator_close
+       0   GraspingManipulator_getClosure
+       0   GraspingManipulator_open
+       0   GraspingManipulator_setMaxForce
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  GraspingManipulator_close
+       4  GraspingManipulator_getClosure
+       6  GraspingManipulator_open
+      20  GraspingManipulator_setMaxForce
+
+ 
+ 36 bytes in section .text
+ 
+ 36 bytes of CODE memory
+
+Errors: none
+Warnings: none

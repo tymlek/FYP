@@ -1,0 +1,141 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  15:36:11
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW8F30.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\C\main.c
+      1          /* C style substitute for inheritance */
+      2          
+      3          struct Parent {
+      4          	int value;
+      5          };
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void ParConstructor(struct Parent* this) {
+      8          	this->value = 1;
+   \                     ParConstructor: (+1)
+   \   00000000   0x2101             MOVS     R1,#+1
+   \   00000002   0x6001             STR      R1,[R0, #+0]
+      9          }
+   \   00000004   0x4770             BX       LR               ;; return
+     10          
+
+   \                                 In section .text, align 2, keep-with-next
+     11          int func_Par(struct Parent* this) {
+     12          	return this->value;
+   \                     func_Par: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+     13          }
+     14          
+     15          struct Child {
+     16          	struct Parent parent;
+     17          	int sec_value;
+     18          };
+     19          
+
+   \                                 In section .text, align 2, keep-with-next
+     20          void ChildConstructor(struct Child* this) {
+   \                     ChildConstructor: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     21          	ParConstructor(&this->parent);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       ParConstructor
+     22          	this->sec_value = 2;
+   \   0000000A   0x2002             MOVS     R0,#+2
+   \   0000000C   0x6060             STR      R0,[R4, #+4]
+     23          }
+   \   0000000E   0xBD10             POP      {R4,PC}          ;; return
+     24          
+
+   \                                 In section .text, align 2, keep-with-next
+     25          int func_Child(struct Child* this) {
+     26          	return this->sec_value;
+   \                     func_Child: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+     27          }
+     28          
+
+   \                                 In section .text, align 2, keep-with-next
+     29          int main() {
+   \                     main: (+1)
+   \   00000000   0xB5E0             PUSH     {R5-R7,LR}
+     30          	struct Child child;
+     31          
+     32          	ChildConstructor(&child);
+   \   00000002   0x4668             MOV      R0,SP
+   \   00000004   0x.... 0x....      BL       ChildConstructor
+     33          	func_Par((struct Parent*)&child);
+   \   00000008   0x4668             MOV      R0,SP
+   \   0000000A   0x.... 0x....      BL       func_Par
+     34          	func_Child(&child);
+   \   0000000E   0x4668             MOV      R0,SP
+   \   00000010   0x.... 0x....      BL       func_Child
+     35          	
+     36          	while (1) {
+   \                     ??main_0: (+1)
+   \   00000014   0xE7FE             B.N      ??main_0
+     37          		
+     38          	}
+     39          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   ChildConstructor
+         8   -> ParConstructor
+       0   ParConstructor
+       0   func_Child
+       0   func_Par
+      16   main
+        16   -> ChildConstructor
+        16   -> func_Child
+        16   -> func_Par
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      16  ChildConstructor
+       6  ParConstructor
+       4  func_Child
+       4  func_Par
+      22  main
+
+ 
+ 52 bytes in section .text
+ 
+ 52 bytes of CODE memory
+
+Errors: none
+Warnings: none

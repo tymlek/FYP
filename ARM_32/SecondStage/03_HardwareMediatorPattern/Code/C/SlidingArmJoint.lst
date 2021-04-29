@@ -1,0 +1,117 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  15:49:22
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\SlidingArmJoint.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW24.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\SlidingArmJoint.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List\SlidingArmJoint.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj\SlidingArmJoint.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\SlidingArmJoint.c
+      1          #include "SlidingArmJoint.h"
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          int SlidingArmJoint_getLength(const SlidingArmJoint* const me) {
+      4          	return me->currentLength;
+   \                     SlidingArmJoint_getLength: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+      5          }
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          int SlidingArmJoint_setLength(SlidingArmJoint* const me, int x) {
+   \                     SlidingArmJoint_setLength: (+1)
+   \   00000000   0x0002             MOVS     R2,R0
+      8          	if ((x > me->minArmLength) && (x < me->maxArmLength)) {
+   \   00000002   0x6850             LDR      R0,[R2, #+4]
+   \   00000004   0x4288             CMP      R0,R1
+   \   00000006   0xDA05             BGE.N    ??SlidingArmJoint_setLength_0
+   \   00000008   0x6890             LDR      R0,[R2, #+8]
+   \   0000000A   0x4281             CMP      R1,R0
+   \   0000000C   0xDA02             BGE.N    ??SlidingArmJoint_setLength_0
+      9          		me->currentLength = x;
+   \   0000000E   0x6011             STR      R1,[R2, #+0]
+     10          		return 0;
+   \   00000010   0x2000             MOVS     R0,#+0
+   \   00000012   0xE001             B.N      ??SlidingArmJoint_setLength_1
+     11          	}
+     12          
+     13          	return -1;
+   \                     ??SlidingArmJoint_setLength_0: (+1)
+   \   00000014   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??SlidingArmJoint_setLength_1: (+1)
+   \   00000018   0x4770             BX       LR               ;; return
+     14          }
+     15          
+
+   \                                 In section .text, align 2, keep-with-next
+     16          int SlidingArmJoint_zero(SlidingArmJoint* const me) {
+   \                     SlidingArmJoint_zero: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     17          	me->currentLength = 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x6008             STR      R0,[R1, #+0]
+     18          
+     19          	if (me->currentLength) {
+   \   00000006   0x6808             LDR      R0,[R1, #+0]
+   \   00000008   0x2800             CMP      R0,#+0
+   \   0000000A   0xD001             BEQ.N    ??SlidingArmJoint_zero_0
+     20          		return 0;
+   \   0000000C   0x2000             MOVS     R0,#+0
+   \   0000000E   0xE001             B.N      ??SlidingArmJoint_zero_1
+     21          	}
+     22          
+     23          	return -1;
+   \                     ??SlidingArmJoint_zero_0: (+1)
+   \   00000010   0xF05F 0x30FF      MOVS     R0,#-1
+   \                     ??SlidingArmJoint_zero_1: (+1)
+   \   00000014   0x4770             BX       LR               ;; return
+     24          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   SlidingArmJoint_getLength
+       0   SlidingArmJoint_setLength
+       0   SlidingArmJoint_zero
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  SlidingArmJoint_getLength
+      26  SlidingArmJoint_setLength
+      22  SlidingArmJoint_zero
+
+ 
+ 52 bytes in section .text
+ 
+ 52 bytes of CODE memory
+
+Errors: none
+Warnings: none

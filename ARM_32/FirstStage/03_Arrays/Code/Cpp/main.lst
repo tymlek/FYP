@@ -1,0 +1,109 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       19/Apr/2018  09:31:34
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWC87C.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Arrays\Code\Cpp\main.cpp
+      1          /* C++ implementation */
+      2          
+      3          constexpr int N = 10;
+      4          
+
+   \                                 In section .text, align 4, keep-with-next
+      5          int main() {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+   \   00000002   0xB08A             SUB      SP,SP,#+40
+      6          	int elements[N] = {0,1,2,3,4,5,6,7,8,9};
+   \   00000004   0x4668             MOV      R0,SP
+   \   00000006   0x4907             LDR.N    R1,??main_0
+   \   00000008   0x2228             MOVS     R2,#+40
+   \   0000000A   0x.... 0x....      BL       __aeabi_memcpy4
+      7          	int sum = 0;
+   \   0000000E   0x2100             MOVS     R1,#+0
+      8          	
+      9          	for (int i = 0; i < N; ++i) {
+   \   00000010   0x2200             MOVS     R2,#+0
+   \                     ??main_1: (+1)
+   \   00000012   0x2A0A             CMP      R2,#+10
+   \   00000014   0xDA05             BGE.N    ??main_2
+     10          		sum += elements[i];
+   \   00000016   0x4668             MOV      R0,SP
+   \   00000018   0xF850 0x0022      LDR      R0,[R0, R2, LSL #+2]
+   \   0000001C   0x1841             ADDS     R1,R0,R1
+     11          	}
+   \   0000001E   0x1C52             ADDS     R2,R2,#+1
+   \   00000020   0xE7F7             B.N      ??main_1
+     12          
+     13          	while (1) {
+   \                     ??main_2: (+1)
+   \   00000022   0xE7FE             B.N      ??main_2
+   \                     ??main_0:
+   \   00000024   0x........         DC32     ?_0
+     14          
+     15          	}
+     16          }
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x00000000         DC32 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+   \              0x00000001   
+   \              0x00000002   
+   \              0x00000003   
+   \              0x00000004   
+   \              0x00000005   
+   \              0x00000006   
+   \              0x00000007   
+   \              0x00000008   
+   \              0x00000009   
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      48   main
+        48   -> __aeabi_memcpy4
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      40  ?_0
+      40  main
+
+ 
+ 40 bytes in section .rodata
+ 40 bytes in section .text
+ 
+ 40 bytes of CODE  memory
+ 40 bytes of CONST memory
+
+Errors: none
+Warnings: none

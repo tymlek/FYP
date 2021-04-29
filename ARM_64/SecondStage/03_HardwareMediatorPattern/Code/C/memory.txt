@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   5333	    288	      4	   5625	   15f9	out.exe

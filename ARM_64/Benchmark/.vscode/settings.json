@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "chrono": "cpp",
+        "cmath": "cpp",
+        "cstdint": "cpp",
+        "ctime": "cpp",
+        "limits": "cpp",
+        "ratio": "cpp",
+        "*.tcc": "cpp",
+        "type_traits": "cpp"
+    },
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "C_Cpp.intelliSenseEngine": "Default"
+}

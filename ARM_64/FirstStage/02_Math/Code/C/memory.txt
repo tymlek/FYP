@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+    945	    280	      4	   1229	    4cd	out

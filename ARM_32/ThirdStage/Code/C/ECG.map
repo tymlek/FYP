@@ -1,0 +1,331 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                23/Apr/2018  02:41:31
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Exe\ECG.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\ECG.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD46A.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\ECG_Module.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\HistogramDisplay.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\main.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\TestBuilder.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\TimeMarkedData.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\TMDQueue.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Exe\ECG.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\ECG.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__Heap_Handler  = DLMalloc
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The advanced heap was selected because the application calls memory
+allocation functions outside of system library functions, and there
+are calls to deallocation functions in the application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                       0x40
+  .intvec            ro code  0x00000000    0x40  vector_table_M.o [4]
+                            - 0x00000040    0x40
+
+"P1":                                     0x1d08
+  .text              ro code  0x00000040  0x14d4  dlmalloc.o [3]
+  .text              ro code  0x00001514     0x6  abort.o [3]
+  .text              ro code  0x0000151a     0x2  vector_table_M.o [4]
+  .text              ro code  0x0000151c    0x2c  xgetmemchunk.o [3]
+  .text              ro code  0x00001548    0x14  exit.o [5]
+  .text              ro code  0x0000155c    0x7c  iarttio.o [5]
+  .text              ro code  0x000015d8    0x3c  XShttio.o [3]
+  .text              ro code  0x00001614   0x142  xprintftiny.o [3]
+  .text              ro code  0x00001758    0x36  strlen.o [4]
+  .text              ro code  0x00001790    0xfc  TMDQueue.o [1]
+  .text              ro code  0x0000188c    0x28  printf.o [3]
+  .text              ro code  0x000018b4    0x2c  TimeMarkedData.o [1]
+  .text              ro code  0x000018e0    0xa8  rand.o [3]
+  .text              ro code  0x00001988    0x94  TestBuilder.o [1]
+  .text              ro code  0x00001a1c     0x4  heaptramp0.o [3]
+  .text              ro code  0x00001a20    0x44  ECG_Module.o [1]
+  .text              ro code  0x00001a64    0x58  HistogramDisplay.o [1]
+  .text              ro code  0x00001abc    0x64  main.o [1]
+  .text              ro code  0x00001b20    0x40  zero_init3.o [4]
+  .rodata            const    0x00001b60    0x38  HistogramDisplay.o [1]
+  .text              ro code  0x00001b98    0x2c  copy_init3.o [4]
+  .text              ro code  0x00001bc4    0x28  data_init.o [4]
+  .text              ro code  0x00001bec    0x22  iarwrite.o [5]
+  .iar.init_table    const    0x00001c10    0x24  - Linker created -
+  .text              ro code  0x00001c34    0x20  putchar.o [3]
+  .text              ro code  0x00001c54    0x10  write.o [5]
+  .text              ro code  0x00001c64    0x1e  dwrite.o [5]
+  .text              ro code  0x00001c82    0x20  iarwstd.o [5]
+  .text              ro code  0x00001ca4    0x1e  cmain.o [4]
+  .text              ro code  0x00001cc2     0x4  low_level_init.o [3]
+  .text              ro code  0x00001cc6     0x4  exit.o [3]
+  .text              ro code  0x00001ccc     0xa  cexit.o [4]
+  .rodata            const    0x00001cd8    0x1c  TMDQueue.o [1]
+  .rodata            const    0x00001cf4    0x18  TMDQueue.o [1]
+  .text              ro code  0x00001d0c    0x16  xprout.o [3]
+  Initializer bytes  const    0x00001d24    0x10  <for P2-1>
+  .text              ro code  0x00001d34     0xc  cstartup_M.o [4]
+  .rodata            const    0x00001d40     0x8  main.o [1]
+  .rodata            const    0x00001d48     0x0  zero_init3.o [4]
+  .rodata            const    0x00001d48     0x0  copy_init3.o [4]
+                            - 0x00001d48  0x1d08
+
+"P2", part 1 of 3:                          0x10
+  P2-1                        0x20000000    0x10  <Init block>
+    .data            inited   0x20000000     0x8  rand.o [3]
+    .data            inited   0x20000008     0x8  XShttio.o [3]
+                            - 0x20000010    0x10
+
+"P2", part 2 of 3:                         0x27c
+  .bss               zero     0x20000010   0x1d8  dlmalloc.o [3]
+  .bss               zero     0x200001e8    0x84  rand.o [3]
+  .bss               zero     0x2000026c    0x18  dlmalloc.o [3]
+  .bss               zero     0x20000284     0x4  xgetmemchunk.o [3]
+  .bss               zero     0x20000288     0x1  XShttio.o [3]
+                            - 0x20000289   0x279
+
+"P2", part 3 of 3:                         0xc00
+  CSTACK                      0x20000290   0x400  <Block>
+    CSTACK           uninit   0x20000290   0x400  <Block tail>
+  HEAP                        0x20000690   0x800  <Block>
+    HEAP             uninit   0x20000690   0x800  <Block tail>
+                            - 0x20000e90   0xc00
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x279:
+          0x20000010  0x279
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x10:
+          0x00001d24   0x10
+    1 destination range, total size 0x10:
+          0x20000000   0x10
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module              ro code  ro data  rw data
+    ------              -------  -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj: [1]
+    ECG_Module.o             68
+    HistogramDisplay.o       88       56
+    TMDQueue.o              252       52
+    TestBuilder.o           148
+    TimeMarkedData.o         44
+    main.o                  100        8
+    ---------------------------------------------
+    Total:                  700      116
+
+command line: [2]
+    ---------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    XShttio.o                60        8        9
+    abort.o                   6
+    dlmalloc.o            5 332               496
+    exit.o                    4
+    heaptramp0.o              4
+    low_level_init.o          4
+    printf.o                 40
+    putchar.o                32
+    rand.o                  168        8      140
+    xgetmemchunk.o           44                 4
+    xprintftiny.o           322
+    xprout.o                 22
+    ---------------------------------------------
+    Total:                6 038       16      649
+
+rt7M_tl.a: [4]
+    cexit.o                  10
+    cmain.o                  30
+    copy_init3.o             44
+    cstartup_M.o             12
+    data_init.o              40
+    strlen.o                 54
+    vector_table_M.o         66
+    zero_init3.o             64
+    ---------------------------------------------
+    Total:                  320
+
+shb_l.a: [5]
+    dwrite.o                 30
+    exit.o                   20
+    iarttio.o               124
+    iarwrite.o               34
+    iarwstd.o                32
+    write.o                  16
+    ---------------------------------------------
+    Total:                  256
+
+    Gaps                      8        4
+    Linker created                    38    3 072
+-------------------------------------------------
+    Grand Total:          7 322      174    3 721
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x00001c10          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00001c34          --   Gb  - Linker created -
+?main                   0x00001ca5         Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000290          --   Gb  - Linker created -
+CSTACK$$Limit           0x20000690          --   Gb  - Linker created -
+ECG_Module_Cleanup      0x00001a2b    0xc  Code  Gb  ECG_Module.o [1]
+ECG_Module_Init         0x00001a21    0xa  Code  Gb  ECG_Module.o [1]
+ECG_Module_acquireValue
+                        0x00001a37   0x24  Code  Gb  ECG_Module.o [1]
+ECG_Module_setItsTMDQueue
+                        0x00001a5b    0x4  Code  Gb  ECG_Module.o [1]
+HEAP$$Base              0x20000690          --   Gb  - Linker created -
+HEAP$$Limit             0x20000e90          --   Gb  - Linker created -
+HistogramDisplay_Cleanup
+                        0x00001a6f    0xc  Code  Gb  HistogramDisplay.o [1]
+HistogramDisplay_Init   0x00001a65    0xa  Code  Gb  HistogramDisplay.o [1]
+HistogramDisplay_getValue
+                        0x00001a7b   0x2c  Code  Gb  HistogramDisplay.o [1]
+HistogramDisplay_setItsTMDQueue
+                        0x00001aad    0x4  Code  Gb  HistogramDisplay.o [1]
+Region$$Table$$Base     0x00001c10          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00001c34          --   Gb  - Linker created -
+TMDQueue_Cleanup        0x000017a5    0xc  Code  Gb  TMDQueue.o [1]
+TMDQueue_Init           0x00001791   0x14  Code  Gb  TMDQueue.o [1]
+TMDQueue_getNextIndex   0x000017b1   0x12  Code  Gb  TMDQueue.o [1]
+TMDQueue_insert         0x000017c3   0x38  Code  Gb  TMDQueue.o [1]
+TMDQueue_isEmpty        0x000017fb   0x10  Code  Gb  TMDQueue.o [1]
+TMDQueue_remove         0x0000180b   0x34  Code  Gb  TMDQueue.o [1]
+TestBuilder_Cleanup     0x00001995    0xc  Code  Gb  TestBuilder.o [1]
+TestBuilder_Create      0x000019a1   0x18  Code  Gb  TestBuilder.o [1]
+TestBuilder_Destroy     0x000019b9   0x16  Code  Gb  TestBuilder.o [1]
+TestBuilder_Init        0x00001989    0xc  Code  Gb  TestBuilder.o [1]
+TimeMarkedData_Cleanup  0x000018c3    0x2  Code  Gb  TimeMarkedData.o [1]
+TimeMarkedData_Create   0x000018c9   0x18  Code  Gb  TimeMarkedData.o [1]
+TimeMarkedData_Init     0x000018b5    0xe  Code  Gb  TimeMarkedData.o [1]
+TimeMarkedData_setItsTMDQueue
+                        0x000018c5    0x4  Code  Gb  TimeMarkedData.o [1]
+_PrintfTiny             0x00001631  0x126  Code  Gb  xprintftiny.o [3]
+_Prout                  0x00001d0d   0x16  Code  Gb  xprout.o [3]
+_Rand_idx               0x20000268    0x4  Data  Lc  rand.o [3]
+_Rand_rv                0x200001e8   0x80  Data  Lc  rand.o [3]
+_Randinit               0x20000000    0x1  Data  Gb  rand.o [3]
+_Randseed               0x20000004    0x4  Data  Gb  rand.o [3]
+__cmain                 0x00001ca5         Code  Gb  cmain.o [4]
+__data_GetMemChunk      0x0000151d   0x2c  Code  Gb  xgetmemchunk.o [3]
+__data_GetMemChunk::start
+                        0x20000284    0x4  Data  Lc  xgetmemchunk.o [3]
+__dwrite                0x00001c65   0x1e  Code  Gb  dwrite.o [5]
+__exit                  0x00001549   0x14  Code  Gb  exit.o [5]
+__iar_close_ttio        0x0000155d   0x2c  Code  Gb  iarttio.o [5]
+__iar_copy_init3        0x00001b99   0x2c  Code  Gb  copy_init3.o [4]
+__iar_data_init3        0x00001bc5   0x28  Code  Gb  data_init.o [4]
+__iar_dlfree            0x0000101b  0x4f6  Code  Gb  dlmalloc.o [3]
+__iar_dlmalloc          0x00000d65  0x2b6  Code  Gb  dlmalloc.o [3]
+__iar_get_ttio          0x00001589   0x4c  Code  Gb  iarttio.o [5]
+__iar_lookup_ttioh      0x00001607    0x4  Code  Gb  XShttio.o [3]
+__iar_program_start     0x00001d35         Code  Gb  cstartup_M.o [4]
+__iar_sh_stdout         0x00001c83   0x20  Code  Gb  iarwstd.o [5]
+__iar_sh_write          0x00001bed   0x22  Code  Gb  iarwrite.o [5]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__iar_ttio_guard_lock   0x000015d9   0x1e  Code  Gb  XShttio.o [3]
+__iar_ttio_guard_unlock
+                        0x000015f7   0x10  Code  Gb  XShttio.o [3]
+__iar_ttio_handles      0x20000008    0x8  Data  Lc  XShttio.o [3]
+__iar_zero_init3        0x00001b21   0x40  Code  Gb  zero_init3.o [4]
+__low_level_init        0x00001cc3    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000         Data  Gb  vector_table_M.o [4]
+__write                 0x00001c55   0x10  Code  Gb  write.o [5]
+_call_main              0x00001cb1         Code  Gb  cmain.o [4]
+_exit                   0x00001ccd         Code  Gb  cexit.o [4]
+_gm_                    0x20000010  0x1d8  Data  Lc  dlmalloc.o [3]
+_main                   0x00001cbf         Code  Gb  cmain.o [4]
+abort                   0x00001515    0x6  Code  Gb  abort.o [3]
+add_segment             0x00000405  0x1f2  Code  Lc  dlmalloc.o [3]
+cleanUpRelations        0x00001a5f    0x6  Code  Lc  ECG_Module.o [1]
+cleanUpRelations        0x00001ab1    0xc  Code  Lc  HistogramDisplay.o [1]
+cleanUpRelations        0x00001a01   0x1c  Code  Lc  TestBuilder.o [1]
+cleanUpReleations       0x00001873   0x1a  Code  Lc  TMDQueue.o [1]
+exit                    0x00001cc7    0x4  Code  Gb  exit.o [3]
+free                    0x00001a1d    0x4  Code  Gb  heaptramp0.o [3]
+initRelations           0x000019cf   0x32  Code  Lc  TestBuilder.o [1]
+initReleatioins         0x0000184d   0x26  Code  Lc  TMDQueue.o [1]
+init_mparams            0x0000005f   0x32  Code  Lc  dlmalloc.o [3]
+init_top                0x00000091   0x32  Code  Lc  dlmalloc.o [3]
+main                    0x00001abd   0x64  Code  Gb  main.o [1]
+mparams                 0x2000026c   0x18  Data  Lc  dlmalloc.o [3]
+out                     0x00001615   0x1c  Code  Lc  xprintftiny.o [3]
+prepend_alloc           0x000000c3  0x342  Code  Lc  dlmalloc.o [3]
+printf                  0x0000188d   0x28  Code  Gb  printf.o [3]
+putchar                 0x00001c35   0x20  Code  Gb  putchar.o [3]
+rand                    0x000018e1   0x96  Code  Gb  rand.o [3]
+segment_holding         0x00000041   0x1e  Code  Lc  dlmalloc.o [3]
+strlen                  0x00001759         Code  Gb  strlen.o [4]
+sys_alloc               0x000005fd  0x164  Code  Lc  dlmalloc.o [3]
+sys_trim                0x00000761   0x66  Code  Lc  dlmalloc.o [3]
+tmalloc_large           0x000007d5  0x384  Code  Lc  dlmalloc.o [3]
+tmalloc_small           0x00000b59  0x1fe  Code  Lc  dlmalloc.o [3]
+ttio_guard              0x20000288    0x1  Data  Lc  XShttio.o [3]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  7 322 bytes of readonly  code memory
+    174 bytes of readonly  data memory
+  3 721 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

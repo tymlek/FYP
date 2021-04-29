@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   8300	      0	   3680	  11980	   2ecc	ExceptionsCpp.out

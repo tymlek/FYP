@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   2698	    320	     96	   3114	    c2a	out.exe

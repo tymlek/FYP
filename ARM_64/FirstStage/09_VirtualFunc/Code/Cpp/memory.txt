@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   1603	    304	     96	   2003	    7d3	out

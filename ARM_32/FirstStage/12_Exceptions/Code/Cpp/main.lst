@@ -1,0 +1,222 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       19/Apr/2018  09:38:13
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWE1D3.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Exceptions\Code\Cpp\main.cpp
+      1          /* C++ implementation of exceptions */
+      2          
+      3          #include <stdio.h>
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+      5          int factorial(int n) {
+   \                     _Z9factoriali: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      6          	if (n < 0) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD508             BPL.N    ??factorial_0
+      7          		throw "Negative Argument to factorial";
+   \   00000008   0x2004             MOVS     R0,#+4
+   \   0000000A   0x.... 0x....      BL       __cxa_allocate_exception
+   \   0000000E   0x....             LDR.N    R1,??DataTable1
+   \   00000010   0x6001             STR      R1,[R0, #+0]
+   \   00000012   0x2200             MOVS     R2,#+0
+   \   00000014   0x....             LDR.N    R1,??DataTable1_1
+   \   00000016   0x.... 0x....      BL       __cxa_throw
+      8          	}
+      9          
+     10          	if (n > 0) {
+   \                     ??factorial_0: (+1)
+   \   0000001A   0x2C01             CMP      R4,#+1
+   \   0000001C   0xDB05             BLT.N    ??factorial_1
+     11          		return (n * factorial(n-1));
+   \   0000001E   0x1E60             SUBS     R0,R4,#+1
+   \   00000020   0xF7FF 0xFFEE      BL       _Z9factoriali
+   \   00000024   0x4344             MULS     R4,R0,R4
+   \   00000026   0x0020             MOVS     R0,R4
+   \   00000028   0xE000             B.N      ??factorial_2
+     12          	}
+     13          
+     14          	return 1;
+   \                     ??factorial_1: (+1)
+   \   0000002A   0x2001             MOVS     R0,#+1
+   \                     ??factorial_2: (+1)
+   \   0000002C   0xBD10             POP      {R4,PC}          ;; return
+     15          }
+     16          
+
+   \                                 In section .exc.text, align 2, keep-with-next
+   \                     ?_3: (+1)
+   \   00000000   0x.... 0x....      BL       __cxa_begin_catch
+   \   00000004   0x6804             LDR      R4,[R0, #+0]
+   \   00000006   0x0021             MOVS     R1,R4
+   \   00000008   0x....             LDR.N    R0,??DataTable5
+   \   0000000A   0x.... 0x....      BL       printf
+   \   0000000E   0x.... 0x....      BL       __cxa_end_catch
+   \   00000012   0x.... 0x....      BL       ??CrossCallReturnLabel_0
+
+   \                                 In section .text, align 2, keep-with-next
+     17          int main() {
+   \                     main: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     18          	try {
+     19          		int n = factorial(10);
+   \   00000002   0x200A             MOVS     R0,#+10
+   \   00000004   0x.... 0x....      BL       _Z9factoriali
+   \   00000008   0x0004             MOVS     R4,R0
+     20          		printf("factorial(10) = %d",n);
+   \   0000000A   0x0021             MOVS     R1,R4
+   \   0000000C   0x....             LDR.N    R0,??DataTable1_2
+   \   0000000E   0x.... 0x....      BL       printf
+     21          	}
+     22          	catch (const char* s) {
+     23          		printf("factorial threw exception: %s",s);
+     24          	}
+     25          
+     26          	while (1) {
+   \                     ??CrossCallReturnLabel_0: (+1)
+   \   00000012   0xE7FE             B.N      ??CrossCallReturnLabel_0
+     27          		
+     28          	}
+     29          }
+
+   \                                 In section .exc.text, align 4, keep-with-next
+   \                     ??DataTable5:
+   \   00000000   0x........         DC32     ?_2
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x........         DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   0x........         DC32     _ZTIPKc
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   0x........         DC32     ?_1
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x4E 0x65          DC8 "Negative Argument to factorial"
+   \              0x67 0x61    
+   \              0x74 0x69    
+   \              0x76 0x65    
+   \              0x20 0x41    
+   \              0x72 0x67    
+   \              0x75 0x6D    
+   \              0x65 0x6E    
+   \              0x74 0x20    
+   \              0x74 0x6F    
+   \              0x20 0x66    
+   \              0x61 0x63    
+   \              0x74 0x6F    
+   \              0x72 0x69    
+   \              0x61 0x6C    
+   \              0x00         
+   \   0000001F   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_1:
+   \   00000000   0x66 0x61          DC8 "factorial(10) = %d"
+   \              0x63 0x74    
+   \              0x6F 0x72    
+   \              0x69 0x61    
+   \              0x6C 0x28    
+   \              0x31 0x30    
+   \              0x29 0x20    
+   \              0x3D 0x20    
+   \              0x25 0x64    
+   \              0x00         
+   \   00000013   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_2:
+   \   00000000   0x66 0x61          DC8 "factorial threw exception: %s"
+   \              0x63 0x74    
+   \              0x6F 0x72    
+   \              0x69 0x61    
+   \              0x6C 0x20    
+   \              0x74 0x68    
+   \              0x72 0x65    
+   \              0x77 0x20    
+   \              0x65 0x78    
+   \              0x63 0x65    
+   \              0x70 0x74    
+   \              0x69 0x6F    
+   \              0x6E 0x3A    
+   \              0x20 0x25    
+   \              0x73 0x00    
+   \   0000001E   0x00 0x00          DC8 0, 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   factorial(int)
+         8   -> __cxa_allocate_exception
+         8   -> __cxa_throw
+         8   -> factorial(int)
+       8   main
+         8   -> __cxa_begin_catch
+         8   -> __cxa_end_catch
+         8   -> factorial(int)
+         8   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+       4  ??DataTable1_1
+       4  ??DataTable1_2
+       4  ??DataTable5
+      32  ?_0
+      20  ?_1
+      32  ?_2
+      22  ?_3
+      46  factorial(int)
+      20  main
+      68  -- Other
+
+ 
+  16 bytes in section .ARM.exidx
+  32 bytes in section .ARM.extab
+  26 bytes in section .exc.text
+ 104 bytes in section .rodata
+  78 bytes in section .text
+ 
+ 104 bytes of CODE  memory
+ 132 bytes of CONST memory (+ 20 bytes shared)
+
+Errors: none
+Warnings: none

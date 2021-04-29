@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   3018	    292	      4	   3314	    cf2	out.exe

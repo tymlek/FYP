@@ -1,0 +1,118 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  17:25:21
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW8415.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Namespaces\Code\C\main.c
+      1          /* C approximation */
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          void ns1_func_f() {
+      4          
+      5          }
+   \                     ns1_func_f: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void ns1_func_g () {
+   \                     ns1_func_g: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+      8          	ns1_func_f();
+   \   00000002   0x.... 0x....      BL       ns1_func_f
+      9          }
+   \   00000006   0xBD01             POP      {R0,PC}          ;; return
+     10          
+
+   \                                 In section .text, align 2, keep-with-next
+     11          void ns2_func_f() {
+     12          
+     13          }
+   \                     ns2_func_f: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     14          
+
+   \                                 In section .text, align 2, keep-with-next
+     15          void ns2_func_g() {
+   \                     ns2_func_g: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     16          	ns2_func_f();
+   \   00000002   0x.... 0x....      BL       ns2_func_f
+     17          }
+   \   00000006   0xBD01             POP      {R0,PC}          ;; return
+     18          
+
+   \                                 In section .text, align 2, keep-with-next
+     19          int main() {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     20          	ns1_func_g();
+   \   00000002   0x.... 0x....      BL       ns1_func_g
+     21          	ns2_func_g();
+   \   00000006   0x.... 0x....      BL       ns2_func_g
+     22          	
+     23          	while (1) {
+   \                     ??main_0: (+1)
+   \   0000000A   0xE7FE             B.N      ??main_0
+     24          		
+     25          	}
+     26          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   main
+         8   -> ns1_func_g
+         8   -> ns2_func_g
+       0   ns1_func_f
+       8   ns1_func_g
+         8   -> ns1_func_f
+       0   ns2_func_f
+       8   ns2_func_g
+         8   -> ns2_func_f
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      12  main
+       2  ns1_func_f
+       8  ns1_func_g
+       2  ns2_func_f
+       8  ns2_func_g
+
+ 
+ 32 bytes in section .text
+ 
+ 32 bytes of CODE memory
+
+Errors: none
+Warnings: none

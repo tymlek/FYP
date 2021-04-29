@@ -1,0 +1,303 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:50:35
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\TMDQueue.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW21D3.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\TMDQueue.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List\TMDQueue.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj\TMDQueue.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\TMDQueue.cpp
+      1          #include <stdlib.h>
+      2          #include "TMDQueue.h"
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp TimeMarkedData::TimeMarkedData()
+   \                     _ZN14TimeMarkedDataC1Ev: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6041             STR      R1,[R0, #+4]
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6001             STR      R1,[R0, #+0]
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x6081             STR      R1,[R0, #+8]
+   \   0000000C   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp int TimeMarkedData::getTimeInterval()
+   \                     _ZN14TimeMarkedData15getTimeIntervalEv: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp int TimeMarkedData::getDataValue()
+   \                     _ZN14TimeMarkedData12getDataValueEv: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp void TimeMarkedData::setTimeInterval(int)
+   \                     _ZN14TimeMarkedData15setTimeIntervalEi: (+1)
+   \   00000000   0x6001             STR      R1,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp void TimeMarkedData::setDataValue(int)
+   \                     _ZN14TimeMarkedData12setDataValueEi: (+1)
+   \   00000000   0x6041             STR      R1,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          int TMDQueue::getNextIndex(int index) {
+   \                     _ZN8TMDQueue12getNextIndexEi: (+1)
+   \   00000000   0x0002             MOVS     R2,R0
+      5          	return (index + 1) % QUEUE_SIZE;
+   \   00000002   0x1C49             ADDS     R1,R1,#+1
+   \   00000004   0x2014             MOVS     R0,#+20
+   \   00000006   0xFB91 0xF3F0      SDIV     R3,R1,R0
+   \   0000000A   0xFB00 0x1113      MLS      R1,R0,R3,R1
+   \   0000000E   0x0008             MOVS     R0,R1
+   \   00000010   0x4770             BX       LR               ;; return
+      6          }
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          void TMDQueue::insert(TimeMarkedData* tmd) {
+   \                     _ZN8TMDQueue6insertEP14TimeMarkedData: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+      9          	printf("Inserting at: %d Data #: %d", this->head, tmd->getTimeInterval());
+   \   00000006   0x0028             MOVS     R0,R5
+   \   00000008   0x.... 0x....      BL       _ZN14TimeMarkedData15getTimeIntervalEv
+   \   0000000C   0x0002             MOVS     R2,R0
+   \   0000000E   0x6821             LDR      R1,[R4, #+0]
+   \   00000010   0x....             LDR.N    R0,??DataTable2
+   \   00000012   0x.... 0x....      BL       printf
+     10          	this->buffer[this->head] = tmd;
+   \   00000016   0x6820             LDR      R0,[R4, #+0]
+   \   00000018   0xEB04 0x0080      ADD      R0,R4,R0, LSL #+2
+   \   0000001C   0x6085             STR      R5,[R0, #+8]
+     11          	this->head = getNextIndex(this->head);
+   \   0000001E   0x6821             LDR      R1,[R4, #+0]
+   \   00000020   0x0020             MOVS     R0,R4
+   \   00000022   0x.... 0x....      BL       _ZN8TMDQueue12getNextIndexEi
+   \   00000026   0x6020             STR      R0,[R4, #+0]
+     12          
+     13          	if (this->size < QUEUE_SIZE) {
+   \   00000028   0x6860             LDR      R0,[R4, #+4]
+   \   0000002A   0x2814             CMP      R0,#+20
+   \   0000002C   0xDA02             BGE.N    ??insert_0
+     14          		++this->size;
+   \   0000002E   0x6860             LDR      R0,[R4, #+4]
+   \   00000030   0x1C40             ADDS     R0,R0,#+1
+   \   00000032   0x6060             STR      R0,[R4, #+4]
+     15          	}
+     16          
+     17          	printf("Storing data value: %d\n", tmd->getDataValue());
+   \                     ??insert_0: (+1)
+   \   00000034   0x0028             MOVS     R0,R5
+   \   00000036   0x.... 0x....      BL       _ZN14TimeMarkedData12getDataValueEv
+   \   0000003A   0x0001             MOVS     R1,R0
+   \   0000003C   0x....             LDR.N    R0,??DataTable2_1
+   \   0000003E   0x.... 0x....      BL       printf
+     18          }
+   \   00000042   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     19          
+
+   \                                 In section .text, align 2, keep-with-next
+     20          bool TMDQueue::isEmpty() {
+     21          	return (bool)(this->size == 0);
+   \                     _ZN8TMDQueue7isEmptyEv: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x2800             CMP      R0,#+0
+   \   00000004   0xD101             BNE.N    ??isEmpty_0
+   \   00000006   0x2001             MOVS     R0,#+1
+   \   00000008   0xE000             B.N      ??isEmpty_1
+   \                     ??isEmpty_0: (+1)
+   \   0000000A   0x2000             MOVS     R0,#+0
+   \                     ??isEmpty_1: (+1)
+   \   0000000C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000000E   0x4770             BX       LR               ;; return
+     22          }
+     23          
+
+   \                                 In section .text, align 2, keep-with-next
+     24          TimeMarkedData* TMDQueue::remove(int index) {
+   \                     _ZN8TMDQueue6removeEi: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+     25          	TimeMarkedData* tmd = new TimeMarkedData();
+   \   00000006   0x200C             MOVS     R0,#+12
+   \   00000008   0x.... 0x....      BL       _Znwj
+   \   0000000C   0x2800             CMP      R0,#+0
+   \   0000000E   0xD003             BEQ.N    ??remove_0
+   \   00000010   0x.... 0x....      BL       _ZN14TimeMarkedDataC1Ev
+   \   00000014   0x0006             MOVS     R6,R0
+   \   00000016   0xE000             B.N      ??remove_1
+   \                     ??remove_0: (+1)
+   \   00000018   0x2600             MOVS     R6,#+0
+     26          	tmd->setTimeInterval(-1);
+   \                     ??remove_1: (+1)
+   \   0000001A   0xF05F 0x31FF      MOVS     R1,#-1
+   \   0000001E   0x0030             MOVS     R0,R6
+   \   00000020   0x.... 0x....      BL       _ZN14TimeMarkedData15setTimeIntervalEi
+     27          	tmd->setDataValue(-9999);
+   \   00000024   0x....             LDR.N    R1,??DataTable2_2  ;; 0xffffd8f1
+   \   00000026   0x0030             MOVS     R0,R6
+   \   00000028   0x.... 0x....      BL       _ZN14TimeMarkedData12setDataValueEi
+     28          
+     29          	if (!isEmpty() && (index >= 0) && (index < QUEUE_SIZE)) {
+   \   0000002C   0x0020             MOVS     R0,R4
+   \   0000002E   0x.... 0x....      BL       _ZN8TMDQueue7isEmptyEv
+   \   00000032   0x2800             CMP      R0,#+0
+   \   00000034   0xD107             BNE.N    ??remove_2
+   \   00000036   0x2D00             CMP      R5,#+0
+   \   00000038   0xD405             BMI.N    ??remove_2
+   \   0000003A   0x2D14             CMP      R5,#+20
+   \   0000003C   0xDA03             BGE.N    ??remove_2
+     30          		tmd = this->buffer[index];
+   \   0000003E   0xEB04 0x0085      ADD      R0,R4,R5, LSL #+2
+   \   00000042   0x6880             LDR      R0,[R0, #+8]
+   \   00000044   0x0006             MOVS     R6,R0
+     31          	}
+     32          
+     33          	return tmd;
+   \                     ??remove_2: (+1)
+   \   00000046   0x0030             MOVS     R0,R6
+   \   00000048   0xBD70             POP      {R4-R6,PC}       ;; return
+     34          }
+     35          
+
+   \                                 In section .text, align 2, keep-with-next
+     36          int TMDQueue::getBuffer() {
+   \                     _ZN8TMDQueue9getBufferEv: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     37          	int iter = 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+     38          	
+     39          	return iter;
+   \   00000004   0x4770             BX       LR               ;; return
+     40          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     ?_1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0xFFFFD8F1         DC32     0xffffd8f1
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x49 0x6E          DC8 "Inserting at: %d Data #: %d"
+   \              0x73 0x65    
+   \              0x72 0x74    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x61 0x74    
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x20 0x44    
+   \              0x61 0x74    
+   \              0x61 0x20    
+   \              0x23 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_1:
+   \   00000000   0x53 0x74          DC8 "Storing data value: %d\012"
+   \              0x6F 0x72    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x64 0x61    
+   \              0x74 0x61    
+   \              0x20 0x76    
+   \              0x61 0x6C    
+   \              0x75 0x65    
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x0A 0x00    
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   TMDQueue::getBuffer()
+       0   TMDQueue::getNextIndex(int)
+      16   TMDQueue::insert(TimeMarkedData *)
+        16   -> TMDQueue::getNextIndex(int)
+        16   -> TimeMarkedData::getDataValue()
+        16   -> TimeMarkedData::getTimeInterval()
+        16   -> printf
+       0   TMDQueue::isEmpty()
+      16   TMDQueue::remove(int)
+        16   -> TMDQueue::isEmpty()
+        16   -> TimeMarkedData::TimeMarkedData()
+        16   -> TimeMarkedData::setDataValue(int)
+        16   -> TimeMarkedData::setTimeInterval(int)
+        16   -> operator new(unsigned int)
+       0   TimeMarkedData::TimeMarkedData()
+       0   TimeMarkedData::getDataValue()
+       0   TimeMarkedData::getTimeInterval()
+       0   TimeMarkedData::setDataValue(int)
+       0   TimeMarkedData::setTimeInterval(int)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+      28  ?_0
+      24  ?_1
+       6  TMDQueue::getBuffer()
+      18  TMDQueue::getNextIndex(int)
+      68  TMDQueue::insert(TimeMarkedData *)
+      16  TMDQueue::isEmpty()
+      74  TMDQueue::remove(int)
+      14  TimeMarkedData::TimeMarkedData()
+       4  TimeMarkedData::getDataValue()
+       4  TimeMarkedData::getTimeInterval()
+       4  TimeMarkedData::setDataValue(int)
+       4  TimeMarkedData::setTimeInterval(int)
+
+ 
+  52 bytes in section .rodata
+ 224 bytes in section .text
+ 
+ 194 bytes of CODE  memory (+ 30 bytes shared)
+  52 bytes of CONST memory
+
+Errors: none
+Warnings: none

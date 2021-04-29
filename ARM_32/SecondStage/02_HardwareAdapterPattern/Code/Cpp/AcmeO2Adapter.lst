@@ -1,0 +1,90 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:54:13
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\AcmeO2Adapter.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD92A.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\AcmeO2Adapter.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List\AcmeO2Adapter.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\AcmeO2Adapter.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\AcmeO2Adapter.cpp
+      1          #include <stdlib.h>
+      2          #include "AcmeO2Adapter.h"
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          int AcmeO2Adapter::gimmeO2Conc() {
+   \                     _ZN13AcmeO2Adapter11gimmeO2ConcEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      5          	return this->itsAcmeO2SensorProxy->getO2Conc();
+   \   00000004   0x6860             LDR      R0,[R4, #+4]
+   \   00000006   0x.... 0x....      BL       _ZN17AcmeO2SensorProxy9getO2ConcEv
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+      6          }
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          int AcmeO2Adapter::gimmeO2Flow() {
+   \                     _ZN13AcmeO2Adapter11gimmeO2FlowEv: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      9          	return (this->itsAcmeO2SensorProxy->getO2Flow() * 60) / 100;
+   \   00000004   0x6860             LDR      R0,[R4, #+4]
+   \   00000006   0x.... 0x....      BL       _ZN17AcmeO2SensorProxy9getO2FlowEv
+   \   0000000A   0x213C             MOVS     R1,#+60
+   \   0000000C   0x4348             MULS     R0,R1,R0
+   \   0000000E   0x2164             MOVS     R1,#+100
+   \   00000010   0xFBB0 0xF0F1      UDIV     R0,R0,R1
+   \   00000014   0xBD10             POP      {R4,PC}          ;; return
+     10          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   AcmeO2Adapter::gimmeO2Conc()
+         8   -> AcmeO2SensorProxy::getO2Conc()
+       8   AcmeO2Adapter::gimmeO2Flow()
+         8   -> AcmeO2SensorProxy::getO2Flow()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      12  AcmeO2Adapter::gimmeO2Conc()
+      22  AcmeO2Adapter::gimmeO2Flow()
+      64  -- Other
+
+ 
+ 64 bytes in section .rodata
+ 34 bytes in section .text
+ 
+ 34 bytes of CODE  memory
+  0 bytes of CONST memory (+ 64 bytes shared)
+
+Errors: none
+Warnings: none

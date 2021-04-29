@@ -1,0 +1,171 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:50:34
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\ECG_Module.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW2104.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\ECG_Module.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List\ECG_Module.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj\ECG_Module.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\ECG_Module.cpp
+      1          #include <stdlib.h>
+      2          #include "ECG_Module.h"
+
+  			delete this->itsTMDQueue;
+  			       ^
+"C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\ECG_Module.h",21  Warning[Pe414]: 
+          delete of pointer to incomplete class
+      3          #include "TMDQueue.h"
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp TimeMarkedData::TimeMarkedData()
+   \                     _ZN14TimeMarkedDataC1Ev: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6041             STR      R1,[R0, #+4]
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6001             STR      R1,[R0, #+0]
+   \   00000008   0x2100             MOVS     R1,#+0
+   \   0000000A   0x6081             STR      R1,[R0, #+8]
+   \   0000000C   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp void TimeMarkedData::setTimeInterval(int)
+   \                     _ZN14TimeMarkedData15setTimeIntervalEi: (+1)
+   \   00000000   0x6001             STR      R1,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2
+   \   __interwork __softfp void TimeMarkedData::setDataValue(int)
+   \                     _ZN14TimeMarkedData12setDataValueEi: (+1)
+   \   00000000   0x6041             STR      R1,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+      4          
+      5          
+      6          /* Operations */
+
+   \                                 In section .text, align 2, keep-with-next
+      7          void ECG_Module::acquireValue() {
+   \                     _ZN10ECG_Module12acquireValueEv: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      8          	TimeMarkedData* tmd = new TimeMarkedData();
+   \   00000004   0x200C             MOVS     R0,#+12
+   \   00000006   0x.... 0x....      BL       _Znwj
+   \   0000000A   0x2800             CMP      R0,#+0
+   \   0000000C   0xD003             BEQ.N    ??acquireValue_0
+   \   0000000E   0x.... 0x....      BL       _ZN14TimeMarkedDataC1Ev
+   \   00000012   0x0005             MOVS     R5,R0
+   \   00000014   0xE000             B.N      ??acquireValue_1
+   \                     ??acquireValue_0: (+1)
+   \   00000016   0x2500             MOVS     R5,#+0
+      9          
+     10          	tmd->setDataValue(rand());
+   \                     ??acquireValue_1: (+1)
+   \   00000018   0x.... 0x....      BL       rand
+   \   0000001C   0x0001             MOVS     R1,R0
+   \   0000001E   0x0028             MOVS     R0,R5
+   \   00000020   0x.... 0x....      BL       _ZN14TimeMarkedData12setDataValueEi
+     11          	tmd->setTimeInterval(++(this->dataNum));
+   \   00000024   0x6820             LDR      R0,[R4, #+0]
+   \   00000026   0x1C40             ADDS     R0,R0,#+1
+   \   00000028   0x6020             STR      R0,[R4, #+0]
+   \   0000002A   0x6821             LDR      R1,[R4, #+0]
+   \   0000002C   0x0028             MOVS     R0,R5
+   \   0000002E   0x.... 0x....      BL       _ZN14TimeMarkedData15setTimeIntervalEi
+     12          
+     13          	this->itsTMDQueue->insert(tmd);
+   \   00000032   0x0029             MOVS     R1,R5
+   \   00000034   0x68E0             LDR      R0,[R4, #+12]
+   \   00000036   0x.... 0x....      BL       _ZN8TMDQueue6insertEP14TimeMarkedData
+     14          }
+   \   0000003A   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     15          
+
+   \                                 In section .text, align 2, keep-with-next
+     16          void ECG_Module::setLeadsPair(int l1, int l2) {
+     17          	this->lead1 = l1;
+   \                     _ZN10ECG_Module12setLeadsPairEii: (+1)
+   \   00000000   0x6041             STR      R1,[R0, #+4]
+     18          	this->lead2 = l2;
+   \   00000002   0x6082             STR      R2,[R0, #+8]
+     19          }
+   \   00000004   0x4770             BX       LR               ;; return
+     20          
+
+   \                                 In section .text, align 2, keep-with-next
+     21          TMDQueue* ECG_Module::getItsTMDQueue() {
+     22          	return this->itsTMDQueue;
+   \                     _ZN10ECG_Module14getItsTMDQueueEv: (+1)
+   \   00000000   0x68C0             LDR      R0,[R0, #+12]
+   \   00000002   0x4770             BX       LR               ;; return
+     23          }
+     24          
+
+   \                                 In section .text, align 2, keep-with-next
+     25          void ECG_Module::setItsTMDQueue(TMDQueue* p_TMDQueue) {
+     26          	this->itsTMDQueue = p_TMDQueue;
+   \                     _ZN10ECG_Module14setItsTMDQueueEP8TMDQueue: (+1)
+   \   00000000   0x60C1             STR      R1,[R0, #+12]
+     27          }
+   \   00000002   0x4770             BX       LR               ;; return
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   ECG_Module::acquireValue()
+        16   -> TMDQueue::insert(TimeMarkedData *)
+        16   -> TimeMarkedData::TimeMarkedData()
+        16   -> TimeMarkedData::setDataValue(int)
+        16   -> TimeMarkedData::setTimeInterval(int)
+        16   -> operator new(unsigned int)
+        16   -> rand
+       0   ECG_Module::getItsTMDQueue()
+       0   ECG_Module::setItsTMDQueue(TMDQueue *)
+       0   ECG_Module::setLeadsPair(int, int)
+       0   TimeMarkedData::TimeMarkedData()
+       0   TimeMarkedData::setDataValue(int)
+       0   TimeMarkedData::setTimeInterval(int)
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      60  ECG_Module::acquireValue()
+       4  ECG_Module::getItsTMDQueue()
+       4  ECG_Module::setItsTMDQueue(TMDQueue *)
+       6  ECG_Module::setLeadsPair(int, int)
+      14  TimeMarkedData::TimeMarkedData()
+       4  TimeMarkedData::setDataValue(int)
+       4  TimeMarkedData::setTimeInterval(int)
+
+ 
+ 96 bytes in section .text
+ 
+ 74 bytes of CODE memory (+ 22 bytes shared)
+
+Errors: none
+Warnings: 1

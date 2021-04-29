@@ -1,0 +1,95 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:50:34
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\TestBuilder.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW2107.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\TestBuilder.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\List\TestBuilder.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\Debug\Obj\TestBuilder.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\TestBuilder.cpp
+      1          #include <stdlib.h>
+      2          #include "TestBuilder.h"
+
+  			delete this->itsTMDQueue;
+  			       ^
+"C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\ECG_Module.h",21  Warning[Pe414]: 
+          delete of pointer to incomplete class
+
+  			delete this->itsTMDQueue;
+  			       ^
+"C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECGcpp\HistogramDisplay.h",16  Warning[Pe414]: 
+          delete of pointer to incomplete class
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          ECG_Module* TestBuilder::getItsECG_Module() {
+      5          	return &(this->itsECG_Module);
+   \                     _ZN11TestBuilder16getItsECG_ModuleEv: (+1)
+   \   00000000   0x3058             ADDS     R0,R0,#+88
+   \   00000002   0x4770             BX       LR               ;; return
+      6          }
+      7          
+
+   \                                 In section .text, align 2, keep-with-next
+      8          HistogramDisplay* TestBuilder::getItsHistogram() {
+      9          	return &(this->itsHistogramDisplay);
+   \                     _ZN11TestBuilder15getItsHistogramEv: (+1)
+   \   00000000   0x3068             ADDS     R0,R0,#+104
+   \   00000002   0x4770             BX       LR               ;; return
+     10          }
+     11          
+
+   \                                 In section .text, align 2, keep-with-next
+     12          struct TMDQueue* TestBuilder::getItsTMDQueue() {
+     13          	return &(this->itsTMEQueue);
+   \                     _ZN11TestBuilder14getItsTMDQueueEv: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     14          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   TestBuilder::getItsECG_Module()
+       0   TestBuilder::getItsHistogram()
+       0   TestBuilder::getItsTMDQueue()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  TestBuilder::getItsECG_Module()
+       4  TestBuilder::getItsHistogram()
+       2  TestBuilder::getItsTMDQueue()
+
+ 
+ 10 bytes in section .text
+ 
+ 10 bytes of CODE memory
+
+Errors: none
+Warnings: 2

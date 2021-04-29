@@ -1,0 +1,135 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  15:49:22
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWFF56.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\C\main.c
+      1          #include "RobotArmManager.h"
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          int main(void) {
+   \                     main: (+1)
+   \   00000000   0xB518             PUSH     {R3,R4,LR}
+   \   00000002   0xB093             SUB      SP,SP,#+76
+      4          	RobotArmManager* robotArm = RobotArmManager_Create();
+   \   00000004   0x.... 0x....      BL       RobotArmManager_Create
+   \   00000008   0x0004             MOVS     R4,R0
+      5          	RotatingArmJoint rotatingArmJoint1;
+      6          	RotatingArmJoint rotatingArmJoint2;
+      7          	RotatingArmJoint rotatingArmJoint3;
+      8          	RotatingArmJoint rotatingArmJoint4;
+      9          	SlidingArmJoint slidingArmJoint1;
+     10          	SlidingArmJoint slidingArmJoint2;
+     11          	GraspingManipulator graspingManipulator;
+     12          	
+     13          	RobotArmManager_addItsRotatingArmJoint(robotArm, &rotatingArmJoint1);
+   \   0000000A   0xA909             ADD      R1,SP,#+36
+   \   0000000C   0x0020             MOVS     R0,R4
+   \   0000000E   0x.... 0x....      BL       RobotArmManager_addItsRotatingArmJoint
+     14          	RobotArmManager_addItsRotatingArmJoint(robotArm, &rotatingArmJoint2);
+   \   00000012   0xA907             ADD      R1,SP,#+28
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0x.... 0x....      BL       RobotArmManager_addItsRotatingArmJoint
+     15          	RobotArmManager_addItsRotatingArmJoint(robotArm, &rotatingArmJoint3);
+   \   0000001A   0xA905             ADD      R1,SP,#+20
+   \   0000001C   0x0020             MOVS     R0,R4
+   \   0000001E   0x.... 0x....      BL       RobotArmManager_addItsRotatingArmJoint
+     16          	RobotArmManager_addItsRotatingArmJoint(robotArm, &rotatingArmJoint4);
+   \   00000022   0xA903             ADD      R1,SP,#+12
+   \   00000024   0x0020             MOVS     R0,R4
+   \   00000026   0x.... 0x....      BL       RobotArmManager_addItsRotatingArmJoint
+     17          
+     18          	RobotArmManager_addItsSlidingArmJoint(robotArm, &slidingArmJoint1);
+   \   0000002A   0xA90F             ADD      R1,SP,#+60
+   \   0000002C   0x0020             MOVS     R0,R4
+   \   0000002E   0x.... 0x....      BL       RobotArmManager_addItsSlidingArmJoint
+     19          	RobotArmManager_addItsSlidingArmJoint(robotArm, &slidingArmJoint2);
+   \   00000032   0xA90B             ADD      R1,SP,#+44
+   \   00000034   0x0020             MOVS     R0,R4
+   \   00000036   0x.... 0x....      BL       RobotArmManager_addItsSlidingArmJoint
+     20          
+     21          	RobotArmManager_setItsGraspingManipulator(robotArm, &graspingManipulator);
+   \   0000003A   0xA901             ADD      R1,SP,#+4
+   \   0000003C   0x0020             MOVS     R0,R4
+   \   0000003E   0x.... 0x....      BL       RobotArmManager_setItsGraspingManipulator
+     22          
+     23          	RobotArmManager_computeTrajectory(robotArm,1,2,3,4);
+   \   00000042   0x2004             MOVS     R0,#+4
+   \   00000044   0x9000             STR      R0,[SP, #+0]
+   \   00000046   0x2303             MOVS     R3,#+3
+   \   00000048   0x2202             MOVS     R2,#+2
+   \   0000004A   0x2101             MOVS     R1,#+1
+   \   0000004C   0x0020             MOVS     R0,R4
+   \   0000004E   0x.... 0x....      BL       RobotArmManager_computeTrajectory
+     24          	RobotArmManager_executeStep(robotArm);
+   \   00000052   0x0020             MOVS     R0,R4
+   \   00000054   0x.... 0x....      BL       RobotArmManager_executeStep
+     25          	RobotArmManager_graspAt(robotArm,4,3,2,1);
+   \   00000058   0x2001             MOVS     R0,#+1
+   \   0000005A   0x9000             STR      R0,[SP, #+0]
+   \   0000005C   0x2302             MOVS     R3,#+2
+   \   0000005E   0x2203             MOVS     R2,#+3
+   \   00000060   0x2104             MOVS     R1,#+4
+   \   00000062   0x0020             MOVS     R0,R4
+   \   00000064   0x.... 0x....      BL       RobotArmManager_graspAt
+     26          
+     27          	while (1) {
+   \                     ??main_0: (+1)
+   \   00000068   0xE7FE             B.N      ??main_0
+     28          		
+     29          	}
+     30          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      88   main
+        88   -> RobotArmManager_Create
+        88   -> RobotArmManager_addItsRotatingArmJoint
+        88   -> RobotArmManager_addItsSlidingArmJoint
+        88   -> RobotArmManager_computeTrajectory
+        88   -> RobotArmManager_executeStep
+        88   -> RobotArmManager_graspAt
+        88   -> RobotArmManager_setItsGraspingManipulator
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+     106  main
+
+ 
+ 106 bytes in section .text
+ 
+ 106 bytes of CODE memory
+
+Errors: none
+Warnings: none

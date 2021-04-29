@@ -1,0 +1,191 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                18/Apr/2018  18:22:06
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\C\Debug\Exe\VirtualFunc.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\C\Debug\List\VirtualFunc.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW78E3.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\C\Debug\Obj\main.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\C\Debug\Exe\VirtualFunc.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\C\Debug\List\VirtualFunc.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind        Address   Size  Object
+  -------            ----        -------   ----  ------
+"A0":                                      0x40
+  .intvec            ro code  0x00000000   0x40  vector_table_M.o [4]
+                            - 0x00000040   0x40
+
+"P1":                                     0x108
+  .text              ro code  0x00000040   0x44  main.o [1]
+  .text              ro code  0x00000084   0x2c  copy_init3.o [4]
+  .text              ro code  0x000000b0   0x28  data_init.o [4]
+  .iar.init_table    const    0x000000d8   0x14  - Linker created -
+  .text              ro code  0x000000ec   0x1e  cmain.o [4]
+  .text              ro code  0x0000010a    0x4  low_level_init.o [3]
+  .text              ro code  0x0000010e    0x4  exit.o [3]
+  .text              ro code  0x00000112    0x2  vector_table_M.o [4]
+  .text              ro code  0x00000114    0xa  cexit.o [4]
+  .text              ro code  0x00000120   0x14  exit.o [5]
+  .text              ro code  0x00000134    0xc  cstartup_M.o [4]
+  Initializer bytes  const    0x00000140    0x8  <for P2-1>
+  .rodata            const    0x00000148    0x0  copy_init3.o [4]
+                            - 0x00000148  0x108
+
+"P2", part 1 of 2:                          0x8
+  P2-1                        0x20000000    0x8  <Init block>
+    .data            inited   0x20000000    0x4  main.o [1]
+    .data            inited   0x20000004    0x4  main.o [1]
+                            - 0x20000008    0x8
+
+"P2", part 2 of 2:                        0x400
+  CSTACK                      0x20000008  0x400  <Block>
+    CSTACK           uninit   0x20000008  0x400  <Block tail>
+                            - 0x20000408  0x400
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Copy (__iar_copy_init3)
+    1 source range, total size 0x8:
+          0x00000140   0x8
+    1 destination range, total size 0x8:
+          0x20000000   0x8
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\C\Debug\Obj: [1]
+    main.o                 68        8        8
+    -------------------------------------------
+    Total:                 68        8        8
+
+command line: [2]
+    -------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                  8
+
+rt7M_tl.a: [4]
+    cexit.o                10
+    cmain.o                30
+    copy_init3.o           44
+    cstartup_M.o           12
+    data_init.o            40
+    vector_table_M.o       66
+    -------------------------------------------
+    Total:                202
+
+shb_l.a: [5]
+    exit.o                 20
+    -------------------------------------------
+    Total:                 20
+
+    Gaps                    2
+    Linker created                  20    1 024
+-----------------------------------------------
+    Grand Total:          300       28    1 032
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address  Size  Type      Object
+-----                      -------  ----  ----      ------
+.iar.init_table$$Base   0x000000d8         --   Gb  - Linker created -
+.iar.init_table$$Limit  0x000000ec         --   Gb  - Linker created -
+?main                   0x000000ed        Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000008         --   Gb  - Linker created -
+CSTACK$$Limit           0x20000408         --   Gb  - Linker created -
+Region$$Table$$Base     0x000000d8         --   Gb  - Linker created -
+Region$$Table$$Limit    0x000000ec         --   Gb  - Linker created -
+__cmain                 0x000000ed        Code  Gb  cmain.o [4]
+__exit                  0x00000121  0x14  Code  Gb  exit.o [5]
+__iar_copy_init3        0x00000085  0x2c  Code  Gb  copy_init3.o [4]
+__iar_data_init3        0x000000b1  0x28  Code  Gb  data_init.o [4]
+__iar_program_start     0x00000135        Code  Gb  cstartup_M.o [4]
+__iar_systems$$module {Abs}
+                        0x00000001        Data  Gb  command line/config [2]
+__low_level_init        0x0000010b   0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000        Data  Gb  vector_table_M.o [4]
+_call_main              0x000000f9        Code  Gb  cmain.o [4]
+_exit                   0x00000115        Code  Gb  cexit.o [4]
+_main                   0x00000107        Code  Gb  cmain.o [4]
+constructor_A           0x00000047   0xa  Code  Gb  main.o [1]
+constructor_B           0x00000057  0x10  Code  Gb  main.o [1]
+exit                    0x0000010f   0x4  Code  Gb  exit.o [3]
+f_A                     0x00000041   0x6  Code  Gb  main.o [1]
+f_B                     0x00000051   0x6  Code  Gb  main.o [1]
+main                    0x00000071  0x14  Code  Gb  main.o [1]
+vTable_A                0x20000000   0x4  Data  Gb  main.o [1]
+vTable_B                0x20000004   0x4  Data  Gb  main.o [1]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\C\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+    300 bytes of readonly  code memory
+     28 bytes of readonly  data memory
+  1 032 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,170 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                18/Apr/2018  15:44:44
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\Cpp\Debug\Exe\InheritanceCpp.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\Cpp\Debug\List\InheritanceCpp.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW6493.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\Cpp\Debug\Obj\main.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\Cpp\Debug\Exe\InheritanceCpp.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\Cpp\Debug\List\InheritanceCpp.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor        = *
+__CPP_Exceptions = Disabled
+__CPP_Language   = C++14
+__SystemLibrary  = DLib
+__dlib_version   = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+
+No sections matched the following patterns:
+
+  rw  in "P2"
+
+
+  Section   Kind        Address   Size  Object
+  -------   ----        -------   ----  ------
+"A0":                             0x40
+  .intvec   ro code  0x00000000   0x40  vector_table_M.o [4]
+                   - 0x00000040   0x40
+
+"P1":                             0x94
+  .text     ro code  0x00000040   0x40  main.o [1]
+  .text     ro code  0x00000080   0x1e  cmain.o [4]
+  .text     ro code  0x0000009e    0x4  low_level_init.o [3]
+  .text     ro code  0x000000a2    0x4  exit.o [3]
+  .text     ro code  0x000000a6    0x2  vector_table_M.o [4]
+  .text     ro code  0x000000a8    0xa  cexit.o [4]
+  .rodata   const    0x000000b2    0x1  unwind_debug.o [5]
+  .text     ro code  0x000000b4   0x14  exit.o [5]
+  .text     ro code  0x000000c8    0xc  cstartup_M.o [4]
+                   - 0x000000d4   0x94
+
+"P2":                            0x400
+  CSTACK             0x20000000  0x400  <Block>
+    CSTACK  uninit   0x20000000  0x400  <Block tail>
+                   - 0x20000400  0x400
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module            ro code  ro data  rw data
+    ------            -------  -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\Cpp\Debug\Obj: [1]
+    main.o                 64
+    -------------------------------------------
+    Total:                 64
+
+command line: [2]
+    -------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                  4
+    low_level_init.o        4
+    -------------------------------------------
+    Total:                  8
+
+rt7M_tl.a: [4]
+    cexit.o                10
+    cmain.o                30
+    cstartup_M.o           12
+    vector_table_M.o       66
+    -------------------------------------------
+    Total:                118
+
+shb_l.a: [5]
+    exit.o                 20
+    unwind_debug.o                   1
+    -------------------------------------------
+    Total:                 20        1
+
+    Gaps                    1
+    Linker created                        1 024
+-----------------------------------------------
+    Grand Total:          211        1    1 024
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address  Size  Type      Object
+-----                      -------  ----  ----      ------
+?main                   0x00000081        Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000000         --   Gb  - Linker created -
+CSTACK$$Limit           0x20000400         --   Gb  - Linker created -
+Child::Child()          0x00000057  0x12  Code  Gb  main.o [1]
+Child::g()              0x00000069   0x4  Code  Gb  main.o [1]
+Parent::Parent()        0x0000004d   0x6  Code  Gb  main.o [1]
+Parent::Parent() [subobject]
+                        0x00000041   0xc  Code  Gb  main.o [1]
+Parent::f()             0x00000053   0x4  Code  Gb  main.o [1]
+Region$$Table$$Base     0x00000000         --   Gb  - Linker created -
+Region$$Table$$Limit    0x00000000         --   Gb  - Linker created -
+__cmain                 0x00000081        Code  Gb  cmain.o [4]
+__exit                  0x000000b5  0x14  Code  Gb  exit.o [5]
+__iar_debug_exceptions  0x000000b2   0x1  Data  Gb  unwind_debug.o [5]
+__iar_program_start     0x000000c9        Code  Gb  cstartup_M.o [4]
+__iar_systems$$module {Abs}
+                        0x00000001        Data  Gb  command line/config [2]
+__low_level_init        0x0000009f   0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000        Data  Gb  vector_table_M.o [4]
+_call_main              0x0000008d        Code  Gb  cmain.o [4]
+_exit                   0x000000a9        Code  Gb  cexit.o [4]
+_main                   0x0000009b        Code  Gb  cmain.o [4]
+exit                    0x000000a3   0x4  Code  Gb  exit.o [3]
+main                    0x0000006d  0x14  Code  Gb  main.o [1]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Inheritance\Code\Cpp\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+    211 bytes of readonly  code memory
+      1 byte  of readonly  data memory
+  1 024 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

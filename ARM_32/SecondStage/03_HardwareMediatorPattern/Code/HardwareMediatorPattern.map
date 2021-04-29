@@ -1,0 +1,211 @@
+###############################################################################
+#
+# IAR ELF Linker V8.22.2.15995/W32 for ARM                21/Apr/2018  16:38:14
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Exe\HardwareMediatorPattern.out
+#    Map file     =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\List\HardwareMediatorPattern.map
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWBD8B.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj\GraspingManipulator.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj\main.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj\RobotArmManager.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj\RotatingArmJoint.o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj\SlidingArmJoint.o
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Exe\HardwareMediatorPattern.out
+#        --map
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\List\HardwareMediatorPattern.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.0\arm\CONFIG\generic_cortex.icf" --semihosting --entry
+#        __iar_program_start --no_vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor        = *
+__CPP_Exceptions = Disabled
+__CPP_Language   = C++14
+__SystemLibrary  = DLib
+__dlib_version   = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x00000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x0007ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block PROC_STACK with size = 0M, alignment = 8 { };
+define block HEAP with size = 2K, alignment = 8 { };
+"P2":  place in [from 0x20000000 to 0x2000ffff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+
+No sections matched the following patterns:
+
+  rw  in "P2"
+
+
+  Section   Kind        Address   Size  Object
+  -------   ----        -------   ----  ------
+"A0":                             0x40
+  .intvec   ro code  0x00000000   0x40  vector_table_M.o [4]
+                   - 0x00000040   0x40
+
+"P1":                            0x470
+  .text     ro code  0x00000040  0x2f0  RobotArmManager.o [1]
+  .text     ro code  0x00000330   0x32  RotatingArmJoint.o [1]
+  .text     ro code  0x00000362   0x30  SlidingArmJoint.o [1]
+  .text     ro code  0x00000392   0x20  GraspingManipulator.o [1]
+  .text     ro code  0x000003b2   0x6a  main.o [1]
+  .text     ro code  0x0000041c   0x40  main.o [1]
+  .text     ro code  0x0000045c   0x1e  cmain.o [4]
+  .text     ro code  0x0000047a    0x4  low_level_init.o [3]
+  .text     ro code  0x0000047e    0x4  exit.o [3]
+  .text     ro code  0x00000482    0x2  vector_table_M.o [4]
+  .text     ro code  0x00000484    0xa  cexit.o [4]
+  .rodata   const    0x0000048e    0x1  unwind_debug.o [5]
+  .text     ro code  0x00000490   0x14  exit.o [5]
+  .text     ro code  0x000004a4    0xc  cstartup_M.o [4]
+                   - 0x000004b0  0x470
+
+"P2":                            0x400
+  CSTACK             0x20000000  0x400  <Block>
+    CSTACK  uninit   0x20000000  0x400  <Block tail>
+                   - 0x20000400  0x400
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                 ro code  ro data  rw data
+    ------                 -------  -------  -------
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj: [1]
+    GraspingManipulator.o       32
+    RobotArmManager.o          752
+    RotatingArmJoint.o          50
+    SlidingArmJoint.o           48
+    main.o                     170
+    ------------------------------------------------
+    Total:                   1 052
+
+command line: [2]
+    ------------------------------------------------
+    Total:
+
+dl7M_tln.a: [3]
+    exit.o                       4
+    low_level_init.o             4
+    ------------------------------------------------
+    Total:                       8
+
+rt7M_tl.a: [4]
+    cexit.o                     10
+    cmain.o                     30
+    cstartup_M.o                12
+    vector_table_M.o            66
+    ------------------------------------------------
+    Total:                     118
+
+shb_l.a: [5]
+    exit.o                      20
+    unwind_debug.o                        1
+    ------------------------------------------------
+    Total:                      20        1
+
+    Gaps                         1
+    Linker created                             1 024
+----------------------------------------------------
+    Grand Total:             1 199        1    1 024
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+?main                   0x0000045d         Code  Gb  cmain.o [4]
+CSTACK$$Base            0x20000000          --   Gb  - Linker created -
+CSTACK$$Limit           0x20000400          --   Gb  - Linker created -
+GraspingManipulator::close()
+                        0x00000399    0x6  Code  Gb  GraspingManipulator.o [1]
+GraspingManipulator::open()
+                        0x00000393    0x6  Code  Gb  GraspingManipulator.o [1]
+GraspingManipulator::setMaxForce(int)
+                        0x0000039f   0x14  Code  Gb  GraspingManipulator.o [1]
+Region$$Table$$Base     0x00000000          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00000000          --   Gb  - Linker created -
+RobotArmManager::RobotArmManager()
+                        0x0000041d   0x40  Code  Gb  main.o [1]
+RobotArmManager::addItsAction(Action *)
+                        0x000002ff   0x1e  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::addItsRotatingArmJoint(RotatingArmJoint *)
+                        0x000002c3   0x1e  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::addItsSlidingArmJoint(SlidingArmJoint *)
+                        0x000002e1   0x1e  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::clearItsAction()
+                        0x0000031d   0x14  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::computeTrajectory(int, int, int, int)
+                        0x00000041   0x96  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::executeStep()
+                        0x000000d7  0x100  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::graspAt(int, int, int, int)
+                        0x000001d7   0x68  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::setItsGraspingManipulator(GraspingManipulator *)
+                        0x000002bf    0x4  Code  Gb  RobotArmManager.o [1]
+RobotArmManager::zero()
+                        0x0000023f   0x80  Code  Gb  RobotArmManager.o [1]
+RotatingArmJoint::rotate(int)
+                        0x00000331   0x1c  Code  Gb  RotatingArmJoint.o [1]
+RotatingArmJoint::zero()
+                        0x0000034d   0x16  Code  Gb  RotatingArmJoint.o [1]
+SlidingArmJoint::setLength(int)
+                        0x00000363   0x1a  Code  Gb  SlidingArmJoint.o [1]
+SlidingArmJoint::zero()
+                        0x0000037d   0x16  Code  Gb  SlidingArmJoint.o [1]
+__cmain                 0x0000045d         Code  Gb  cmain.o [4]
+__exit                  0x00000491   0x14  Code  Gb  exit.o [5]
+__iar_debug_exceptions  0x0000048e    0x1  Data  Gb  unwind_debug.o [5]
+__iar_program_start     0x000004a5         Code  Gb  cstartup_M.o [4]
+__iar_systems$$module {Abs}
+                        0x00000001         Data  Gb  command line/config [2]
+__low_level_init        0x0000047b    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x00000000         Data  Gb  vector_table_M.o [4]
+_call_main              0x00000469         Code  Gb  cmain.o [4]
+_exit                   0x00000485         Code  Gb  cexit.o [4]
+_main                   0x00000477         Code  Gb  cmain.o [4]
+exit                    0x0000047f    0x4  Code  Gb  exit.o [3]
+main                    0x000003b3   0x6a  Code  Gb  main.o [1]
+
+
+[1] = C:\Users\Tim\Programming\Code\ARM_32\Patterns\03_HardwareMediatorPattern\Code\Cpp\Debug\Obj
+[2] = command line
+[3] = dl7M_tln.a
+[4] = rt7M_tl.a
+[5] = shb_l.a
+
+  1 199 bytes of readonly  code memory
+      1 byte  of readonly  data memory
+  1 024 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,134 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:41:30
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD3DC.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\main.c -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\main.c
+      1          //#include "ECGPkg.h"
+      2          //#include "ECG_Module.h"
+      3          //#include "TMDQueue.h"
+      4          //#include "HistogramDisplay.h"
+      5          #include "TestBuilder.h"
+      6          
+
+   \                                 In section .text, align 4, keep-with-next
+      7          int main() {
+   \                     main: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+      8          	int status = 0;
+                 	    ^
+Warning[Pe177]: variable "status" was declared but never referenced
+   \   00000002   0x2400             MOVS     R4,#+0
+      9          
+     10          	TestBuilder* p_TestBuilder;
+     11          	p_TestBuilder = TestBuilder_Create();
+   \   00000004   0x.... 0x....      BL       TestBuilder_Create
+   \   00000008   0x0005             MOVS     R5,R0
+     12          
+     13          	ECG_Module_acquireValue(&(p_TestBuilder->itsECG_Module));
+   \   0000000A   0x0028             MOVS     R0,R5
+   \   0000000C   0x.... 0x....      BL       ECG_Module_acquireValue
+     14          	ECG_Module_acquireValue(&(p_TestBuilder->itsECG_Module));
+   \   00000010   0x0028             MOVS     R0,R5
+   \   00000012   0x.... 0x....      BL       ECG_Module_acquireValue
+     15          	ECG_Module_acquireValue(&(p_TestBuilder->itsECG_Module));
+   \   00000016   0x0028             MOVS     R0,R5
+   \   00000018   0x.... 0x....      BL       ECG_Module_acquireValue
+     16          	ECG_Module_acquireValue(&(p_TestBuilder->itsECG_Module));
+   \   0000001C   0x0028             MOVS     R0,R5
+   \   0000001E   0x.... 0x....      BL       ECG_Module_acquireValue
+     17          	ECG_Module_acquireValue(&(p_TestBuilder->itsECG_Module));
+   \   00000022   0x0028             MOVS     R0,R5
+   \   00000024   0x.... 0x....      BL       ECG_Module_acquireValue
+     18          
+     19          	HistogramDisplay_getValue(&(p_TestBuilder->itsHistogramDisplay));
+   \   00000028   0xF115 0x0010      ADDS     R0,R5,#+16
+   \   0000002C   0x.... 0x....      BL       HistogramDisplay_getValue
+     20          	HistogramDisplay_getValue(&(p_TestBuilder->itsHistogramDisplay));
+   \   00000030   0xF115 0x0010      ADDS     R0,R5,#+16
+   \   00000034   0x.... 0x....      BL       HistogramDisplay_getValue
+     21          	HistogramDisplay_getValue(&(p_TestBuilder->itsHistogramDisplay));
+   \   00000038   0xF115 0x0010      ADDS     R0,R5,#+16
+   \   0000003C   0x.... 0x....      BL       HistogramDisplay_getValue
+     22          	HistogramDisplay_getValue(&(p_TestBuilder->itsHistogramDisplay));
+   \   00000040   0xF115 0x0010      ADDS     R0,R5,#+16
+   \   00000044   0x.... 0x....      BL       HistogramDisplay_getValue
+     23          	HistogramDisplay_getValue(&(p_TestBuilder->itsHistogramDisplay));
+   \   00000048   0xF115 0x0010      ADDS     R0,R5,#+16
+   \   0000004C   0x.... 0x....      BL       HistogramDisplay_getValue
+     24          
+     25          	printf("Done\n");
+   \   00000050   0x4803             LDR.N    R0,??main_0
+   \   00000052   0x.... 0x....      BL       printf
+     26          
+     27          	TestBuilder_Destroy(p_TestBuilder);
+   \   00000056   0x0028             MOVS     R0,R5
+   \   00000058   0x.... 0x....      BL       TestBuilder_Destroy
+     28          
+     29          	while (1) {
+   \                     ??main_1: (+1)
+   \   0000005C   0xE7FE             B.N      ??main_1
+   \   0000005E   0xBF00             Nop      
+   \                     ??main_0:
+   \   00000060   0x........         DC32     ?_0
+     30                  }
+     31          }
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x44 0x6F          DC8 "Done\012"
+   \              0x6E 0x65    
+   \              0x0A 0x00    
+   \   00000006   0x00 0x00          DC8 0, 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   main
+        16   -> ECG_Module_acquireValue
+        16   -> HistogramDisplay_getValue
+        16   -> TestBuilder_Create
+        16   -> TestBuilder_Destroy
+        16   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       8  ?_0
+     100  main
+
+ 
+   8 bytes in section .rodata
+ 100 bytes in section .text
+ 
+ 100 bytes of CODE  memory
+   8 bytes of CONST memory
+
+Errors: none
+Warnings: 1

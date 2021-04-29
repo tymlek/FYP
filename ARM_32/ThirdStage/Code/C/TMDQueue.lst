@@ -1,0 +1,393 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:33:25
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TMDQueue.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW693F.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TMDQueue.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\TMDQueue.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\TMDQueue.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\TMDQueue.c
+      1          #include <stdlib.h>
+      2          #include "TMDQueue.h"
+      3          
+      4          static void initReleatioins(TMDQueue* const me);
+      5          static void cleanUpReleations(TMDQueue* const me);
+      6          
+      7          /* Constructor and Destructor */
+
+   \                                 In section .text, align 2, keep-with-next
+      8          void TMDQueue_Init(TMDQueue* const me) {
+   \                     TMDQueue_Init: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      9          	me->head = 0;
+   \   00000004   0x2000             MOVS     R0,#+0
+   \   00000006   0x6020             STR      R0,[R4, #+0]
+     10          	me->size = 0;
+   \   00000008   0x2000             MOVS     R0,#+0
+   \   0000000A   0x6060             STR      R0,[R4, #+4]
+     11          	initReleatioins(me);
+   \   0000000C   0x0020             MOVS     R0,R4
+   \   0000000E   0x.... 0x....      BL       initReleatioins
+     12          }
+   \   00000012   0xBD10             POP      {R4,PC}          ;; return
+     13          
+
+   \                                 In section .text, align 2, keep-with-next
+     14          void TMDQueue_Cleanup(TMDQueue* const me) {
+   \                     TMDQueue_Cleanup: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     15          	cleanUpReleations(me);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       cleanUpReleations
+     16          }
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+     17          
+     18          /* Operations */
+
+   \                                 In section .text, align 2, keep-with-next
+     19          int TMDQueue_getNextIndex(TMDQueue* const me, int index) {
+   \                     TMDQueue_getNextIndex: (+1)
+   \   00000000   0x0002             MOVS     R2,R0
+     20          	return (index + 1) % QUEUE_SIZE;
+   \   00000002   0x1C49             ADDS     R1,R1,#+1
+   \   00000004   0x2014             MOVS     R0,#+20
+   \   00000006   0xFB91 0xF3F0      SDIV     R3,R1,R0
+   \   0000000A   0xFB00 0x1113      MLS      R1,R0,R3,R1
+   \   0000000E   0x0008             MOVS     R0,R1
+   \   00000010   0x4770             BX       LR               ;; return
+     21          }
+     22          
+
+   \                                 In section .text, align 2, keep-with-next
+     23          void TMDQueue_insert(TMDQueue* const me, struct TimeMarkedData* tmd) {
+   \                     TMDQueue_insert: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+     24          	printf("Inserting at: %d Data #: %d", me->head, tmd->timeInterval);
+   \   00000006   0x682A             LDR      R2,[R5, #+0]
+   \   00000008   0x6821             LDR      R1,[R4, #+0]
+   \   0000000A   0x....             LDR.N    R0,??DataTable2
+   \   0000000C   0x.... 0x....      BL       printf
+     25          	me->buffer[me->head] = tmd;
+   \   00000010   0x6820             LDR      R0,[R4, #+0]
+   \   00000012   0xEB04 0x0080      ADD      R0,R4,R0, LSL #+2
+   \   00000016   0x6085             STR      R5,[R0, #+8]
+     26          	me->head = TMDQueue_getNextIndex(me, me->head);
+   \   00000018   0x6821             LDR      R1,[R4, #+0]
+   \   0000001A   0x0020             MOVS     R0,R4
+   \   0000001C   0x.... 0x....      BL       TMDQueue_getNextIndex
+   \   00000020   0x6020             STR      R0,[R4, #+0]
+     27          
+     28          	if (me->size < QUEUE_SIZE) {
+   \   00000022   0x6860             LDR      R0,[R4, #+4]
+   \   00000024   0x2814             CMP      R0,#+20
+   \   00000026   0xDA02             BGE.N    ??TMDQueue_insert_0
+     29          		++me->size;
+   \   00000028   0x6860             LDR      R0,[R4, #+4]
+   \   0000002A   0x1C40             ADDS     R0,R0,#+1
+   \   0000002C   0x6060             STR      R0,[R4, #+4]
+     30          	}
+     31          
+     32          	printf("Storing data value: %d\n", tmd->dataValue);
+   \                     ??TMDQueue_insert_0: (+1)
+   \   0000002E   0x6869             LDR      R1,[R5, #+4]
+   \   00000030   0x....             LDR.N    R0,??DataTable2_1
+   \   00000032   0x.... 0x....      BL       printf
+     33          }
+   \   00000036   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     34          
+
+   \                                 In section .text, align 2, keep-with-next
+     35          boolean TMDQueue_isEmpty(TMDQueue* const me) {
+     36          	return (boolean)(me->size == 0);
+   \                     TMDQueue_isEmpty: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x2800             CMP      R0,#+0
+   \   00000004   0xD101             BNE.N    ??TMDQueue_isEmpty_0
+   \   00000006   0x2001             MOVS     R0,#+1
+   \   00000008   0xE000             B.N      ??TMDQueue_isEmpty_1
+   \                     ??TMDQueue_isEmpty_0: (+1)
+   \   0000000A   0x2000             MOVS     R0,#+0
+   \                     ??TMDQueue_isEmpty_1: (+1)
+   \   0000000C   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000000E   0x4770             BX       LR               ;; return
+     37          }
+     38          
+
+   \                                 In section .text, align 2, keep-with-next
+     39          struct TimeMarkedData* TMDQueue_remove(TMDQueue* const me, int index) {
+   \                     TMDQueue_remove: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+     40          	TimeMarkedData* tmd = TimeMarkedData_Create();
+   \   00000006   0x.... 0x....      BL       TimeMarkedData_Create
+   \   0000000A   0x0006             MOVS     R6,R0
+     41          	tmd->timeInterval = -1;
+   \   0000000C   0xF05F 0x30FF      MOVS     R0,#-1
+   \   00000010   0x6030             STR      R0,[R6, #+0]
+     42          	tmd->dataValue = -9999;
+   \   00000012   0x....             LDR.N    R0,??DataTable2_2  ;; 0xffffd8f1
+   \   00000014   0x6070             STR      R0,[R6, #+4]
+     43          
+     44          	if (!TMDQueue_isEmpty(me) && (index >= 0) && (index < QUEUE_SIZE)) {
+   \   00000016   0x0020             MOVS     R0,R4
+   \   00000018   0x.... 0x....      BL       TMDQueue_isEmpty
+   \   0000001C   0x2800             CMP      R0,#+0
+   \   0000001E   0xD107             BNE.N    ??TMDQueue_remove_0
+   \   00000020   0x2D00             CMP      R5,#+0
+   \   00000022   0xD405             BMI.N    ??TMDQueue_remove_0
+   \   00000024   0x2D14             CMP      R5,#+20
+   \   00000026   0xDA03             BGE.N    ??TMDQueue_remove_0
+     45          		tmd = me->buffer[index];
+   \   00000028   0xEB04 0x0085      ADD      R0,R4,R5, LSL #+2
+   \   0000002C   0x6880             LDR      R0,[R0, #+8]
+   \   0000002E   0x0006             MOVS     R6,R0
+     46          	}
+     47          
+     48          	return tmd;
+   \                     ??TMDQueue_remove_0: (+1)
+   \   00000030   0x0030             MOVS     R0,R6
+   \   00000032   0xBD70             POP      {R4-R6,PC}       ;; return
+     49          }
+     50          
+
+   \                                 In section .text, align 2, keep-with-next
+     51          int TMDQueue_getBuffer(const TMDQueue* const me) {
+   \                     TMDQueue_getBuffer: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     52          	int iter = 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+     53          	
+     54          	return iter;
+   \   00000004   0x4770             BX       LR               ;; return
+     55          }
+     56          
+
+   \                                 In section .text, align 2, keep-with-next
+     57          TMDQueue* TMDQueue_Create(void) {
+   \                     TMDQueue_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     58          	TMDQueue* me = (TMDQueue*)malloc(sizeof(TMDQueue));
+   \   00000002   0x2058             MOVS     R0,#+88
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+     59          
+     60          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??TMDQueue_Create_0
+     61          		TMDQueue_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       TMDQueue_Init
+     62          	}
+     63          
+     64          	return me;
+   \                     ??TMDQueue_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     65          }
+
+   \                                 In section .text, align 2, keep-with-next
+     66          void TMDQueue_Destroy(TMDQueue* const me) {
+   \                     TMDQueue_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     67          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??TMDQueue_Destroy_0
+     68          		TMDQueue_Cleanup(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       TMDQueue_Cleanup
+     69          	}
+     70          
+     71          	free(me);
+   \                     ??TMDQueue_Destroy_0: (+1)
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       free
+     72          }
+   \   00000014   0xBD10             POP      {R4,PC}          ;; return
+     73          
+
+   \                                 In section .text, align 2, keep-with-next
+     74          static void initReleatioins(TMDQueue* const me) {
+   \                     initReleatioins: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     75          	int iter = 0;
+   \   00000004   0x2500             MOVS     R5,#+0
+     76          
+     77          	while (iter < QUEUE_SIZE) {
+   \                     ??initReleatioins_0: (+1)
+   \   00000006   0x2D14             CMP      R5,#+20
+   \   00000008   0xDA0C             BGE.N    ??initReleatioins_1
+     78          		me->buffer[iter] = TimeMarkedData_Create();
+   \   0000000A   0x.... 0x....      BL       TimeMarkedData_Create
+   \   0000000E   0xEB04 0x0185      ADD      R1,R4,R5, LSL #+2
+   \   00000012   0x6088             STR      R0,[R1, #+8]
+     79          		//TimeMarkedData_Init(((me->buffer)[iter]));
+     80          		TimeMarkedData_setItsTMDQueue(((me->buffer)[iter]), me);
+   \   00000014   0x0021             MOVS     R1,R4
+   \   00000016   0xEB04 0x0085      ADD      R0,R4,R5, LSL #+2
+   \   0000001A   0x6880             LDR      R0,[R0, #+8]
+   \   0000001C   0x.... 0x....      BL       TimeMarkedData_setItsTMDQueue
+     81          		++iter;
+   \   00000020   0x1C6D             ADDS     R5,R5,#+1
+   \   00000022   0xE7F0             B.N      ??initReleatioins_0
+     82          	}
+     83          }
+   \                     ??initReleatioins_1: (+1)
+   \   00000024   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     84          
+
+   \                                 In section .text, align 2, keep-with-next
+     85          static void cleanUpReleations(TMDQueue* const me) {
+   \                     cleanUpReleations: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     86          	int iter = 0;
+   \   00000004   0x2500             MOVS     R5,#+0
+     87          
+     88          	while (iter < QUEUE_SIZE) {
+   \                     ??cleanUpReleations_0: (+1)
+   \   00000006   0x2D14             CMP      R5,#+20
+   \   00000008   0xDA06             BGE.N    ??cleanUpReleations_1
+     89          		TimeMarkedData_Cleanup(((me->buffer)[iter]));
+   \   0000000A   0xEB04 0x0085      ADD      R0,R4,R5, LSL #+2
+   \   0000000E   0x6880             LDR      R0,[R0, #+8]
+   \   00000010   0x.... 0x....      BL       TimeMarkedData_Cleanup
+     90          		++iter;
+   \   00000014   0x1C6D             ADDS     R5,R5,#+1
+   \   00000016   0xE7F6             B.N      ??cleanUpReleations_0
+     91          	}
+     92          }
+   \                     ??cleanUpReleations_1: (+1)
+   \   00000018   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     ?_0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     ?_1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0xFFFFD8F1         DC32     0xffffd8f1
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x49 0x6E          DC8 "Inserting at: %d Data #: %d"
+   \              0x73 0x65    
+   \              0x72 0x74    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x61 0x74    
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x20 0x44    
+   \              0x61 0x74    
+   \              0x61 0x20    
+   \              0x23 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x00    
+
+   \                                 In section .rodata, align 4
+   \                     ?_1:
+   \   00000000   0x53 0x74          DC8 "Storing data value: %d\012"
+   \              0x6F 0x72    
+   \              0x69 0x6E    
+   \              0x67 0x20    
+   \              0x64 0x61    
+   \              0x74 0x61    
+   \              0x20 0x76    
+   \              0x61 0x6C    
+   \              0x75 0x65    
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x0A 0x00    
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   TMDQueue_Cleanup
+         8   -> cleanUpReleations
+       8   TMDQueue_Create
+         8   -> TMDQueue_Init
+         8   -> malloc
+       8   TMDQueue_Destroy
+         8   -> TMDQueue_Cleanup
+         8   -> free
+       8   TMDQueue_Init
+         8   -> initReleatioins
+       0   TMDQueue_getBuffer
+       0   TMDQueue_getNextIndex
+      16   TMDQueue_insert
+        16   -> TMDQueue_getNextIndex
+        16   -> printf
+       0   TMDQueue_isEmpty
+      16   TMDQueue_remove
+        16   -> TMDQueue_isEmpty
+        16   -> TimeMarkedData_Create
+      16   cleanUpReleations
+        16   -> TimeMarkedData_Cleanup
+      16   initReleatioins
+        16   -> TimeMarkedData_Create
+        16   -> TimeMarkedData_setItsTMDQueue
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+      28  ?_0
+      24  ?_1
+      12  TMDQueue_Cleanup
+      24  TMDQueue_Create
+      22  TMDQueue_Destroy
+      20  TMDQueue_Init
+       6  TMDQueue_getBuffer
+      18  TMDQueue_getNextIndex
+      56  TMDQueue_insert
+      16  TMDQueue_isEmpty
+      52  TMDQueue_remove
+      26  cleanUpReleations
+      38  initReleatioins
+
+ 
+  52 bytes in section .rodata
+ 302 bytes in section .text
+ 
+ 302 bytes of CODE  memory
+  52 bytes of CONST memory
+
+Errors: none
+Warnings: none

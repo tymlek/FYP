@@ -1,0 +1,106 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  18:08:01
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW943A.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\Templates\Code\C\main.c
+      1          /* C style approximation of template */
+      2          
+      3          #define A(T)                                            \
+      4          struct A_##T {                                          \
+      5          	T value;                                        \
+      6          };                                                      \
+      7                                                                  \
+      8          void AConstructor_##T(struct A_##T* this, T init) {     \
+      9          	(this)->value = init;                           \
+     10          }                                                       \
+     11          							\
+     12          T A_f_##T(struct A_##T* this) {                         \
+     13          	return (this)->value;                           \
+     14          }
+     15          
+
+   \                                 In section .text, align 2, keep-with-next
+   \                     AConstructor_int: (+1)
+   \   00000000   0x6001             STR      R1,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     16          A(int)
+   \   __interwork __softfp int A_f_int(struct A_int *)
+   \                     A_f_int: (+1)
+   \   00000000   0x6800             LDR      R0,[R0, #+0]
+   \   00000002   0x4770             BX       LR               ;; return
+     17          
+
+   \                                 In section .text, align 2, keep-with-next
+     18          int main() {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     19          	struct A_int a;
+     20          	AConstructor_int(&a,1);
+   \   00000002   0x2101             MOVS     R1,#+1
+   \   00000004   0x4668             MOV      R0,SP
+   \   00000006   0x.... 0x....      BL       AConstructor_int
+     21          	A_f_int(&a);
+   \   0000000A   0x4668             MOV      R0,SP
+   \   0000000C   0x.... 0x....      BL       A_f_int
+     22          	
+     23          	while (1) {
+   \                     ??main_0: (+1)
+   \   00000010   0xE7FE             B.N      ??main_0
+     24          		
+     25          	}
+     26          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   AConstructor_int
+       0   A_f_int
+       8   main
+         8   -> AConstructor_int
+         8   -> A_f_int
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  AConstructor_int
+       4  A_f_int
+      18  main
+
+ 
+ 26 bytes in section .text
+ 
+ 26 bytes of CODE memory
+
+Errors: none
+Warnings: none

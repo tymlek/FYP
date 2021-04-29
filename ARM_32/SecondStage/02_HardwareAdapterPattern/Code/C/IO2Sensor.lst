@@ -1,0 +1,148 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:33:35
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\IO2Sensor.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWF48C.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\IO2Sensor.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\List\IO2Sensor.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\Debug\Obj\IO2Sensor.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\C\IO2Sensor.c
+      1          #include <stdlib.h>
+      2          #include "IO2Sensor.h"
+      3          
+
+   \                                 In section .text, align 2, keep-with-next
+      4          IO2Sensor* IO2Sensor_Create(void) {
+   \                     IO2Sensor_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+      5          	IO2Sensor* me = (IO2Sensor*)malloc(sizeof(IO2Sensor));
+   \   00000002   0x200C             MOVS     R0,#+12
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+      6          
+      7          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??IO2Sensor_Create_0
+      8          		IO2Sensor_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       IO2Sensor_Init
+      9          	}
+     10          
+     11          	return me;
+   \                     ??IO2Sensor_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     12          }
+     13          
+
+   \                                 In section .text, align 2, keep-with-next
+     14          void IO2Sensor_Destroy(IO2Sensor* const me) {
+   \                     IO2Sensor_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     15          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??IO2Sensor_Destroy_0
+     16          		free(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       free
+     17          		//IO2Sensor_Cleanup(me);
+     18          	}
+     19          }
+   \                     ??IO2Sensor_Destroy_0: (+1)
+   \   0000000E   0xBD10             POP      {R4,PC}          ;; return
+     20          
+
+   \                                 In section .text, align 2, keep-with-next
+     21          void IO2Sensor_Init(IO2Sensor* const me) {
+     22          	me->gimmeO2Conc = IO2Sensor_gimmeO2Conc;
+   \                     IO2Sensor_Init: (+1)
+   \   00000000   0x.... 0x....      ADR.W    R1,IO2Sensor_gimmeO2Conc
+   \   00000004   0x6041             STR      R1,[R0, #+4]
+     23          	me->gimmeO2Flow = IO2Sensor_gimmeO2Flow;
+   \   00000006   0x.... 0x....      ADR.W    R1,IO2Sensor_gimmeO2Flow
+   \   0000000A   0x6081             STR      R1,[R0, #+8]
+     24          }
+   \   0000000C   0x4770             BX       LR               ;; return
+     25          
+
+   \                                 In section .text, align 4, keep-with-next
+     26          int IO2Sensor_gimmeO2Conc(IO2Sensor* const me) {
+   \                     IO2Sensor_gimmeO2Conc: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     27          	return me->gimmeO2Conc(me);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x6861             LDR      R1,[R4, #+4]
+   \   00000008   0x4788             BLX      R1
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+     28          }
+     29          
+
+   \                                 In section .text, align 4, keep-with-next
+     30          int IO2Sensor_gimmeO2Flow(IO2Sensor* const me) {
+   \                     IO2Sensor_gimmeO2Flow: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     31          	return me->gimmeO2Flow(me);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x68A1             LDR      R1,[R4, #+8]
+   \   00000008   0x4788             BLX      R1
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+     32          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   IO2Sensor_Create
+         8   -> IO2Sensor_Init
+         8   -> malloc
+       8   IO2Sensor_Destroy
+         8   -> free
+       0   IO2Sensor_Init
+       8   IO2Sensor_gimmeO2Conc
+         8   -- Indirect call
+       8   IO2Sensor_gimmeO2Flow
+         8   -- Indirect call
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      24  IO2Sensor_Create
+      16  IO2Sensor_Destroy
+      14  IO2Sensor_Init
+      12  IO2Sensor_gimmeO2Conc
+      12  IO2Sensor_gimmeO2Flow
+
+ 
+ 78 bytes in section .text
+ 
+ 78 bytes of CODE memory
+
+Errors: none
+Warnings: none

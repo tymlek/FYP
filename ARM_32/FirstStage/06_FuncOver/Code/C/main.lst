@@ -1,0 +1,148 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       19/Apr/2018  09:39:02
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\main.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWA004.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\main.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\FuncOver\Code\C\main.c
+      1          /* C implementation */
+      2          
+      3          #include <stdio.h>
+      4          
+
+   \                                 In section .text, align 2, keep-with-next
+      5          void function_int(int number) {
+   \                     function_int: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+      6          	printf("%d",number);
+   \   00000004   0x0021             MOVS     R1,R4
+   \   00000006   0x....             ADR.N    R0,??DataTable2  ;; 0x25, 0x64, 0x00, 0x00
+   \   00000008   0x.... 0x....      BL       printf
+      7          }
+   \   0000000C   0xBD10             POP      {R4,PC}          ;; return
+      8          
+
+   \                                 In section .text, align 2, keep-with-next
+      9          void function_double(double number) {
+   \                     function_double: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+     10          	printf("%f",number);
+   \   00000006   0x0022             MOVS     R2,R4
+   \   00000008   0x002B             MOVS     R3,R5
+   \   0000000A   0x....             ADR.N    R0,??DataTable2_1  ;; 0x25, 0x66, 0x00, 0x00
+   \   0000000C   0x.... 0x....      BL       printf
+     11          }
+   \   00000010   0xBD31             POP      {R0,R4,R5,PC}    ;; return
+     12          
+
+   \                                 In section .text, align 2, keep-with-next
+     13          int main() {
+   \                     main: (+1)
+   \   00000000   0xB580             PUSH     {R7,LR}
+     14          	function_int(2);
+   \   00000002   0x2002             MOVS     R0,#+2
+   \   00000004   0x.... 0x....      BL       function_int
+     15          	function_double(3.14);
+   \   00000008   0x....             LDR.N    R0,??DataTable2_2  ;; 0x51eb851f
+   \   0000000A   0x....             LDR.N    R1,??DataTable2_3  ;; 0x40091eb8
+   \   0000000C   0x.... 0x....      BL       function_double
+     16          	
+     17          	while (1) {
+   \                     ??main_0: (+1)
+   \   00000010   0xE7FE             B.N      ??main_0
+     18          		
+     19          	}
+     20          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x25 0x64          DC8      0x25, 0x64, 0x00, 0x00
+   \              0x00 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x25 0x66          DC8      0x25, 0x66, 0x00, 0x00
+   \              0x00 0x00    
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0x51EB851F         DC32     0x51eb851f
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \   00000000   0x40091EB8         DC32     0x40091eb8
+
+   \                                 In section .rodata, align 4
+   \   00000000   0x25 0x64          DC8 "%d"
+   \              0x00         
+   \   00000003   0x00               DC8 0
+
+   \                                 In section .rodata, align 4
+   \   00000000   0x25 0x66          DC8 "%f"
+   \              0x00         
+   \   00000003   0x00               DC8 0
+     21          
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   function_double
+        16   -> printf
+       8   function_int
+         8   -> printf
+       8   main
+         8   -> function_double
+         8   -> function_int
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+       4  ?_0
+       4  ?_1
+      18  function_double
+      14  function_int
+      18  main
+
+ 
+  8 bytes in section .rodata
+ 66 bytes in section .text
+ 
+ 66 bytes of CODE  memory
+  8 bytes of CONST memory
+
+Errors: none
+Warnings: none

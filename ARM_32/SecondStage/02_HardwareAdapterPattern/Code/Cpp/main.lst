@@ -1,0 +1,222 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:54:13
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWD92C.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\main.cpp
+      1          #include <stdlib.h>
+      2          #include <stdio.h>
+      3          
+      4          #include "AcmeO2SensorProxy.h"
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp AcmeO2SensorProxy::AcmeO2SensorProxy()
+   \                     _ZN17AcmeO2SensorProxyC1Ev: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6001             STR      R1,[R0, #+0]
+   \   00000004   0x4770             BX       LR               ;; return
+      5          #include "AcmeO2Adapter.h"
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp IO2Sensor::subobject IO2Sensor()
+   \                     _ZN9IO2SensorC2Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN9IO2SensorC1Ev
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2
+   \   __code __interwork __softfp IO2Sensor::IO2Sensor()
+   \                     _ZN9IO2SensorC1Ev: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4
+   \   __code __interwork __softfp AcmeO2Adapter::AcmeO2Adapter(AcmeO2SensorProxy *)
+   \                     _ZN13AcmeO2AdapterC1EP17AcmeO2SensorProxy: (+1)
+   \   00000000   0xB538             PUSH     {R3-R5,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x000D             MOVS     R5,R1
+   \   00000006   0x0020             MOVS     R0,R4
+   \   00000008   0x.... 0x....      BL       _ZN9IO2SensorC2Ev
+   \   0000000C   0x4802             LDR.N    R0,??AcmeO2Adapter_0
+   \   0000000E   0x6020             STR      R0,[R4, #+0]
+   \   00000010   0x6065             STR      R5,[R4, #+4]
+   \   00000012   0x0020             MOVS     R0,R4
+   \   00000014   0xBD32             POP      {R1,R4,R5,PC}    ;; return
+   \   00000016   0xBF00             Nop      
+   \                     ??AcmeO2Adapter_0:
+   \   00000018   0x........         DC32     _ZTV13AcmeO2Adapter+0x8
+      6          #include "UltimateO2SensorProxy.h"
+      7          #include "UltimateO2Adapter.h"
+      8          #include "IO2Sensor.h"
+      9          
+
+   \                                 In section .text, align 4, keep-with-next
+     10          int main(void) {
+   \                     main: (+1)
+   \   00000000   0xB51F             PUSH     {R0-R4,LR}
+     11          	AcmeO2SensorProxy acmeSensor;
+   \   00000002   0x4668             MOV      R0,SP
+   \   00000004   0x.... 0x....      BL       _ZN17AcmeO2SensorProxyC1Ev
+   \   00000008   0x0001             MOVS     R1,R0
+     12          	AcmeO2Adapter acmeAdapter(&acmeSensor);
+   \   0000000A   0xA801             ADD      R0,SP,#+4
+   \   0000000C   0x.... 0x....      BL       _ZN13AcmeO2AdapterC1EP17AcmeO2SensorProxy
+     13          	IO2Sensor* io2Sensor = new AcmeO2Adapter(&acmeSensor);
+   \   00000010   0x2008             MOVS     R0,#+8
+   \   00000012   0x.... 0x....      BL       _Znwj
+   \   00000016   0x2800             CMP      R0,#+0
+   \   00000018   0xD004             BEQ.N    ??main_1
+   \   0000001A   0x4669             MOV      R1,SP
+   \   0000001C   0x.... 0x....      BL       _ZN13AcmeO2AdapterC1EP17AcmeO2SensorProxy
+   \   00000020   0x0004             MOVS     R4,R0
+   \   00000022   0xE000             B.N      ??main_2
+   \                     ??main_1: (+1)
+   \   00000024   0x2400             MOVS     R4,#+0
+     14          
+     15          	printf("O2 Concentration: %d\n", acmeAdapter.gimmeO2Conc());
+   \                     ??main_2: (+1)
+   \   00000026   0xA801             ADD      R0,SP,#+4
+   \   00000028   0x.... 0x....      BL       _ZN13AcmeO2Adapter11gimmeO2ConcEv
+   \   0000002C   0x0001             MOVS     R1,R0
+   \   0000002E   0x480F             LDR.N    R0,??main_0
+   \   00000030   0x.... 0x....      BL       printf
+     16          	printf("O2 Flow: %d\n", acmeAdapter.gimmeO2Flow());
+   \   00000034   0xA801             ADD      R0,SP,#+4
+   \   00000036   0x.... 0x....      BL       _ZN13AcmeO2Adapter11gimmeO2FlowEv
+   \   0000003A   0x0001             MOVS     R1,R0
+   \   0000003C   0x480C             LDR.N    R0,??main_0+0x4
+   \   0000003E   0x.... 0x....      BL       printf
+     17          
+     18          	printf("O2 Concentration: %d\n",io2Sensor->gimmeO2Conc());
+   \   00000042   0x0020             MOVS     R0,R4
+   \   00000044   0x6821             LDR      R1,[R4, #+0]
+   \   00000046   0x6809             LDR      R1,[R1, #+0]
+   \   00000048   0x4788             BLX      R1
+   \   0000004A   0x0001             MOVS     R1,R0
+   \   0000004C   0x4807             LDR.N    R0,??main_0
+   \   0000004E   0x.... 0x....      BL       printf
+     19          	printf("O2 Flow: %d\n", io2Sensor->gimmeO2Flow());
+   \   00000052   0x0020             MOVS     R0,R4
+   \   00000054   0x6821             LDR      R1,[R4, #+0]
+   \   00000056   0x6849             LDR      R1,[R1, #+4]
+   \   00000058   0x4788             BLX      R1
+   \   0000005A   0x0001             MOVS     R1,R0
+   \   0000005C   0x4804             LDR.N    R0,??main_0+0x4
+   \   0000005E   0x.... 0x....      BL       printf
+     20          
+     21          	delete io2Sensor;
+                 	       ^
+Warning[Pa096]: delete of class with virtual functions but no virtual
+          destructor
+   \   00000062   0x0020             MOVS     R0,R4
+   \   00000064   0x.... 0x....      BL       _ZdlPv
+     22          
+     23          	while (1) {
+   \                     ??main_3: (+1)
+   \   00000068   0xE7FE             B.N      ??main_3
+   \   0000006A   0xBF00             Nop      
+   \                     ??main_0:
+   \   0000006C   0x........         DC32     ?_0
+   \   00000070   0x........         DC32     ?_1
+     24                    
+     25                  }
+     26          }
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x4F 0x32          DC8 "O2 Concentration: %d\012"
+   \              0x20 0x43    
+   \              0x6F 0x6E    
+   \              0x63 0x65    
+   \              0x6E 0x74    
+   \              0x72 0x61    
+   \              0x74 0x69    
+   \              0x6F 0x6E    
+   \              0x3A 0x20    
+   \              0x25 0x64    
+   \              0x0A 0x00    
+   \   00000016   0x00 0x00          DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     ?_1:
+   \   00000000   0x4F 0x32          DC8 "O2 Flow: %d\012"
+   \              0x20 0x46    
+   \              0x6C 0x6F    
+   \              0x77 0x3A    
+   \              0x20 0x25    
+   \              0x64 0x0A    
+   \              0x00         
+   \   0000000D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      16   AcmeO2Adapter::AcmeO2Adapter(AcmeO2SensorProxy *)
+        16   -> IO2Sensor::subobject IO2Sensor()
+       0   AcmeO2SensorProxy::AcmeO2SensorProxy()
+       0   IO2Sensor::IO2Sensor()
+       8   IO2Sensor::subobject IO2Sensor()
+         8   -> IO2Sensor::IO2Sensor()
+      24   main
+        24   -- Indirect call
+        24   -> AcmeO2Adapter::AcmeO2Adapter(AcmeO2SensorProxy *)
+        24   -> AcmeO2Adapter::gimmeO2Conc()
+        24   -> AcmeO2Adapter::gimmeO2Flow()
+        24   -> AcmeO2SensorProxy::AcmeO2SensorProxy()
+        24   -> operator delete(void *)
+        24   -> operator new(unsigned int)
+        24   -> printf
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      24  ?_0
+      16  ?_1
+      28  AcmeO2Adapter::AcmeO2Adapter(AcmeO2SensorProxy *)
+       6  AcmeO2SensorProxy::AcmeO2SensorProxy()
+       2  IO2Sensor::IO2Sensor()
+      12  IO2Sensor::subobject IO2Sensor()
+     116  main
+      20  -- Other
+
+ 
+  60 bytes in section .rodata
+ 164 bytes in section .text
+ 
+ 116 bytes of CODE  memory (+ 48 bytes shared)
+  40 bytes of CONST memory (+ 20 bytes shared)
+
+Errors: none
+Warnings: 1

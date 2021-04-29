@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   6748	      0	   3584	  10332	   285c	Container.out

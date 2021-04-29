@@ -1,0 +1,191 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       18/Apr/2018  18:33:26
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\main.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EWDCDD.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\main.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\Debug\List\main.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\Debug\Obj\main.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\SimpleFeatures\VirtualFunc\Code\Cpp\main.cpp
+      1          /* C++ implementation */ 
+      2          
+      3          class A {
+      4          	public:
+      5          	A();
+      6          	virtual int f();
+      7          	
+      8          	private:
+      9          	int value;
+     10          };
+     11          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __code __interwork __softfp A::subobject A()
+   \                     _ZN1AC2Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN1AC1Ev
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     12          A::A() {
+   \                     _ZN1AC1Ev: (+1)
+   \   00000000   0x....             LDR.N    R1,??DataTable2
+   \   00000002   0x6001             STR      R1,[R0, #+0]
+     13          	value = 0;
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6041             STR      R1,[R0, #+4]
+     14          }
+   \   00000008   0x4770             BX       LR               ;; return
+     15          
+
+   \                                 In section .text, align 2, keep-with-next
+     16          int A::f() {
+   \                     _ZN1A1fEv: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     17          	return 0;
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x4770             BX       LR               ;; return
+     18          }
+     19          
+     20          class B : public A {
+     21          	public:
+     22          	B();
+     23          	virtual int f() override;
+     24          };
+     25          
+
+   \                                 In section .text, align 2, keep-with-next
+   \   __code __interwork __softfp B::subobject B()
+   \                     _ZN1BC2Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN1BC1Ev
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+
+   \                                 In section .text, align 2, keep-with-next
+     26          B::B() {
+   \                     _ZN1BC1Ev: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       _ZN1AC2Ev
+   \   0000000A   0x....             LDR.N    R0,??DataTable2_1
+   \   0000000C   0x6020             STR      R0,[R4, #+0]
+     27          	
+     28          }
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0xBD10             POP      {R4,PC}          ;; return
+     29          
+
+   \                                 In section .text, align 2, keep-with-next
+     30          int B::f() {
+   \                     _ZN1B1fEv: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+     31          	return 1;
+   \   00000002   0x2001             MOVS     R0,#+1
+   \   00000004   0x4770             BX       LR               ;; return
+     32          }
+     33          
+     34          
+
+   \                                 In section .text, align 2, keep-with-next
+     35          int main(void)
+     36          {
+   \                     main: (+1)
+   \   00000000   0xB51C             PUSH     {R2-R4,LR}
+     37          	B b;
+   \   00000002   0x4668             MOV      R0,SP
+   \   00000004   0x.... 0x....      BL       _ZN1BC1Ev
+     38          	A* aPtr = &b;
+   \   00000008   0x466C             MOV      R4,SP
+     39          	
+     40          	aPtr->f();
+   \   0000000A   0x0020             MOVS     R0,R4
+   \   0000000C   0x6821             LDR      R1,[R4, #+0]
+   \   0000000E   0x6809             LDR      R1,[R1, #+0]
+   \   00000010   0x4788             BLX      R1
+     41              
+     42              while (1) 
+   \                     ??main_0: (+1)
+   \   00000012   0xE7FE             B.N      ??main_0
+     43              {
+     44          		
+     45              }
+     46          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     _ZTV1A+0x8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     _ZTV1B+0x8
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   A::A()
+       0   A::f()
+       8   A::subobject A()
+         8   -> A::A()
+       8   B::B()
+         8   -> A::subobject A()
+       0   B::f()
+       8   B::subobject B()
+         8   -> B::B()
+      16   main
+        16   -- Indirect call
+        16   -> B::B()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable2
+       4  ??DataTable2_1
+      10  A::A()
+       6  A::f()
+      12  A::subobject A()
+      18  B::B()
+       6  B::f()
+      12  B::subobject B()
+      20  main
+      52  -- Other
+
+ 
+ 52 bytes in section .rodata
+ 92 bytes in section .text
+ 
+ 92 bytes of CODE  memory
+  0 bytes of CONST memory (+ 52 bytes shared)
+
+Errors: none
+Warnings: none

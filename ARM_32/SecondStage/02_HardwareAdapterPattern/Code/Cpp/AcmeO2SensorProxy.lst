@@ -1,0 +1,76 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       21/Apr/2018  09:51:20
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\AcmeO2SensorProxy.cpp
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW36F3.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\AcmeO2SensorProxy.cpp
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List
+#        -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On
+#        --c++ --no_exceptions --no_rtti --no_static_destruction)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\List\AcmeO2SensorProxy.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\Debug\Obj\AcmeO2SensorProxy.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\02_HardwareAdapterPattern\Code\Cpp\AcmeO2SensorProxy.cpp
+      1          #include "AcmeO2SensorProxy.h"
+      2          
+
+   \                                 In section .text, align 2, keep-with-next
+      3          unsigned int AcmeO2SensorProxy::getO2Conc() {
+   \                     _ZN17AcmeO2SensorProxy9getO2ConcEv: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+      4          	return 20;
+   \   00000002   0x2014             MOVS     R0,#+20
+   \   00000004   0x4770             BX       LR               ;; return
+      5          }
+      6          
+
+   \                                 In section .text, align 2, keep-with-next
+      7          unsigned long AcmeO2SensorProxy::getO2Flow() {
+   \                     _ZN17AcmeO2SensorProxy9getO2FlowEv: (+1)
+   \   00000000   0x0001             MOVS     R1,R0
+      8          	return 50;
+   \   00000002   0x2032             MOVS     R0,#+50
+   \   00000004   0x4770             BX       LR               ;; return
+      9          }
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       0   AcmeO2SensorProxy::getO2Conc()
+       0   AcmeO2SensorProxy::getO2Flow()
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  AcmeO2SensorProxy::getO2Conc()
+       6  AcmeO2SensorProxy::getO2Flow()
+
+ 
+ 12 bytes in section .text
+ 
+ 12 bytes of CODE memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,265 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.22.2.15995/W32 for ARM       23/Apr/2018  02:33:24
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\HistogramDisplay.c
+#    Command line =  
+#        -f C:\Users\Tim\AppData\Local\Temp\EW68AF.tmp
+#        (C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\HistogramDisplay.c
+#        -lC
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List
+#        -lA
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List -o
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj
+#        --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa
+#        --no_clustering --no_scheduling --debug --endian=little
+#        --cpu=Cortex-M4 --fpu=None --dlib_config "C:\Program Files (x86)\IAR
+#        Systems\Embedded Workbench 8.0\arm\INC\c\DLib_Config_Normal.h" -On)
+#    Locale       =  C
+#    List file    =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\List\HistogramDisplay.lst
+#    Object file  =  
+#        C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\Debug\Obj\HistogramDisplay.o
+#
+###############################################################################
+
+C:\Users\Tim\Programming\Code\ARM_32\Patterns\04_ECG\ECG\HistogramDisplay.c
+      1          #include <stdlib.h>
+      2          #include "HistogramDisplay.h"
+      3          #include "TMDQueue.h"
+      4          
+      5          static void cleanUpRelations(HistogramDisplay* const me);
+      6          
+      7          /* Constructor and Destructor */
+
+   \                                 In section .text, align 2, keep-with-next
+      8          void HistogramDisplay_Init(HistogramDisplay* const me) {
+      9          	me->index = 0;
+   \                     HistogramDisplay_Init: (+1)
+   \   00000000   0x2100             MOVS     R1,#+0
+   \   00000002   0x6001             STR      R1,[R0, #+0]
+     10          	me->itsTMDQueue = NULL;
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x6041             STR      R1,[R0, #+4]
+     11          }
+   \   00000008   0x4770             BX       LR               ;; return
+     12          
+
+   \                                 In section .text, align 2, keep-with-next
+     13          void HistogramDisplay_Cleanup(HistogramDisplay* const me) {
+   \                     HistogramDisplay_Cleanup: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     14          	cleanUpRelations(me);
+   \   00000004   0x0020             MOVS     R0,R4
+   \   00000006   0x.... 0x....      BL       cleanUpRelations
+     15          }
+   \   0000000A   0xBD10             POP      {R4,PC}          ;; return
+     16          
+     17          /* Operations */
+
+   \                                 In section .text, align 2, keep-with-next
+     18          void HistogramDisplay_getValue(HistogramDisplay* const me) {
+   \                     HistogramDisplay_getValue: (+1)
+   \   00000000   0xB570             PUSH     {R4-R6,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     19          	TimeMarkedData* tmd = TimeMarkedData_Create();
+   \   00000004   0x.... 0x....      BL       TimeMarkedData_Create
+   \   00000008   0x0005             MOVS     R5,R0
+     20          
+     21          	tmd = TMDQueue_remove(me->itsTMDQueue, me->index);
+   \   0000000A   0x6821             LDR      R1,[R4, #+0]
+   \   0000000C   0x6860             LDR      R0,[R4, #+4]
+   \   0000000E   0x.... 0x....      BL       TMDQueue_remove
+   \   00000012   0x0006             MOVS     R6,R0
+     22          
+     23          	printf("Histogram index: %d Time Interval: %d Data Value: %d\n"
+     24          		, me->index, tmd->timeInterval, tmd->dataValue);
+   \   00000014   0x6873             LDR      R3,[R6, #+4]
+   \   00000016   0x6832             LDR      R2,[R6, #+0]
+   \   00000018   0x6821             LDR      R1,[R4, #+0]
+   \   0000001A   0x....             LDR.N    R0,??DataTable1
+   \   0000001C   0x.... 0x....      BL       printf
+     25          
+     26          	me->index = TMDQueue_getNextIndex(me->itsTMDQueue, me->index);
+   \   00000020   0x6821             LDR      R1,[R4, #+0]
+   \   00000022   0x6860             LDR      R0,[R4, #+4]
+   \   00000024   0x.... 0x....      BL       TMDQueue_getNextIndex
+   \   00000028   0x6020             STR      R0,[R4, #+0]
+     27          }
+   \   0000002A   0xBD70             POP      {R4-R6,PC}       ;; return
+     28          
+
+   \                                 In section .text, align 2, keep-with-next
+     29          void HistogramDisplay_updateHistogram(HistogramDisplay* me) {
+     30          
+     31          }
+   \                     HistogramDisplay_updateHistogram: (+1)
+   \   00000000   0x4770             BX       LR               ;; return
+     32          
+
+   \                                 In section .text, align 2, keep-with-next
+     33          struct TMDQueue* HistogramDisplay_getItsTMDQueue(const HistogramDisplay* const me) {
+     34          	return (struct TMDQueue*)me->itsTMDQueue;
+   \                     HistogramDisplay_getItsTMDQueue: (+1)
+   \   00000000   0x6840             LDR      R0,[R0, #+4]
+   \   00000002   0x4770             BX       LR               ;; return
+     35          }
+     36          
+
+   \                                 In section .text, align 2, keep-with-next
+     37          void HistogramDisplay_setItsTMDQueue(HistogramDisplay* const me, struct TMDQueue* p_TMDQueue) {
+     38          	me->itsTMDQueue = p_TMDQueue;
+   \                     HistogramDisplay_setItsTMDQueue: (+1)
+   \   00000000   0x6041             STR      R1,[R0, #+4]
+     39          }
+   \   00000002   0x4770             BX       LR               ;; return
+     40          
+
+   \                                 In section .text, align 2, keep-with-next
+     41          HistogramDisplay* HistogramDisplay_Create() {
+   \                     HistogramDisplay_Create: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+     42          	HistogramDisplay* me = (HistogramDisplay*)malloc(sizeof(HistogramDisplay));
+   \   00000002   0x2008             MOVS     R0,#+8
+   \   00000004   0x.... 0x....      BL       malloc
+   \   00000008   0x0004             MOVS     R4,R0
+     43          
+     44          	if (me != NULL) {
+   \   0000000A   0x2C00             CMP      R4,#+0
+   \   0000000C   0xD002             BEQ.N    ??HistogramDisplay_Create_0
+     45          		HistogramDisplay_Init(me);
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       HistogramDisplay_Init
+     46          	}
+     47          
+     48          	return me;
+   \                     ??HistogramDisplay_Create_0: (+1)
+   \   00000014   0x0020             MOVS     R0,R4
+   \   00000016   0xBD10             POP      {R4,PC}          ;; return
+     49          }
+
+   \                                 In section .text, align 2, keep-with-next
+     50          void HistogramDisplay_Destroy(HistogramDisplay* const me) {
+   \                     HistogramDisplay_Destroy: (+1)
+   \   00000000   0xB510             PUSH     {R4,LR}
+   \   00000002   0x0004             MOVS     R4,R0
+     51          	if (me != NULL) {
+   \   00000004   0x2C00             CMP      R4,#+0
+   \   00000006   0xD002             BEQ.N    ??HistogramDisplay_Destroy_0
+     52          		HistogramDisplay_Cleanup(me);
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       HistogramDisplay_Cleanup
+     53          	}
+     54          
+     55          	free(me);
+   \                     ??HistogramDisplay_Destroy_0: (+1)
+   \   0000000E   0x0020             MOVS     R0,R4
+   \   00000010   0x.... 0x....      BL       free
+     56          }
+   \   00000014   0xBD10             POP      {R4,PC}          ;; return
+     57          
+
+   \                                 In section .text, align 2, keep-with-next
+     58          static void cleanUpRelations(HistogramDisplay* const me) {
+     59          	if (me->itsTMDQueue != NULL) {
+   \                     cleanUpRelations: (+1)
+   \   00000000   0x6841             LDR      R1,[R0, #+4]
+   \   00000002   0x2900             CMP      R1,#+0
+   \   00000004   0xD001             BEQ.N    ??cleanUpRelations_0
+     60          		me->itsTMDQueue = NULL;
+   \   00000006   0x2100             MOVS     R1,#+0
+   \   00000008   0x6041             STR      R1,[R0, #+4]
+     61          	}
+     62          }
+   \                     ??cleanUpRelations_0: (+1)
+   \   0000000A   0x4770             BX       LR               ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   0x........         DC32     ?_0
+
+   \                                 In section .rodata, align 4
+   \                     ?_0:
+   \   00000000   0x48 0x69          DC8 48H, 69H, 73H, 74H, 6FH, 67H, 72H, 61H
+   \              0x73 0x74    
+   \              0x6F 0x67    
+   \              0x72 0x61    
+   \   00000008   0x6D 0x20          DC8 6DH, 20H, 69H, 6EH, 64H, 65H, 78H, 3AH
+   \              0x69 0x6E    
+   \              0x64 0x65    
+   \              0x78 0x3A    
+   \   00000010   0x20 0x25          DC8 20H, 25H, 64H, 20H, 54H, 69H, 6DH, 65H
+   \              0x64 0x20    
+   \              0x54 0x69    
+   \              0x6D 0x65    
+   \   00000018   0x20 0x49          DC8 20H, 49H, 6EH, 74H, 65H, 72H, 76H, 61H
+   \              0x6E 0x74    
+   \              0x65 0x72    
+   \              0x76 0x61    
+   \   00000020   0x6C 0x3A          DC8 6CH, 3AH, 20H, 25H, 64H, 20H, 44H, 61H
+   \              0x20 0x25    
+   \              0x64 0x20    
+   \              0x44 0x61    
+   \   00000028   0x74 0x61          DC8 74H, 61H, 20H, 56H, 61H, 6CH, 75H, 65H
+   \              0x20 0x56    
+   \              0x61 0x6C    
+   \              0x75 0x65    
+   \   00000030   0x3A 0x20          DC8 3AH, 20H, 25H, 64H, 0AH, 0
+   \              0x25 0x64    
+   \              0x0A 0x00    
+   \   00000036   0x00 0x00          DC8 0, 0
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   HistogramDisplay_Cleanup
+         8   -> cleanUpRelations
+       8   HistogramDisplay_Create
+         8   -> HistogramDisplay_Init
+         8   -> malloc
+       8   HistogramDisplay_Destroy
+         8   -> HistogramDisplay_Cleanup
+         8   -> free
+       0   HistogramDisplay_Init
+       0   HistogramDisplay_getItsTMDQueue
+      16   HistogramDisplay_getValue
+        16   -> TMDQueue_getNextIndex
+        16   -> TMDQueue_remove
+        16   -> TimeMarkedData_Create
+        16   -> printf
+       0   HistogramDisplay_setItsTMDQueue
+       0   HistogramDisplay_updateHistogram
+       0   cleanUpRelations
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable1
+      56  ?_0
+      12  HistogramDisplay_Cleanup
+      24  HistogramDisplay_Create
+      22  HistogramDisplay_Destroy
+      10  HistogramDisplay_Init
+       4  HistogramDisplay_getItsTMDQueue
+      44  HistogramDisplay_getValue
+       4  HistogramDisplay_setItsTMDQueue
+       2  HistogramDisplay_updateHistogram
+      12  cleanUpRelations
+
+ 
+  56 bytes in section .rodata
+ 138 bytes in section .text
+ 
+ 138 bytes of CODE  memory
+  56 bytes of CONST memory
+
+Errors: none
+Warnings: none
